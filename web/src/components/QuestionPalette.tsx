@@ -31,16 +31,16 @@ export default function QuestionPalette({
 
   const tileClass = (qIdx: number, dIdx: number) =>
     cn(
-      "relative flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-xs font-bold transition-all select-none focus-visible:ring-2",
+      "relative flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-xs font-bold transition-all select-none focus-visible:ring-2 cursor-pointer",
       dIdx === currentIdx
-        ? "bg-crimson text-white font-extrabold shadow-sm ring-2 ring-crimson/30"
+        ? "bg-primary text-white font-extrabold shadow-sm ring-2 ring-primary/30"
         : answered[qIdx]
-          ? "bg-success text-white"
+          ? "bg-forest text-white"
           : flagged[qIdx]
-            ? "bg-warning text-white"
-            : "bg-black/[0.05] text-black/60 hover:bg-black/10 dark:bg-white/5 dark:text-white/70 dark:hover:bg-white/10",
+            ? "bg-accent text-white"
+            : "bg-black/[0.05] text-ink/60 hover:bg-black/10 dark:bg-white/5 dark:text-white/70 dark:hover:bg-white/10",
       dragging === dIdx && "opacity-40",
-      over === dIdx && dragging !== null && dragging !== dIdx && "scale-105 ring-2 ring-crimson/40",
+      over === dIdx && dragging !== null && dragging !== dIdx && "scale-105 ring-2 ring-primary/40",
     );
 
   const dragStart = (e: DragEvent, dIdx: number) => {
@@ -68,7 +68,7 @@ export default function QuestionPalette({
   return (
     <div className="flex flex-col gap-4">
       <div>
-        <div className="label mb-3 text-black/50 dark:text-white/40">Question palette · {order.length}</div>
+        <div className="label mb-3 text-ink/50 dark:text-white/40">Question palette · {order.length}</div>
         <div
           className="grid grid-cols-6 gap-1.5 sm:grid-cols-8 lg:grid-cols-6"
           onDragOver={(e) => e.preventDefault()}
@@ -99,15 +99,15 @@ export default function QuestionPalette({
         className={cn(
           "rounded-lg border-2 border-dashed p-4 transition-colors",
           dragging !== null
-            ? "border-crimson bg-crimson-soft/30 dark:bg-crimson/10"
-            : "border-black/5 dark:border-white/5",
+            ? "border-primary bg-primary-soft/30 dark:bg-primary/10"
+            : "border-[rgba(100,80,50,0.12)] dark:border-white/5",
         )}
       >
-        <div className="label mb-2 flex items-center gap-1.5 text-black/50 dark:text-white/40">
+        <div className="label mb-2 flex items-center gap-1.5 text-ink/50 dark:text-white/40">
           <Bookmark size={12} /> Save for later · drop here
         </div>
         {savedItems.length === 0 ? (
-          <p className="text-xs text-black/40 dark:text-white/40 leading-relaxed">
+          <p className="text-xs text-ink/40 dark:text-white/40 leading-relaxed">
             Drag any question tile here to park it and solve it later.
           </p>
         ) : (
@@ -130,12 +130,12 @@ export default function QuestionPalette({
         )}
       </div>
 
-      <div className="grid grid-cols-2 gap-2 text-[10px] font-semibold text-black/50 dark:text-white/45 border-t border-black/5 dark:border-white/5 pt-3">
+      <div className="grid grid-cols-2 gap-2 text-[10px] font-semibold text-ink/50 dark:text-white/45 border-t border-[rgba(100,80,50,0.10)] dark:border-white/5 pt-3">
         <span className="flex items-center gap-1.5">
-          <span className="h-2 w-2 rounded-full bg-success" /> Answered
+          <span className="h-2 w-2 rounded-full bg-forest" /> Answered
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="h-2 w-2 rounded-full bg-warning" /> Flagged
+          <span className="h-2 w-2 rounded-full bg-accent" /> Flagged
         </span>
         <span className="flex items-center gap-1.5">
           <span className="h-2 w-2 rounded-full bg-black/10 dark:bg-white/20" /> Unanswered
@@ -145,7 +145,7 @@ export default function QuestionPalette({
             const q = order[currentIdx];
             onToggleSaved(q);
           }}
-          className="flex items-center gap-1 font-bold text-crimson hover:underline"
+          className="flex items-center gap-1 font-bold text-primary dark:text-primary-light hover:underline cursor-pointer"
         >
           <BookmarkCheck size={12} />
           {saved[order[currentIdx]] ? "Remove Saved" : "Save Current"}

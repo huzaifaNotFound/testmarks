@@ -71,30 +71,30 @@ export default function SignInPage() {
   const goToApp = () => router.replace(user?.role === "admin" ? "/admin" : "/dashboard");
 
   return (
-    <div className="relative flex min-h-screen bg-surface dark:bg-[#0D0D10]">
+    <div className="relative flex min-h-screen bg-surface dark:bg-[#101114]">
       {/* Left decorative panel — hidden on mobile */}
-      <div className="relative hidden w-[460px] shrink-0 flex-col justify-between overflow-hidden border-r border-black/[0.07] bg-white p-10 lg:flex dark:border-white/[0.07] dark:bg-[#141416]">
+      <div className="relative hidden w-[460px] shrink-0 flex-col justify-between overflow-hidden border-r border-[rgba(100,80,50,0.12)] bg-ivory p-10 lg:flex dark:border-white/[0.07] dark:bg-[#17181D]">
         <div className="relative z-10">
           <Logo />
         </div>
 
         {/* Illustration */}
-        <div className="relative my-8 aspect-[4/3] w-full overflow-hidden rounded-xl border border-black/[0.06] bg-white shadow-2 dark:border-white/[0.06] dark:bg-white/[0.02]">
+        <div className="relative my-8 aspect-[4/3] w-full overflow-hidden rounded-xl border border-[rgba(100,80,50,0.15)] bg-white shadow-2 dark:border-white/[0.06] dark:bg-white/[0.02]">
           <Image
             src="/illustrations/auth.png"
             alt="Authentication Illustration"
             fill
-            className="object-cover"
+            className="object-cover animate-float"
             priority
           />
         </div>
 
         <div className="relative z-10 space-y-4">
-          <p className="font-heading text-xl font-bold leading-snug tracking-tight text-ink dark:text-white">
+          <p className="text-xl font-bold leading-snug tracking-tight text-ink dark:text-white" style={{ fontFamily: '"Crimson Pro", Georgia, serif' }}>
             Smarter preparation.<br />
-            <span className="text-crimson">Better results.</span>
+            <span className="text-primary dark:text-primary-light">Better results.</span>
           </p>
-          <p className="text-[13px] leading-relaxed text-black/50 dark:text-white/50">
+          <p className="text-[13px] leading-relaxed text-ink/50 dark:text-white/50">
             AI-powered mock tests calibrated to your exam stream. Get instant explanations, track your weak topics, and improve every session.
           </p>
           <div className="space-y-2 pt-2">
@@ -103,14 +103,14 @@ export default function SignInPage() {
               "Detailed performance analytics",
               "AI Coach for instant explanations",
             ].map((t) => (
-              <div key={t} className="flex items-center gap-2 text-xs text-black/55 dark:text-white/55">
-                <Check size={13} className="text-crimson shrink-0" />
+              <div key={t} className="flex items-center gap-2 text-xs text-ink/60 dark:text-white/55">
+                <Check size={13} className="text-primary dark:text-primary-light shrink-0" />
                 {t}
               </div>
             ))}
           </div>
         </div>
-        <p className="relative z-10 text-[11px] text-black/30 dark:text-white/30">© 2026 Test Marks AI</p>
+        <p className="relative z-10 text-[11px] text-ink/30 dark:text-white/30">© 2026 Test Marks AI</p>
       </div>
 
       {/* Main auth area */}
@@ -123,7 +123,7 @@ export default function SignInPage() {
         >
           <Link
             href="/"
-            className="mb-6 inline-flex items-center gap-1.5 text-xs font-semibold text-black/45 transition-colors hover:text-crimson dark:text-white/45"
+            className="mb-6 inline-flex items-center gap-1.5 text-xs font-semibold text-ink/45 transition-colors hover:text-primary dark:text-white/45"
           >
             <ArrowLeft size={14} /> Back to home
           </Link>
@@ -133,14 +133,14 @@ export default function SignInPage() {
             <Logo />
           </div>
 
-          <div className="card p-7 sm:p-9 bg-white dark:bg-[#141416]">
+          <div className="card p-7 sm:p-9 bg-ivory dark:bg-[#17181D]">
             {user ? (
               <div className="text-center">
-                <span className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-xl border border-black/[0.06] bg-black/[0.02] text-crimson dark:border-white/[0.06] dark:bg-white/[0.02]">
+                <span className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-xl border border-[rgba(100,80,50,0.12)] bg-[rgba(100,80,50,0.03)] text-primary dark:border-white/[0.06] dark:bg-white/[0.02]">
                   <UserIcon size={20} />
                 </span>
                 <h1 className="heading mt-4 text-lg">Signed in as {user.email}</h1>
-                <p className="mt-1 text-xs text-black/45 dark:text-white/45">
+                <p className="mt-1 text-xs text-ink/45 dark:text-white/45">
                   {user.name} · {user.role === "admin" ? "Administrator" : "Student"}
                   {user.premium ? " · Premium" : " · Free plan"}
                 </p>
@@ -161,19 +161,19 @@ export default function SignInPage() {
             ) : (
               <>
                 <div className="flex items-center gap-3">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-black/[0.06] bg-black/[0.02] text-crimson dark:border-white/[0.06] dark:bg-white/[0.02]">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[rgba(100,80,50,0.12)] bg-[rgba(100,80,50,0.03)] text-primary dark:border-white/[0.06] dark:bg-white/[0.02]">
                     <GraduationCap size={18} />
                   </span>
                   <div>
                     <h1 className="heading text-lg">Test Marks AI</h1>
-                    <p className="text-[11.5px] text-black/45 dark:text-white/45">
+                    <p className="text-[11.5px] text-ink/45 dark:text-white/45">
                       {mode === "signin" ? "Welcome back. Let's train." : "Create your account."}
                     </p>
                   </div>
                 </div>
 
                 {/* Mode toggle */}
-                <div className="mt-6 grid grid-cols-2 gap-1 rounded-lg bg-black/[0.04] p-1 dark:bg-white/[0.04]">
+                <div className="mt-6 grid grid-cols-2 gap-1 rounded-lg bg-[rgba(100,80,50,0.06)] p-1 dark:bg-white/[0.04]">
                   {(["signin", "signup"] as const).map((m) => (
                     <button
                       key={m}
@@ -182,10 +182,10 @@ export default function SignInPage() {
                         setError(null);
                       }}
                       className={cn(
-                        "rounded-md py-1.5 text-xs font-semibold transition-all",
+                        "rounded-md py-1.5 text-xs font-semibold transition-all cursor-pointer",
                         mode === m
-                          ? "bg-white text-ink shadow-1 dark:bg-[#1C1C20] dark:text-white"
-                          : "text-black/50 dark:text-white/50",
+                          ? "bg-white text-ink shadow-1 dark:bg-[#1E2028] dark:text-white"
+                          : "text-ink/50 dark:text-white/50",
                       )}
                     >
                       {m === "signin" ? "Sign in" : "Sign up"}
@@ -194,7 +194,7 @@ export default function SignInPage() {
                 </div>
 
                 {/* Role toggle */}
-                <div className="mt-2.5 grid grid-cols-2 gap-1 rounded-lg bg-black/[0.04] p-1 dark:bg-white/[0.04]">
+                <div className="mt-2.5 grid grid-cols-2 gap-1 rounded-lg bg-[rgba(100,80,50,0.06)] p-1 dark:bg-white/[0.04]">
                   {(
                     [
                       { id: "student", label: "Student", icon: UserIcon },
@@ -205,10 +205,10 @@ export default function SignInPage() {
                       key={r.id}
                       onClick={() => setRole(r.id)}
                       className={cn(
-                        "flex items-center justify-center gap-2 rounded-md py-1.5 text-xs font-semibold transition-all",
+                        "flex items-center justify-center gap-2 rounded-md py-1.5 text-xs font-semibold transition-all cursor-pointer",
                         role === r.id
-                          ? "bg-ink text-white dark:bg-white dark:text-ink"
-                          : "text-black/50 dark:text-white/50",
+                          ? "bg-primary text-white dark:bg-white dark:text-ink"
+                          : "text-ink/50 dark:text-white/50",
                       )}
                     >
                       <r.icon size={13} /> {r.label}
@@ -276,7 +276,7 @@ export default function SignInPage() {
                       <button
                         type="button"
                         onClick={() => setShowPw((v) => !v)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-black/40 transition-colors hover:text-crimson dark:text-white/45"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-ink/40 transition-colors hover:text-primary dark:text-white/45"
                         aria-label="Toggle password visibility"
                       >
                         {showPw ? <EyeOff size={14} /> : <Eye size={14} />}
@@ -305,7 +305,7 @@ export default function SignInPage() {
                           required
                           onChange={(e) => setAdminCode(e.target.value)}
                         />
-                        <p className="mt-1 text-[10px] text-black/40 dark:text-white/40">
+                        <p className="mt-1 text-[10px] text-ink/40 dark:text-white/40">
                           Required to verify admin authority.
                         </p>
                       </motion.div>
@@ -318,13 +318,13 @@ export default function SignInPage() {
                       aria-live="assertive"
                       initial={{ opacity: 0, y: -4 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="rounded-lg border border-crimson/25 bg-crimson-soft px-3 py-2 text-xs font-semibold text-crimson dark:bg-crimson/10"
+                      className="rounded-lg border border-danger/25 bg-danger-soft px-3 py-2 text-xs font-semibold text-danger"
                     >
                       {error}
                     </motion.p>
                   )}
 
-                  <button type="submit" disabled={loading} className="btn-primary w-full mt-2">
+                  <button type="submit" disabled={loading} className="btn-primary w-full mt-2 cursor-pointer">
                     {loading ? (
                       <Loader2 size={15} className="animate-spin" />
                     ) : (

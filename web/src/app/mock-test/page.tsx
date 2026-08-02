@@ -76,7 +76,7 @@ export default function MockTestPage() {
 
   return (
     <RequireAuth>
-      <div className="relative min-h-screen bg-surface dark:bg-[#0D0D10] py-10 sm:py-16">
+      <div className="relative min-h-screen bg-surface dark:bg-[#101114] py-10 sm:py-16">
         <div className="container-px mx-auto flex w-full max-w-2xl flex-col">
           <motion.div
             initial={{ opacity: 0, y: 8 }}
@@ -86,15 +86,15 @@ export default function MockTestPage() {
           >
             <button
               onClick={() => router.push("/dashboard")}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-black/45 hover:text-crimson dark:text-white/45 transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-ink/45 hover:text-primary dark:text-white/45 transition-colors cursor-pointer"
             >
               <ArrowLeft size={13} /> Back to dashboard
             </button>
             <PageHeader
               title="Build your mock test"
-              subtitle="The AI agent composes a fresh exam paper matching your syllabus in seconds."
+              subtitle="The AI engine composes a fresh exam paper matching your syllabus in seconds."
               actions={
-                <span className="chip-crimson">
+                <span className="chip-primary">
                   <Sparkles size={11} /> AI Engine v1.0
                 </span>
               }
@@ -108,7 +108,7 @@ export default function MockTestPage() {
             className="card mt-6 space-y-6 p-6 sm:p-8"
           >
             <div>
-              <div className="label mb-2 text-black/50 dark:text-white/40">Stream</div>
+              <div className="label mb-2 text-ink/50 dark:text-white/40">Stream</div>
               <div className="flex flex-wrap gap-2">
                 {MOCK_STREAMS.map((s) => (
                   <button
@@ -118,10 +118,10 @@ export default function MockTestPage() {
                       setSubject(null);
                     }}
                     className={cn(
-                      "chip !px-3.5 !py-1.5 text-xs font-semibold transition-all focus-visible:ring-2",
+                      "chip !px-3.5 !py-1.5 text-xs font-semibold transition-all focus-visible:ring-2 cursor-pointer",
                       stream === s.id
-                        ? "border-crimson bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light font-bold"
-                        : "border-black/[0.08] bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.02] hover:border-crimson/50",
+                        ? "border-primary bg-primary-soft text-primary dark:bg-primary/15 dark:text-primary-light font-bold"
+                        : "border-[rgba(100,80,50,0.12)] bg-[rgba(100,80,50,0.03)] dark:border-white/10 dark:bg-white/[0.02] hover:border-primary/50",
                     )}
                   >
                     {s.name}
@@ -131,15 +131,15 @@ export default function MockTestPage() {
             </div>
 
             <div>
-              <div className="label mb-2 text-black/50 dark:text-white/40">Focus subject (optional)</div>
+              <div className="label mb-2 text-ink/50 dark:text-white/40">Focus subject (optional)</div>
               <div className="flex flex-wrap gap-2">
                 <button
                   onClick={() => setSubject(null)}
                   className={cn(
-                    "chip !px-3.5 !py-1.5 text-xs font-semibold focus-visible:ring-2",
+                    "chip !px-3.5 !py-1.5 text-xs font-semibold focus-visible:ring-2 cursor-pointer",
                     subject === null
-                      ? "border-crimson bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light font-bold"
-                      : "border-black/[0.08] bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.02] hover:border-crimson/50",
+                      ? "border-primary bg-primary-soft text-primary dark:bg-primary/15 dark:text-primary-light font-bold"
+                      : "border-[rgba(100,80,50,0.12)] bg-[rgba(100,80,50,0.03)] dark:border-white/10 dark:bg-white/[0.02] hover:border-primary/50",
                   )}
                 >
                   Mixed Syllabus
@@ -149,10 +149,10 @@ export default function MockTestPage() {
                     key={s}
                     onClick={() => setSubject(s)}
                     className={cn(
-                      "chip !px-3.5 !py-1.5 text-xs font-semibold focus-visible:ring-2",
+                      "chip !px-3.5 !py-1.5 text-xs font-semibold focus-visible:ring-2 cursor-pointer",
                       subject === s
-                        ? "border-crimson bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light font-bold"
-                        : "border-black/[0.08] bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.02] hover:border-crimson/50",
+                        ? "border-primary bg-primary-soft text-primary dark:bg-primary/15 dark:text-primary-light font-bold"
+                        : "border-[rgba(100,80,50,0.12)] bg-[rgba(100,80,50,0.03)] dark:border-white/10 dark:bg-white/[0.02] hover:border-primary/50",
                     )}
                   >
                     {s}
@@ -162,15 +162,15 @@ export default function MockTestPage() {
             </div>
 
             <div>
-              <div className="label mb-2 text-black/50 dark:text-white/40">Difficulty (optional)</div>
+              <div className="label mb-2 text-ink/50 dark:text-white/40">Difficulty (optional)</div>
               <div className="flex flex-wrap gap-2">
                 <button
                   onClick={() => setDifficulty(null)}
                   className={cn(
-                    "chip !px-3.5 !py-1.5 text-xs font-semibold focus-visible:ring-2",
+                    "chip !px-3.5 !py-1.5 text-xs font-semibold focus-visible:ring-2 cursor-pointer",
                     difficulty === null
-                      ? "border-crimson bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light font-bold"
-                      : "border-black/[0.08] bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.02] hover:border-crimson/50",
+                      ? "border-primary bg-primary-soft text-primary dark:bg-primary/15 dark:text-primary-light font-bold"
+                      : "border-[rgba(100,80,50,0.12)] bg-[rgba(100,80,50,0.03)] dark:border-white/10 dark:bg-white/[0.02] hover:border-primary/50",
                   )}
                 >
                   Mixed Difficulty
@@ -180,10 +180,10 @@ export default function MockTestPage() {
                     key={d.id}
                     onClick={() => setDifficulty(d.id)}
                     className={cn(
-                      "chip !px-3.5 !py-1.5 text-xs font-semibold focus-visible:ring-2",
+                      "chip !px-3.5 !py-1.5 text-xs font-semibold focus-visible:ring-2 cursor-pointer",
                       difficulty === d.id
-                        ? "border-crimson bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light font-bold"
-                        : "border-black/[0.08] bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.02] hover:border-crimson/50",
+                        ? "border-primary bg-primary-soft text-primary dark:bg-primary/15 dark:text-primary-light font-bold"
+                        : "border-[rgba(100,80,50,0.12)] bg-[rgba(100,80,50,0.03)] dark:border-white/10 dark:bg-white/[0.02] hover:border-primary/50",
                     )}
                   >
                     {d.label}
@@ -193,17 +193,17 @@ export default function MockTestPage() {
             </div>
 
             <div>
-              <div className="label mb-2 text-black/50 dark:text-white/40">Question count</div>
+              <div className="label mb-2 text-ink/50 dark:text-white/40">Question count</div>
               <div className="flex flex-wrap gap-2">
                 {[10, 20, 30, 50].map((c) => (
                   <button
                     key={c}
                     onClick={() => setCount(c)}
                     className={cn(
-                      "chip !px-3.5 !py-1.5 text-xs font-semibold focus-visible:ring-2",
+                      "chip !px-3.5 !py-1.5 text-xs font-semibold focus-visible:ring-2 cursor-pointer",
                       count === c
-                        ? "border-crimson bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light font-bold"
-                        : "border-black/[0.08] bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.02] hover:border-crimson/50",
+                        ? "border-primary bg-primary-soft text-primary dark:bg-primary/15 dark:text-primary-light font-bold"
+                        : "border-[rgba(100,80,50,0.12)] bg-[rgba(100,80,50,0.03)] dark:border-white/10 dark:bg-white/[0.02] hover:border-primary/50",
                     )}
                   >
                     {c} questions
@@ -220,10 +220,10 @@ export default function MockTestPage() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="flex flex-col items-center justify-center gap-3 py-6 rounded-lg border border-black/[0.06] bg-black/[0.015] dark:border-white/[0.06] dark:bg-white/[0.02]"
+                    className="flex flex-col items-center justify-center gap-3 py-6 rounded-lg border border-[rgba(100,80,50,0.12)] bg-[rgba(100,80,50,0.02)] dark:border-white/[0.06] dark:bg-white/[0.02]"
                   >
-                    <Loader2 size={20} className="animate-spin text-crimson" />
-                    <span className="text-xs font-semibold text-black/55 dark:text-white/55">
+                    <Loader2 size={20} className="animate-spin text-primary dark:text-primary-light" />
+                    <span className="text-xs font-semibold text-ink/55 dark:text-white/55">
                       AI is generating {count} questions for your {selectedStreamObj?.name ?? " नीट / जेईई "} stream...
                     </span>
                   </motion.div>
@@ -234,7 +234,7 @@ export default function MockTestPage() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     onClick={handleGenerate}
-                    className="btn-primary w-full py-3"
+                    className="btn-primary w-full py-3 cursor-pointer"
                   >
                     <Target size={16} /> Generate & Start Test
                   </motion.button>

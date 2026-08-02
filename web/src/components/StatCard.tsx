@@ -8,7 +8,7 @@ export default function StatCard({
   decimals = 0,
   suffix = "",
   icon: Icon,
-  accent = "#DC143C",
+  accent = "#3D3580",
   sub,
   delay = 0,
 }: {
@@ -30,16 +30,16 @@ export default function StatCard({
       className="card p-5 sm:p-6"
     >
       <div
-        className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-lg border border-black/[0.06] bg-black/[0.02] dark:border-white/[0.06] dark:bg-white/[0.02]"
+        className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-lg border border-[rgba(100,80,50,0.12)] bg-[rgba(100,80,50,0.03)] dark:border-white/[0.06] dark:bg-white/[0.02]"
         style={{ color: accent }}
       >
         <Icon size={16} />
       </div>
-      <div className="heading text-2xl sm:text-3xl font-extrabold text-ink dark:text-white">
+      <div className="heading text-2xl sm:text-3xl font-bold text-ink dark:text-white">
         <CountUp value={value} decimals={decimals} suffix={suffix} />
       </div>
       <div className="label mt-1">{label}</div>
-      {sub && <div className="mt-1.5 text-[11px] text-black/45 dark:text-white/45">{sub}</div>}
+      {sub && <div className="mt-1.5 text-[11px] text-ink/45 dark:text-white/45">{sub}</div>}
     </motion.div>
   );
 }

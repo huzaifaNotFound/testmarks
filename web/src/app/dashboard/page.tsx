@@ -12,6 +12,8 @@ import {
   Plus,
   TrendingUp,
   Brain,
+  Award,
+  Sparkles,
 } from "lucide-react";
 import {
   Area,
@@ -38,7 +40,7 @@ function HeatmapGrid({ data }: { data: Analytics["heatmap"] }) {
     <div className="space-y-4">
       {Object.entries(data).map(([subject, topics]) => (
         <div key={subject}>
-          <div className="label mb-2 text-black/50 dark:text-white/45">{subject}</div>
+          <div className="label mb-2 text-ink/60 dark:text-white/45">{subject}</div>
           <div className="flex flex-wrap gap-1.5">
             {Object.entries(topics).map(([topic, acc]) => {
               const norm = normalizeMastery(acc);
@@ -46,12 +48,12 @@ function HeatmapGrid({ data }: { data: Analytics["heatmap"] }) {
               return (
                 <div key={topic} className="group relative">
                   <span
-                    className="inline-flex h-8 min-w-[36px] px-1 items-center justify-center rounded-lg text-[10px] font-bold text-white transition-transform group-hover:scale-110 shadow-sm truncate"
+                    className="inline-flex h-8 min-w-[36px] px-2 items-center justify-center rounded-md text-[10px] font-bold text-white transition-transform group-hover:scale-105 shadow-sm truncate border border-black/5 dark:border-white/5"
                     style={{ background: getMasteryColor(norm) }}
                   >
                     {pctStr}%
                   </span>
-                  <span className="pointer-events-none absolute -top-9 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-md bg-ink px-2.5 py-1 text-[10px] font-semibold text-white opacity-0 shadow-2 transition-opacity group-hover:opacity-100 dark:bg-neutral-800">
+                  <span className="pointer-events-none absolute -top-9 left-1/2 z-10 -translate-x-1/2 Daniel whitespace-nowrap rounded-md bg-ink px-2.5 py-1 text-[10px] font-semibold text-white opacity-0 shadow-2 transition-opacity group-hover:opacity-100 dark:bg-neutral-800">
                     {topic}: {pctStr}%
                   </span>
                 </div>
@@ -67,9 +69,13 @@ function HeatmapGrid({ data }: { data: Analytics["heatmap"] }) {
 export default function DashboardPage() {
   const { user } = useAuth();
   const [data, setData] = useState<Analytics | null>(null);
+  const [isExampleData, setIsExampleData] = useState(false);
   const stream = user?.stream ?? "neet";
 
   useEffect(() => {
+    // Check if user has completed a test yet
+    const completed = typeof window !== "undefined" && window.localStorage.getItem("tma_test_completed") === "1";
+    setIsExampleData(!completed);
     getAnalytics(user?.id ?? "", stream).then(setData);
   }, [user, stream]);
 
@@ -95,11 +101,30 @@ export default function DashboardPage() {
             }
           />
 
+          {isExampleData && (
+            <motion.div
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex items-center gap-3 rounded-lg border border-primary/20 bg-primary/5 px-4 py-3 text-sm dark:border-primary/30 dark:bg-primary/10"
+            >
+              <Sparkles size={16} className="shrink-0 text-primary" />
+              <div className="flex-1">
+                <span className="font-semibold text-primary">You&apos;re seeing example data.</span>
+                <span className="ml-1.5 text-ink/60 dark:text-white/55">
+                  Complete your first mock test and your real progress will appear here automatically.
+                </span>
+              </div>
+              <Link href="/mock-test" className="btn-primary btn-sm shrink-0">
+                Start Test
+              </Link>
+            </motion.div>
+          )}
+
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
             <StatCard label="Tests attempted" value={data?.attempts ?? 0} icon={ClipboardList} accent={CHART_COLORS.primary} sub="lifetime" />
             <StatCard label="Average score" value={data?.avg_score ?? 0} decimals={1} suffix="%" icon={Percent} accent={CHART_COLORS.secondary} sub="all attempts" />
             <StatCard label="Streak" value={data?.streak ?? 0} suffix=" days" icon={Flame} accent={CHART_COLORS.warning} sub="daily practice" />
-            <StatCard label="Level" value={data?.level ?? 1} icon={Zap} accent={CHART_COLORS.tertiary} sub={`${data?.xp ?? 0} XP · ${nextLevelXp} to next`} />
+            <StatCard label="Level" value={data?.level ?? 1} icon={Award} accent={CHART_COLORS.tertiary} sub={`${data?.xp ?? 0} XP · ${nextLevelXp} to next`} />
           </div>
 
           <div>
@@ -130,7 +155,7 @@ export default function DashboardPage() {
                       labelFormatter={(l) => formatDate(String(l))}
                       contentStyle={{
                         borderRadius: 8,
-                        border: "1px solid rgba(0,0,0,0.05)",
+                        border: "1px solid rgba(100,80,50,0.12)",
                         background: "var(--color-surface)",
                         fontSize: 12,
                       }}
@@ -157,15 +182,15 @@ export default function DashboardPage() {
                     initial={{ opacity: 0, x: -6 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.04 * i }}
-                    className="flex items-center gap-3 rounded-lg border border-black/5 bg-white/50 p-3.5 dark:border-white/5 dark:bg-white/[0.02] shadow-sm hover:border-black/10 dark:hover:border-white/10 transition-colors"
+                    className="flex items-center gap-3 rounded-lg border border-[rgba(100,80,50,0.10)] bg-ivory/50 p-3.5 dark:border-white/5 dark:bg-white/[0.02] shadow-sm hover:border-[rgba(100,80,50,0.20)] dark:hover:border-white/10 transition-colors"
                   >
                     <span
                       className={cn(
                         "inline-flex h-10 w-12 shrink-0 items-center justify-center rounded-md text-xs font-bold shadow-sm",
-                        a.accuracy >= 0.8
-                          ? "bg-success/10 text-success"
-                          : a.accuracy >= 0.6
-                            ? "bg-crimson/10 text-crimson"
+                        normalizeMastery(a.accuracy) >= 0.8
+                          ? "bg-forest/10 text-forest"
+                          : normalizeMastery(a.accuracy) >= 0.6
+                            ? "bg-primary/10 text-primary"
                             : "bg-warning/10 text-warning-dark",
                       )}
                     >
@@ -173,11 +198,11 @@ export default function DashboardPage() {
                     </span>
                     <div className="min-w-0 flex-1">
                       <div className="truncate text-sm font-semibold">{a.title}</div>
-                      <div className="text-[11px] text-black/45 dark:text-white/45">
-                        {formatDate(a.date)} · {Math.round(a.accuracy * 100)}% accuracy
+                      <div className="text-[11px] text-ink/45 dark:text-white/45">
+                        {formatDate(a.date)} · {formatMasteryPercent(a.accuracy)}% accuracy
                       </div>
                     </div>
-                    <ArrowRight size={14} className="shrink-0 text-black/20 dark:text-white/20" />
+                    <ArrowRight size={14} className="shrink-0 text-ink/20 dark:text-white/20" />
                   </motion.div>
                 ))}
                 {(data?.recent_attempts ?? []).length === 0 && (
@@ -195,19 +220,19 @@ export default function DashboardPage() {
                 <div className="h-44">
                   <ResponsiveContainer width="100%" height="100%">
                     <AreaChart data={data?.trend.slice(-7).map((p) => ({ ...p, xp: (data?.xp ?? 0) / 7 })) ?? []}>
-                      <Area type="monotone" dataKey="xp" stroke={CHART_COLORS.tertiary} fill="rgba(139,92,246,0.06)" strokeWidth={1.5} dot={false} />
+                      <Area type="monotone" dataKey="xp" stroke={CHART_COLORS.tertiary} fill="rgba(200,149,42,0.06)" strokeWidth={1.5} dot={false} />
                     </AreaChart>
                   </ResponsiveContainer>
                 </div>
                 <div>
-                  <div className="mb-1.5 flex justify-between text-[11px] font-semibold text-black/50 dark:text-white/40">
+                  <div className="mb-1.5 flex justify-between text-[11px] font-semibold text-ink/50 dark:text-white/40">
                     <span>{data?.xp ?? 0} XP earned</span>
                     <span>{nextLevelXp} XP</span>
                   </div>
                   <Progress value={data?.xp ?? 0} max={nextLevelXp} size="sm" />
-                  <p className="mt-3 text-xs leading-relaxed text-black/50 dark:text-white/50">
+                  <p className="mt-3 text-xs leading-relaxed text-ink/50 dark:text-white/50">
                     {data?.streak ?? 0}-day streak! Complete 2 more days to unlock the{" "}
-                    <span className="font-bold text-crimson">Unstoppable</span> badge.
+                    <span className="font-bold text-primary dark:text-primary-light">Unstoppable</span> badge.
                   </p>
                 </div>
               </div>

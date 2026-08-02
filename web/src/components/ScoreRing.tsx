@@ -22,12 +22,12 @@ export default function ScoreRing({
   // Semantic color mapping aligned to tokens
   const color =
     pct >= 0.8
-      ? "#16A34A" // Success green
+      ? "#2D6A4F" // Success green / Forest Green
       : pct >= 0.6
-        ? "#DC143C" // Crimson
+        ? "#3D3580" // Primary indigo
         : pct >= 0.4
-          ? "#F59E0B" // Warning amber
-          : "#EF4444"; // Danger red
+          ? "#C8952A" // Warning gold
+          : "#B94040"; // Danger red
 
   return (
     <div className="relative inline-flex items-center justify-center" style={{ width: size, height: size }}>
@@ -60,7 +60,7 @@ export default function ScoreRing({
         <div className="heading text-4xl sm:text-5xl tracking-tight">
           <CountUp value={score} suffix={`/${total}`} />
         </div>
-        <div className="label mt-1.5 text-black/45 dark:text-white/40">{label}</div>
+        <div className="label mt-1.5 text-ink/45 dark:text-white/40">{label}</div>
         <div className="mt-0.5 text-xs font-bold" style={{ color }}>
           {Math.round(pct * 100)}% Accuracy
         </div>

@@ -59,13 +59,13 @@ export default function Timer({
         "inline-flex items-center gap-2 rounded-pill border font-bold tabular-nums transition-colors",
         compact ? "px-3 py-1.5 text-sm" : "px-4 py-2 text-base",
         danger
-          ? "animate-pulse border-crimson bg-crimson-soft text-crimson dark:bg-crimson/20 dark:text-crimson-light"
+          ? "animate-pulse border-danger bg-danger-soft text-danger dark:bg-danger/20 dark:text-danger-dark"
           : warn
             ? "border-amber-400 bg-amber-50 text-amber-600 dark:bg-amber-400/10 dark:text-amber-400"
-            : "border-black/10 bg-white text-ink dark:border-white/15 dark:bg-white/5 dark:text-white",
+            : "border-[rgba(100,80,50,0.18)] bg-ivory text-ink dark:border-white/15 dark:bg-white/5 dark:text-white",
       )}
     >
-      <Clock size={compact ? 15 : 17} className={danger ? "animate-pulse" : ""} />
+      <Clock size={compact ? 15 : 17} className={danger ? "animate-pulse text-danger" : ""} />
       {formatTime(left)}
     </div>
   );

@@ -37,6 +37,11 @@ async function tryFetch<T>(path: string, init?: RequestInit): Promise<T | null> 
   }
 }
 
+function hasCompletedTest(): boolean {
+  if (typeof window === "undefined") return false;
+  return window.localStorage.getItem("tma_test_completed") === "1";
+}
+
 export async function getHealth(): Promise<{ status: string }> {
   const data = await tryFetch<{ status: string }>("/health");
   return data ?? { status: "mock" };
@@ -77,8 +82,30 @@ export async function generateTest(payload: GenerateTestPayload): Promise<Test> 
 }
 
 export async function getAnalytics(userId: string, streamId = "neet"): Promise<Analytics> {
+  // Dynamically import to avoid circular deps at module load time
+  const { buildLocalAnalytics } = await import("./result-store");
+
+  const userCompletedTest = hasCompletedTest();
+
+  // Try real backend first
   const data = await tryFetch<Analytics>(`/api/analytics/${encodeURIComponent(userId)}`);
-  return data ?? mockAnalytics(streamId);
+
+  if (data) {
+    // Backend responded — use real data if there are real attempts,
+    // otherwise fall back to example data for brand-new accounts.
+    if (data.attempts > 0 || userCompletedTest) {
+      return data;
+    }
+    // New account with 0 backend attempts: show example data
+    return mockAnalytics(streamId);
+  }
+
+  // Backend offline: use local history if a test was completed, else show example data
+  if (userCompletedTest) {
+    return buildLocalAnalytics(streamId);
+  }
+
+  return mockAnalytics(streamId);
 }
 
 export async function getPlan(userId: string, testId?: string): Promise<PlanRecommendation[]> {

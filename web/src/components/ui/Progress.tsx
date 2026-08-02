@@ -2,13 +2,6 @@
  * ui/Progress.tsx
  *
  * Accessible progressbar primitive.
- * Consolidates the duplicated inline progress bar patterns found in:
- *   - PremiumBanner.tsx  (quota bar)
- *   - dashboard/page.tsx (XP progress)
- *
- * Usage:
- *   <Progress value={65} />
- *   <Progress value={used} max={limit} variant="warning" size="sm" />
  */
 
 import { cn } from "@/lib/utils";
@@ -35,9 +28,9 @@ const TRACK_SIZE: Record<ProgressSize, string> = {
 };
 
 const BAR_COLOR: Record<ProgressVariant, string> = {
-  default: "bg-crimson",
-  success: "bg-success",
-  warning: "bg-warning",
+  default: "bg-primary",
+  success: "bg-forest",
+  warning: "bg-accent",
   danger:  "bg-danger",
 };
 
@@ -59,7 +52,7 @@ export default function Progress({
       aria-valuemax={max}
       aria-label={label}
       className={cn(
-        "w-full overflow-hidden rounded-pill bg-black/[0.06] dark:bg-white/10",
+        "w-full overflow-hidden rounded-pill bg-[rgba(100,80,50,0.10)] dark:bg-white/10",
         TRACK_SIZE[size],
         className,
       )}

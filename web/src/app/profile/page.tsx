@@ -58,18 +58,18 @@ export default function ProfilePage() {
           <div className="card p-6 sm:p-8">
             <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-start text-center sm:text-left">
               <div className="relative shrink-0">
-                <span className="inline-flex h-16 w-16 items-center justify-center rounded-lg bg-crimson text-2xl font-extrabold text-white">
+                <span className="inline-flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-2xl font-extrabold text-white">
                   {(user?.name ?? "S").slice(0, 1).toUpperCase()}
                 </span>
                 {user?.premium && (
-                  <span className="absolute -bottom-1.5 -right-1.5 inline-flex h-6.5 w-6.5 items-center justify-center rounded-md border-2 border-white bg-amber-400 text-ink dark:border-ink">
-                    <Crown size={11} className="text-black" />
+                  <span className="absolute -bottom-1.5 -right-1.5 inline-flex h-6.5 w-6.5 items-center justify-center rounded-md border-2 border-ivory bg-accent text-ink dark:border-ink">
+                    <Crown size={11} className="text-white" />
                   </span>
                 )}
               </div>
               <div className="space-y-1.5">
                 <h2 className="heading text-lg font-bold text-ink dark:text-white">{user?.name}</h2>
-                <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-black/50 sm:justify-start dark:text-white/45 font-medium">
+                <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-ink/50 sm:justify-start dark:text-white/45 font-medium">
                   <span className="inline-flex items-center gap-1">
                     <Mail size={13} /> {user?.email}
                   </span>
@@ -78,7 +78,7 @@ export default function ProfilePage() {
                   </span>
                 </div>
                 <div className="flex flex-wrap justify-center gap-1.5 sm:justify-start pt-1">
-                  <span className="chip-crimson">
+                  <span className="chip-primary">
                     {user?.premium ? "Premium Access" : "Free Plan"}
                   </span>
                   <span className="chip">{user?.role === "admin" ? "Administrator" : "Student"}</span>
@@ -90,7 +90,7 @@ export default function ProfilePage() {
           {/* Display name settings card */}
           <div className="card p-6 space-y-4">
             <div>
-              <label htmlFor="profile-name-input" className="label text-black/50 dark:text-white/40 mb-1.5 block">Display Name</label>
+              <label htmlFor="profile-name-input" className="label text-ink/50 dark:text-white/40 mb-1.5 block">Display Name</label>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <input
                   id="profile-name-input"
@@ -99,7 +99,7 @@ export default function ProfilePage() {
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Enter name"
                 />
-                <button onClick={save} className="btn-primary shrink-0 px-5">
+                <button onClick={save} className="btn-primary shrink-0 px-5 cursor-pointer">
                   <Save size={14} /> {saved ? "Saved!" : "Save Changes"}
                 </button>
               </div>
@@ -109,8 +109,8 @@ export default function ProfilePage() {
           {/* Interests card */}
           <div className="card p-6 space-y-3">
             <div>
-              <h3 className="label text-black/50 dark:text-white/40">Subject Interests</h3>
-              <p className="text-xs text-black/40 dark:text-white/40 mb-3 leading-relaxed">
+              <h3 className="label text-ink/50 dark:text-white/40">Subject Interests</h3>
+              <p className="text-xs text-ink/40 dark:text-white/40 mb-3 leading-relaxed">
                 Configure your core focus areas to align recommended diagnostic review sessions.
               </p>
             </div>
@@ -120,10 +120,10 @@ export default function ProfilePage() {
                   key={s}
                   onClick={() => toggleInterest(s)}
                   className={cn(
-                    "chip !px-3 !py-1.5 text-xs font-semibold focus-visible:ring-2",
+                    "chip !px-3 !py-1.5 text-xs font-semibold focus-visible:ring-2 cursor-pointer transition-all",
                     interests.includes(s)
-                      ? "border-crimson bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light font-semibold"
-                      : "border-black/[0.08] bg-black/[0.02] dark:border-white/10 hover:border-crimson/50",
+                      ? "border-primary bg-primary-soft text-primary dark:bg-primary/15 dark:text-primary-light font-semibold"
+                      : "border-[rgba(100,80,50,0.12)] bg-[rgba(100,80,50,0.03)] dark:border-white/10 hover:border-primary/50",
                   )}
                 >
                   {s}
@@ -133,7 +133,7 @@ export default function ProfilePage() {
           </div>
 
           {/* Settings list card */}
-          <div className="card divide-y divide-black/[0.06] dark:divide-white/[0.06] overflow-hidden">
+          <div className="card divide-y divide-[rgba(100,80,50,0.12)] dark:divide-white/[0.06] overflow-hidden">
             {[
               {
                 icon: Volume2,
@@ -152,20 +152,20 @@ export default function ProfilePage() {
             ].map((s) => (
               <div key={s.title} className="flex items-center justify-between gap-4 p-5 hover:bg-black/[0.005] dark:hover:bg-white/[0.005] transition-colors">
                 <div className="flex items-start gap-4">
-                  <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-black/[0.06] bg-black/[0.02] text-crimson dark:border-white/[0.06] dark:bg-white/[0.02]">
+                  <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[rgba(100,80,50,0.12)] bg-[rgba(100,80,50,0.03)] text-primary dark:border-white/[0.06] dark:bg-white/[0.02]">
                     <s.icon size={15} />
                   </span>
                   <div className="space-y-0.5">
                     <div className="text-sm font-semibold text-ink dark:text-white">{s.title}</div>
-                    <div className="text-xs text-black/45 dark:text-white/45 leading-relaxed">{s.sub}</div>
+                    <div className="text-xs text-ink/45 dark:text-white/45 leading-relaxed">{s.sub}</div>
                   </div>
                 </div>
                 {/* Modern Switch */}
                 <button
                   onClick={s.onChange}
                   className={cn(
-                    "relative h-5 w-9 rounded-full transition-colors focus-visible:ring-2 focus-visible:ring-crimson",
-                    s.value ? "bg-crimson" : "bg-black/10 dark:bg-white/15",
+                    "relative h-5 w-9 rounded-full transition-colors focus-visible:ring-2 focus-visible:ring-primary cursor-pointer",
+                    s.value ? "bg-primary" : "bg-black/10 dark:bg-white/15",
                   )}
                   aria-label={`Toggle ${s.title}`}
                   role="switch"
@@ -184,19 +184,19 @@ export default function ProfilePage() {
 
           {/* Premium promo banner */}
           <div className="card p-5 flex items-center gap-4">
-            <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-black/[0.06] bg-black/[0.02] text-amber-500 dark:border-white/[0.06] dark:bg-white/[0.02]">
+            <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[rgba(100,80,50,0.12)] bg-[rgba(100,80,50,0.03)] text-accent dark:border-white/[0.06] dark:bg-white/[0.02]">
               <Sparkles size={15} />
             </span>
             <div className="flex-1 min-w-0">
               <div className="text-sm font-semibold text-ink dark:text-white">
                 {user?.premium ? "Premium membership active" : "Upgrade account to premium"}
               </div>
-              <div className="text-xs text-black/45 dark:text-white/45 truncate">
+              <div className="text-xs text-ink/45 dark:text-white/45 truncate">
                 {user?.premium ? "You have access to unlimited papers." : "Unlock custom study guides and analytics."}
               </div>
             </div>
             {!user?.premium && (
-              <button onClick={() => router.push("/premium")} className="btn-primary btn-sm shrink-0">
+              <button onClick={() => router.push("/premium")} className="btn-primary btn-sm shrink-0 cursor-pointer">
                 Upgrade
               </button>
             )}
@@ -208,7 +208,7 @@ export default function ProfilePage() {
                 signOut();
                 router.replace("/");
               }}
-              className="btn-ghost !border-crimson/20 !text-crimson bg-transparent hover:!bg-crimson/5"
+              className="btn-ghost !border-danger/25 !text-danger bg-transparent hover:!bg-danger/5 cursor-pointer"
             >
               <LogOut size={14} /> Sign out of account
             </button>

@@ -29,15 +29,15 @@ export default function Badge({
       <span
         className={`inline-flex h-10 w-10 items-center justify-center rounded-lg border ${
           earned
-            ? "border-crimson/20 bg-crimson-soft text-crimson"
-            : "border-black/[0.06] bg-black/[0.02] text-black/35 dark:border-white/[0.06] dark:bg-white/[0.02] dark:text-white/35"
+            ? "border-primary/20 bg-primary-soft text-primary dark:border-primary-light/20 dark:bg-primary-light/10 dark:text-primary-light"
+            : "border-black/[0.06] bg-black/[0.02] text-ink/35 dark:border-white/[0.06] dark:bg-white/[0.02] dark:text-white/35"
         }`}
       >
         <Icon size={18} />
       </span>
       <div>
         <div className="heading text-[13px] font-bold text-ink dark:text-white">{name}</div>
-        <div className="mt-1 text-[10.5px] leading-snug text-black/45 dark:text-white/45">{description}</div>
+        <div className="mt-1 text-[10.5px] leading-snug text-ink/45 dark:text-white/45">{description}</div>
       </div>
       {!earned && <span className="label mt-auto text-[9px] tracking-[0.1em]">Locked</span>}
     </motion.div>

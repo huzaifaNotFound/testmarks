@@ -11,6 +11,7 @@ import {
 } from "firebase/auth";
 import { doc, getDoc, setDoc, updateDoc, type DocumentSnapshot } from "firebase/firestore";
 import { auth, db } from "./firebase";
+import { clearLocalHistory } from "./result-store";
 import type { Role, SignInInput, User } from "./types";
 
 const ONBOARDED_KEY = "tma_onboarded";
@@ -120,12 +121,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     } catch {
       // Firestore rules may block writes; the app still works with defaults.
     }
+    // Fresh account — wipe any leftover local attempt history from a prior session
+    clearLocalHistory();
     userRef.current = profile;
     setUser(profile);
     return profile;
   }, []);
 
   const signOut = useCallback(async () => {
+    // Clear local test history so the next login starts fresh
+    clearLocalHistory();
     userRef.current = null;
     setUser(null);
     await firebaseSignOut(auth);

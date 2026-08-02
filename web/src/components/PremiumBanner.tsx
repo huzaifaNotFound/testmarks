@@ -31,7 +31,7 @@ export default function PremiumBanner({
               <Sparkles size={11} /> Premium member
             </span>
             <h3 className="heading mt-3 text-lg sm:text-xl font-bold">Unlimited tests unlocked</h3>
-            <p className="mt-1 max-w-md text-xs sm:text-sm text-black/50 dark:text-white/50">
+            <p className="mt-1 max-w-md text-xs sm:text-sm text-ink/50 dark:text-white/50">
               Full analytics, personal AI coach and unlimited mock tests are active on your account.
             </p>
           </div>
@@ -48,17 +48,17 @@ export default function PremiumBanner({
       initial={{ opacity: 0, y: 6 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="card border-crimson/25 bg-crimson-soft/30 p-6 sm:p-8 dark:bg-crimson/5"
+      className="card border-primary/20 bg-primary-soft/30 p-6 sm:p-8 dark:bg-primary/10"
     >
       <div className="relative flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex-1 space-y-3">
-          <span className="chip-crimson">
+          <span className="chip-primary">
             <Sparkles size={11} /> Free tier
           </span>
           <h3 className="heading text-lg sm:text-xl font-bold">
             {remaining > 0 ? `${remaining} free test${remaining > 1 ? "s" : ""} left today` : "Daily limit reached"}
           </h3>
-          <p className="max-w-md text-xs sm:text-sm text-black/50 dark:text-white/50">
+          <p className="max-w-md text-xs sm:text-sm text-ink/50 dark:text-white/50">
             {remaining > 0
               ? "Upgrade to Premium for unlimited AI mock tests, full analytics and a personal AI coach."
               : "Your free quota is done — go Premium for unlimited tests and never stop practicing."}

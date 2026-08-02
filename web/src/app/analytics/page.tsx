@@ -9,6 +9,7 @@ import {
   Gauge,
   Trophy,
   BrainCircuit,
+  Sparkles,
 } from "lucide-react";
 import {
   Line as ReLine,
@@ -23,6 +24,7 @@ import {
   YAxis,
   CartesianGrid,
 } from "recharts";
+import Link from "next/link";
 import AppShell from "@/components/AppShell";
 import ChartCard from "@/components/ChartCard";
 import Badge from "@/components/Badge";
@@ -83,13 +85,13 @@ function PredictorGauge({ expected, max }: { expected: number; max: number }) {
           </motion.g>
         </svg>
         <div className="absolute inset-x-0 bottom-0 text-center">
-          <div className="heading text-4xl text-crimson">
+          <div className="heading text-4xl text-primary dark:text-primary-light">
             <CountUp value={expected} suffix={`/${max}`} />
           </div>
-          <div className="label mt-1 text-black/50 dark:text-white/45">Projected score</div>
+          <div className="label mt-1 text-ink/50 dark:text-white/45">Projected score</div>
         </div>
       </div>
-      <div className="mt-3 flex w-full max-w-xs justify-between text-[10px] font-semibold text-black/35 dark:text-white/35">
+      <div className="mt-3 flex w-full max-w-xs justify-between text-[10px] font-semibold text-ink/35 dark:text-white/35">
         <span>0</span>
         <span>Current trend</span>
         <span>{max}</span>
@@ -101,9 +103,12 @@ function PredictorGauge({ expected, max }: { expected: number; max: number }) {
 export default function AnalyticsPage() {
   const { user } = useAuth();
   const [data, setData] = useState<Analytics | null>(null);
+  const [isExampleData, setIsExampleData] = useState(false);
   const stream = user?.stream ?? "neet";
 
   useEffect(() => {
+    const completed = typeof window !== "undefined" && window.localStorage.getItem("tma_test_completed") === "1";
+    setIsExampleData(!completed);
     getAnalytics(user?.id ?? "", stream).then(setData);
   }, [user, stream]);
 
@@ -122,11 +127,30 @@ export default function AnalyticsPage() {
             title="Analytics Hub"
             subtitle="Deep skill mapping, predictor models and momentum."
             actions={
-              <span className="chip border-crimson/25 bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light">
+              <span className="chip-primary">
                 <BrainCircuit size={13} /> {data?.attempts ?? 0} attempts analysed
               </span>
             }
           />
+
+          {isExampleData && (
+            <motion.div
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex items-center gap-3 rounded-lg border border-primary/20 bg-primary/5 px-4 py-3 text-sm dark:border-primary/30 dark:bg-primary/10"
+            >
+              <Sparkles size={16} className="shrink-0 text-primary" />
+              <div className="flex-1">
+                <span className="font-semibold text-primary">Example analytics.</span>
+                <span className="ml-1.5 text-ink/60 dark:text-white/55">
+                  Take your first test and all charts will update with your real data.
+                </span>
+              </div>
+              <Link href="/mock-test" className="btn-primary btn-sm shrink-0">
+                Start Test
+              </Link>
+            </motion.div>
+          )}
 
           <div className="grid gap-5 lg:grid-cols-3">
             <ChartCard title="Brain map" subtitle="12-subject mastery radar" icon={Radar} className="lg:col-span-2" accent={CHART_COLORS.primary}>
@@ -143,7 +167,7 @@ export default function AnalyticsPage() {
                       fillOpacity={0.15}
                       dot={{ r: 3, fill: CHART_COLORS.primary, strokeWidth: 0 }}
                     />
-                    <RechartsTooltip formatter={(v) => [`${formatMasteryPercent(Number(v))}%`, "Mastery"]} contentStyle={{ borderRadius: 8, fontSize: 12, background: "var(--color-surface)", border: "1px solid rgba(0,0,0,0.05)" }} />
+                    <RechartsTooltip formatter={(v) => [`${formatMasteryPercent(Number(v))}%`, "Mastery"]} contentStyle={{ borderRadius: 8, fontSize: 12, background: "var(--color-surface)", border: "1px solid rgba(100,80,50,0.12)" }} />
                   </RadarChart>
                 </ResponsiveContainer>
               </div>
@@ -162,7 +186,7 @@ export default function AnalyticsPage() {
                     <CartesianGrid strokeDasharray="3 3" stroke="currentColor" opacity={0.06} vertical={false} />
                     <XAxis dataKey="date" tickFormatter={formatDate} tick={{ fontSize: 11, fill: "currentColor", opacity: 0.4 }} axisLine={false} tickLine={false} />
                     <YAxis domain={[0, 100]} tick={{ fontSize: 11, fill: "currentColor", opacity: 0.4 }} axisLine={false} tickLine={false} />
-                    <RechartsTooltip formatter={(v) => [`${String(v)}%`, "Score"]} labelFormatter={(l) => formatDate(String(l))} contentStyle={{ borderRadius: 8, fontSize: 12, background: "var(--color-surface)", border: "1px solid rgba(0,0,0,0.05)" }} />
+                    <RechartsTooltip formatter={(v) => [`${String(v)}%`, "Score"]} labelFormatter={(l) => formatDate(String(l))} contentStyle={{ borderRadius: 8, fontSize: 12, background: "var(--color-surface)", border: "1px solid rgba(100,80,50,0.12)" }} />
                     <ReLine name="score" dataKey="score" type="monotone" stroke={CHART_COLORS.primary} strokeWidth={2} dot={{ r: 3, fill: CHART_COLORS.primary }} activeDot={{ r: 5 }} />
                   </ReLineChart>
                 </ResponsiveContainer>
@@ -177,7 +201,7 @@ export default function AnalyticsPage() {
                   return (
                     <div key={topic} className="group relative">
                       <span
-                        className="flex h-9 w-full min-w-0 px-0.5 items-center justify-center rounded-md text-[9px] font-bold text-white transition-transform group-hover:scale-110 shadow-sm truncate"
+                        className="flex h-9 w-full min-w-0 px-0.5 items-center justify-center rounded-md text-[9px] font-bold text-white transition-transform group-hover:scale-110 shadow-sm truncate border border-black/5 dark:border-white/5"
                         style={{
                           background: getMasteryColor(norm),
                         }}

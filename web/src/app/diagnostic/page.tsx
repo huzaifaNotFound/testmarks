@@ -51,13 +51,13 @@ function DiagnosticInner() {
 
   if (!test) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-surface dark:bg-[#0D0D10]">
-        <Loader2 size={24} className="animate-spin text-crimson" />
+      <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-surface dark:bg-[#101114]">
+        <Loader2 size={24} className="animate-spin text-primary dark:text-primary-light" />
         <div className="text-center space-y-1">
           <p className="text-sm font-semibold text-ink dark:text-white">
             Composing diagnostic paper
           </p>
-          <p className="text-[10px] text-black/40 dark:text-white/40 font-semibold tracking-wider uppercase">
+          <p className="text-[10px] text-ink/40 dark:text-white/40 font-semibold tracking-wider uppercase">
             {stream} stream
           </p>
         </div>

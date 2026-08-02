@@ -1,36 +1,73 @@
-import Link from "next/link";
-import { cn } from "@/lib/utils";
+export default function Logo({
+  size = "default",
+  dark = false,
+}: {
+  size?: "sm" | "default" | "lg";
+  dark?: boolean;
+}) {
+  const scales = { sm: 0.75, default: 1, lg: 1.4 };
+  const s = scales[size];
 
-/**
- * Meridian Mark — geometric letterform using stacked horizontal bars
- * evoking layered knowledge / data strata. Clean, minimal, memorable.
- */
-export default function Logo({ className, dark = false }: { className?: string; dark?: boolean }) {
   return (
-    <Link href="/" className={cn("group inline-flex items-center gap-2.5", className)}>
+    <div className="flex items-center gap-2.5">
+      {/* Mark: compass rose / open book geometry */}
       <svg
-        width="28"
-        height="28"
-        viewBox="0 0 28 28"
+        width={Math.round(32 * s)}
+        height={Math.round(32 * s)}
+        viewBox="0 0 32 32"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="shrink-0"
         aria-hidden="true"
       >
-        {/* Stacked bar mark — four precision bars of decreasing width */}
-        <rect x="4"  y="4"  width="20" height="5" rx="1.5" fill="var(--color-crimson)" />
-        <rect x="4"  y="11.5" width="15" height="5" rx="1.5" fill="var(--color-crimson)" opacity="0.70" />
-        <rect x="4"  y="19" width="10" height="5" rx="1.5" fill="var(--color-crimson)" opacity="0.40" />
+        {/* Outer circle — parchment ring */}
+        <circle cx="16" cy="16" r="15" fill="#3D3580" />
+
+        {/* Inner ornate cross — compass / pages */}
+        <path
+          d="M16 5 L18 13 L26 11 L19 16 L26 21 L18 19 L16 27 L14 19 L6 21 L13 16 L6 11 L14 13 Z"
+          fill="none"
+          stroke="#C8952A"
+          strokeWidth="1.2"
+          strokeLinejoin="round"
+        />
+
+        {/* Center dot — warm gold */}
+        <circle cx="16" cy="16" r="2.5" fill="#C8952A" />
+
+        {/* Cardinal dots — ivory */}
+        <circle cx="16" cy="7"  r="1.2" fill="#FBF3E0" />
+        <circle cx="16" cy="25" r="1.2" fill="#FBF3E0" />
+        <circle cx="7"  cy="16" r="1.2" fill="#FBF3E0" />
+        <circle cx="25" cy="16" r="1.2" fill="#FBF3E0" />
       </svg>
-      <span
-        className={cn(
-          "font-heading text-[15px] font-bold tracking-[-0.01em]",
-          dark ? "text-white" : "text-ink dark:text-white"
-        )}
-      >
-        Test Marks<span className="text-crimson">.</span>
-        <span className="text-crimson font-extrabold">AI</span>
-      </span>
-    </Link>
+
+      {/* Wordmark */}
+      <div className="flex flex-col leading-none">
+        <span
+          style={{
+            fontFamily: '"Crimson Pro", Georgia, serif',
+            fontWeight: 700,
+            fontSize: Math.round(17 * s),
+            color: dark ? "#EDE8DF" : "#1E1B16",
+            letterSpacing: "-0.02em",
+          }}
+          className={dark ? "" : "dark:text-[#EDE8DF]"}
+        >
+          Test Marks
+        </span>
+        <span
+          style={{
+            fontFamily: '"Inter", system-ui, sans-serif',
+            fontWeight: 600,
+            fontSize: Math.round(9 * s),
+            color: dark ? "#7B74CC" : "#3D3580",
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+          }}
+          className={dark ? "" : "dark:text-[#7B74CC]"}
+        >
+          AI
+        </span>
+      </div>
+    </div>
   );
 }
