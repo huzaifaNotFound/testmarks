@@ -1,0 +1,164 @@
+npm notice run web@0.1.0 dev
+npm notice run next dev
+▲ Next.js 16.2.12 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.164.0:3000
+✓ Ready in 2.9s
+
+○ Compiling / ...
+ GET / 200 in 28.4s (next.js: 22.3s, application-code: 6.1s)
+ GET / 200 in 574ms (next.js: 49ms, application-code: 525ms)
+○ Compiling /signin ...
+ GET /signin 200 in 6.0s (next.js: 5.5s, application-code: 515ms)
+○ Compiling /onboarding ...
+ GET /onboarding 200 in 7.8s (next.js: 7.1s, application-code: 765ms)
+○ Compiling /diagnostic ...
+ GET /diagnostic 200 in 12.5s (next.js: 11.6s, application-code: 898ms)
+○ Compiling /dashboard ...
+✓ Finished writing to filesystem cache in 12.9s
+ GET /dashboard 200 in 41s (next.js: 39.9s, application-code: 1292ms)
+○ Compiling /report ...
+ GET /report 200 in 5.6s (next.js: 5.2s, application-code: 454ms)
+○ Compiling /analytics ...
+ GET /analytics 200 in 11.0s (next.js: 10.1s, application-code: 905ms)
+○ Compiling /premium ...
+ GET /premium 200 in 4.7s (next.js: 4.3s, application-code: 409ms)
+○ Compiling /admin ...
+ GET /admin 200 in 8.5s (next.js: 7.6s, application-code: 940ms)
+○ Compiling /profile ...
+ GET /profile 200 in 4.7s (next.js: 4.3s, application-code: 348ms)
+○ Compiling /mock-test ...
+ GET /mock-test 200 in 4.7s (next.js: 4.2s, application-code: 583ms)
+✓ Finished writing to filesystem cache in 19.2s
+✓ Finished filesystem cache database compaction in 11.4s
+ GET / 200 in 696ms (next.js: 91ms, application-code: 605ms)
+ GET / 200 in 770ms (next.js: 44ms, application-code: 726ms)
+ GET /signin 200 in 860ms (next.js: 238ms, application-code: 622ms)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+ GET /admin 200 in 587ms (next.js: 73ms, application-code: 514ms)
+ GET /admin 200 in 561ms (next.js: 30ms, application-code: 530ms)
+ GET /mock-test 200 in 205ms (next.js: 31ms, application-code: 175ms)
+✓ Finished filesystem cache database compaction in 11.6s
+[browser] Cannot update a component (`QuestionPlayer`) while rendering a different component (`Timer`). To locate the bad setState() call inside `Timer`, follow the stack trace as described in https://react.dev/link/setstate-in-render 
+    at Timer.useEffect.interval (src/components/Timer.tsx:34:9)
+    at Timer (src/components/Timer.tsx:18:35)
+  32 |         }
+  33 |         const next = s - 1;
+> 34 |         onTick?.(next);
+     |         ^
+  35 |         return next;
+  36 |       });
+  37 |     }, 1000); (src/components/Timer.tsx:34:9)
+ GET /report 200 in 405ms (next.js: 119ms, application-code: 286ms)
+ GET /dashboard 200 in 369ms (next.js: 78ms, application-code: 292ms)
+ GET /mock-test 200 in 311ms (next.js: 49ms, application-code: 262ms)
+ GET /report 200 in 653ms (next.js: 329ms, application-code: 324ms)
+ GET /dashboard 200 in 256ms (next.js: 28ms, application-code: 228ms)
+ GET / 200 in 111ms (next.js: 31ms, application-code: 80ms)
+ GET /admin 200 in 340ms (next.js: 40ms, application-code: 300ms)
+ GET / 200 in 147ms (next.js: 85ms, application-code: 62ms)
+ GET /signin 200 in 200ms (next.js: 15ms, application-code: 185ms)
+ GET /dashboard 200 in 201ms (next.js: 26ms, application-code: 175ms)
+ GET /onboarding 200 in 154ms (next.js: 27ms, application-code: 127ms)
+ GET /diagnostic?stream=jee-advanced 200 in 214ms (next.js: 30ms, application-code: 184ms)
+ GET /report 200 in 266ms (next.js: 39ms, application-code: 227ms)
+ GET /dashboard 200 in 249ms (next.js: 14ms, application-code: 235ms)
+✓ Compiled in 5.9s
+ GET /dashboard 200 in 3.5s (next.js: 1299ms, application-code: 2.2s)
+ GET /dashboard 200 in 2.6s (next.js: 2.3s, application-code: 316ms)
+ GET /dashboard 200 in 1089ms (next.js: 22ms, application-code: 1067ms)
+ GET /dashboard 200 in 858ms (next.js: 21ms, application-code: 837ms)
+ GET /dashboard 200 in 507ms (next.js: 21ms, application-code: 486ms)
+ GET /dashboard 200 in 530ms (next.js: 130ms, application-code: 400ms)
+✓ Compiled in 4.2s
+✓ Compiled in 1186ms
+✓ Compiled in 2.2s
+✓ Compiled in 1241ms
+✓ Compiled in 1221ms
+ GET /dashboard 200 in 5.0s (next.js: 3.0s, application-code: 2.1s)
+ GET /dashboard 200 in 400ms (next.js: 26ms, application-code: 374ms)
+ GET /dashboard 200 in 1969ms (next.js: 1045ms, application-code: 925ms)
+ GET /dashboard 200 in 1979ms (next.js: 1435ms, application-code: 545ms)
+ GET /dashboard 200 in 5.3s (next.js: 1902ms, application-code: 3.4s)
+ GET /dashboard 200 in 4.2s (next.js: 45ms, application-code: 4.2s)
+ GET /dashboard 200 in 4.0s (next.js: 24ms, application-code: 4.0s)
+ GET /dashboard 200 in 5.3s (next.js: 184ms, application-code: 5.1s)
+ GET /dashboard 200 in 6.2s (next.js: 1127ms, application-code: 5.1s)
+ GET /dashboard 200 in 6.1s (next.js: 2.6s, application-code: 3.6s)
+ GET /dashboard 200 in 6.1s (next.js: 2.2s, application-code: 3.9s)
+ GET /dashboard 200 in 5.7s (next.js: 386ms, application-code: 5.4s)
+ GET /dashboard 200 in 3.9s (next.js: 363ms, application-code: 3.5s)
+ GET /dashboard 200 in 2.9s (next.js: 549ms, application-code: 2.3s)
+ GET /dashboard 200 in 2.9s (next.js: 1521ms, application-code: 1342ms)
+ GET /dashboard 200 in 3.4s (next.js: 2.2s, application-code: 1174ms)
+ GET /dashboard 200 in 3.4s (next.js: 1845ms, application-code: 1579ms)
+ GET /dashboard 200 in 1439ms (next.js: 157ms, application-code: 1283ms)
+ GET /dashboard 200 in 1443ms (next.js: 747ms, application-code: 696ms)
+ GET /dashboard 200 in 5.7s (next.js: 469ms, application-code: 5.2s)
+ GET /dashboard 200 in 5.7s (next.js: 1980ms, application-code: 3.7s)
+ GET /dashboard 200 in 5.7s (next.js: 1389ms, application-code: 4.3s)
+ GET /dashboard 200 in 5.7s (next.js: 3.1s, application-code: 2.6s)
+ GET /dashboard 200 in 5.7s (next.js: 3.6s, application-code: 2.1s)
+ GET /dashboard 200 in 1319ms (next.js: 517ms, application-code: 803ms)
+ GET /dashboard 200 in 4.3s (next.js: 32ms, application-code: 4.2s)
+ GET /dashboard 200 in 4.3s (next.js: 841ms, application-code: 3.4s)
+ GET /dashboard 200 in 4.3s (next.js: 1367ms, application-code: 2.9s)
+ GET /dashboard 200 in 4.3s (next.js: 2.0s, application-code: 2.3s)
+ GET /dashboard 200 in 4.3s (next.js: 2.7s, application-code: 1563ms)
+ GET /dashboard 200 in 4.3s (next.js: 3.3s, application-code: 948ms)
+ GET /dashboard 200 in 5.5s (next.js: 1920ms, application-code: 3.6s)
+ GET /dashboard 200 in 5.5s (next.js: 65ms, application-code: 5.4s)
+ GET /dashboard 200 in 5.5s (next.js: 2.1s, application-code: 3.5s)
+ GET /dashboard 200 in 5.5s (next.js: 2.6s, application-code: 3.0s)
+ GET /dashboard 200 in 5.5s (next.js: 3.8s, application-code: 1723ms)
+ GET /dashboard 200 in 5.5s (next.js: 4.8s, application-code: 741ms)
+ GET /dashboard 200 in 1009ms (next.js: 570ms, application-code: 439ms)
+ GET / 200 in 8.0s (next.js: 2.3s, application-code: 5.7s)
+ GET /dashboard 200 in 1124ms (next.js: 75ms, application-code: 1050ms)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+ GET /mock-test 200 in 2.2s (next.js: 1418ms, application-code: 784ms)
+[browser] Cannot update a component (`QuestionPlayer`) while rendering a different component (`Timer`). To locate the bad setState() call inside `Timer`, follow the stack trace as described in https://react.dev/link/setstate-in-render 
+    at Timer.useEffect.interval (src/components/Timer.tsx:34:9)
+    at Timer (src/components/Timer.tsx:18:35)
+  32 |         }
+  33 |         const next = s - 1;
+> 34 |         onTick?.(next);
+     |         ^
+  35 |         return next;
+  36 |       });
+  37 |     }, 1000); (src/components/Timer.tsx:34:9)
+ GET /report 200 in 1407ms (next.js: 879ms, application-code: 528ms)
+✓ Finished writing to filesystem cache in 37.9s
+✓ Finished filesystem cache database compaction in 19.2s
+✓ Finished writing to filesystem cache in 20.2s
+✓ Finished filesystem cache database compaction in 19.1s
+✓ Compiled in 55.8s
+✓ Finished writing to filesystem cache in 23.0s
+✓ Compiled in 2.2s
+✓ Finished writing to filesystem cache in 14.4s
+✓ Finished filesystem cache database compaction in 13.4s
+✓ Compiled in 2.4s
+⚠ Fast Refresh had to perform a full reload when ./src/lib/auth.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /report 200 in 16.2s (next.js: 11.9s, application-code: 4.3s)
+○ Compiling /_not-found/page ...
+ GET / 200 in 15.5s (next.js: 4.6s, application-code: 10.9s)
+ GET /signin 200 in 22.5s (next.js: 14.7s, application-code: 7.8s)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+✓ Finished writing to filesystem cache in 20.9s
+✓ Finished filesystem cache database compaction in 14.7s
+ GET /dashboard 200 in 4.8s (next.js: 1717ms, application-code: 3.1s)
+✓ Finished filesystem cache database compaction in 16.7s
+ GET /mock-test 200 in 4.0s (next.js: 2.8s, application-code: 1217ms)
+[browser] Cannot update a component (`QuestionPlayer`) while rendering a different component (`Timer`). To locate the bad setState() call inside `Timer`, follow the stack trace as described in https://react.dev/link/setstate-in-render 
+    at Timer.useEffect.interval (src/components/Timer.tsx:34:9)
+    at Timer (src/components/Timer.tsx:18:35)
+  32 |         }
+  33 |         const next = s - 1;
+> 34 |         onTick?.(next);
+     |         ^
+  35 |         return next;
+  36 |       });
+  37 |     }, 1000); (src/components/Timer.tsx:34:9)
+✓ Finished writing to filesystem cache in 13.0s
+ GET /report 200 in 1805ms (next.js: 316ms, application-code: 1490ms)
+✓ Finished filesystem cache database compaction in 31.6s

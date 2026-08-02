@@ -1,0 +1,58 @@
+[1/40] extracting jesc108.pdf
+  ... c10/jesc108.txt: opened, 6 pages
+FAIL c10/jesc108.txt: Limit reached while decompressing. 244593 bytes remaining.
+Traceback (most recent call last):
+  File "D:\projects\test-mark\api\tools\extract_all.py", line 86, in main
+    n = extract(pdf, rel, dst)
+        ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\test-mark\api\tools\extract_all.py", line 63, in extract
+    chunks.append(page.extract_text() or "")
+                  ^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\test-mark\api\.venv\Lib\site-packages\pypdf\_page.py", line 2180, in extract_text
+    return self._extract_text(
+           ^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\test-mark\api\.venv\Lib\site-packages\pypdf\_page.py", line 1843, in _extract_text
+    content = ContentStream(content, pdf, "bytes")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\test-mark\api\.venv\Lib\site-packages\pypdf\generic\_data_structures.py", line 1262, in __init__
+    stream_data = stream.get_data()
+                  ^^^^^^^^^^^^^^^^^
+  File "D:\projects\test-mark\api\.venv\Lib\site-packages\pypdf\generic\_data_structures.py", line 1161, in get_data
+    decoded.set_data(decode_stream_data(self))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\test-mark\api\.venv\Lib\site-packages\pypdf\filters.py", line 847, in decode_stream_data
+    data = FlateDecode.decode(data, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\test-mark\api\.venv\Lib\site-packages\pypdf\filters.py", line 192, in decode
+    str_data = decompress(data)
+               ^^^^^^^^^^^^^^^^
+  File "D:\projects\test-mark\api\.venv\Lib\site-packages\pypdf\filters.py", line 122, in decompress
+    return _decompress_with_limit(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\test-mark\api\.venv\Lib\site-packages\pypdf\filters.py", line 94, in _decompress_with_limit
+    raise LimitReachedError(
+pypdf.errors.LimitReachedError: Limit reached while decompressing. 244593 bytes remaining.
+[1/40] extracting jesc1an.pdf
+  ... c10/answers-science.txt: opened, 3 pages
+  ... c10/answers-science.txt: page 3/3 (100%) elapsed 1s
+OK   c10/answers-science.txt chars=1512
+[2/40] extracting NCERT-Class-12-Physics-Part-2.pdf
+  ... c12/physics-p2.txt: opened, 254 pages
+  ... c12/physics-p2.txt: page 20/254 (7%) elapsed 16s
+  ... c12/physics-p2.txt: page 40/254 (15%) elapsed 31s
+  ... c12/physics-p2.txt: page 60/254 (23%) elapsed 61s
+  ... c12/physics-p2.txt: page 80/254 (31%) elapsed 77s
+  ... c12/physics-p2.txt: page 100/254 (39%) elapsed 84s
+  ... c12/physics-p2.txt: page 120/254 (47%) elapsed 93s
+  ... c12/physics-p2.txt: page 140/254 (55%) elapsed 102s
+  ... c12/physics-p2.txt: page 160/254 (62%) elapsed 108s
+  ... c12/physics-p2.txt: page 180/254 (70%) elapsed 123s
+  ... c12/physics-p2.txt: page 200/254 (78%) elapsed 132s
+  ... c12/physics-p2.txt: page 220/254 (86%) elapsed 137s
+  ... c12/physics-p2.txt: page 240/254 (94%) elapsed 140s
+  ... c12/physics-p2.txt: page 254/254 (100%) elapsed 150s
+OK   c12/physics-p2.txt chars=602437
+[3/40] extracting NCERT-Class-12-Chemistry-Part-1.pdf
+  ... c12/chemistry-p1.txt: opened, 286 pages
+  ... c12/chemistry-p1.txt: page 20/286 (6%) elapsed 58s
+  ... c12/chemistry-p1.txt: page 40/286 (13%) elapsed 333s

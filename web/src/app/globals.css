@@ -1,0 +1,318 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* ── Brand palette (unchanged) ─────────────────────────────────── */
+  --color-crimson: #dc143c;
+  --color-crimson-deep: #a30d2e;
+  --color-crimson-dark: #7a0a22;
+  --color-crimson-light: #ff4d6d;
+  --color-crimson-soft: #ffe3e9;
+  --color-surface: #f6f6f8;
+  --color-ink: #0b0b0f;
+
+  /* ── Semantic colors ────────────────────────────────────────────── */
+  --color-success: #16a34a;
+  --color-success-soft: #f0fdf4;
+  --color-success-dark: #15803d;
+
+  --color-warning: #f59e0b;
+  --color-warning-soft: #fffbeb;
+  --color-warning-dark: #d97706;
+
+  --color-danger: #ef4444;
+  --color-danger-soft: #fef2f2;
+  --color-danger-dark: #dc2626;
+
+  --color-info: #0ea5e9;
+  --color-info-soft: #f0f9ff;
+  --color-info-dark: #0284c7;
+
+  --color-neutral: #64748b;
+  --color-neutral-soft: #f8fafc;
+  --color-neutral-dark: #475569;
+
+  /* ── Mastery color scale (heatmap / topic accuracy) ────────────── */
+  --color-mastery-high: #16a34a;     /* ≥ 80% */
+  --color-mastery-good: #65a30d;     /* ≥ 60% */
+  --color-mastery-moderate: #f59e0b; /* ≥ 40% */
+  --color-mastery-weak: #f97316;     /* ≥ 20% */
+  --color-mastery-low: #ef4444;      /* < 20% */
+
+  /* ── Fonts (unchanged) ──────────────────────────────────────────── */
+  --font-heading: var(--font-space-grotesk), "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-inter), "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* ── Border radius scale ────────────────────────────────────────── */
+  --radius-sm: 0.25rem;   /* 4px  */
+  --radius-md: 0.5rem;    /* 8px  */
+  --radius-lg: 0.75rem;   /* 12px */
+  --radius-card: 1.25rem; /* 20px — unchanged */
+  --radius-lgx: 1rem;     /* 16px — unchanged */
+  --radius-pill: 999px;   /* unchanged */
+
+  /* ── Shadow / elevation scale ───────────────────────────────────── */
+  --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.07);
+  --shadow-3: 0 12px 32px rgba(0, 0, 0, 0.09);
+  --shadow-4: 0 24px 64px rgba(0, 0, 0, 0.12);
+
+  /* Legacy names preserved for backward compat — mapped to new scale */
+  --shadow-card: var(--shadow-2);
+  --shadow-soft: var(--shadow-3);
+
+  /* Glow shadows — kept but opacity reduced (0.18 / 0.22) */
+  --shadow-glow: 0 0 28px rgba(220, 20, 60, 0.18);
+  --shadow-glow-lg: 0 0 56px rgba(220, 20, 60, 0.22);
+
+  /* ── Motion tokens ──────────────────────────────────────────────── */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 400ms;
+
+  /* ── Animations ─────────────────────────────────────────────────── */
+  --animate-marquee: marquee 32s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-glow: pulse-glow 2.4s ease-in-out infinite;
+  --animate-fade-in: fade-in var(--duration-base) var(--ease-out) both;
+  --animate-slide-up: slide-up var(--duration-base) var(--ease-out) both;
+  --animate-skeleton: skeleton-shimmer 1.6s ease-in-out infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-12px); }
+  }
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.55; }
+    50%       { opacity: 1; }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes skeleton-shimmer {
+    0%   { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+  }
+}
+
+/* ── Base ───────────────────────────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.dark body {
+  background-color: #0b0b0f;
+  color: #f4f4f6;
+}
+
+::selection {
+  background: var(--color-crimson);
+  color: #fff;
+}
+
+/* ── Global focus-visible ring ─────────────────────────────────────── */
+
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 4px rgba(220, 20, 60, 0.55);
+}
+
+.dark :focus-visible {
+  box-shadow: 0 0 0 2px #0b0b0f, 0 0 0 4px rgba(220, 20, 60, 0.65);
+}
+
+/* ── Confetti animation (page-level, unchanged) ─────────────────────── */
+
+@keyframes confetti-fall {
+  0%   { opacity: 1; transform: translateY(0) rotate(0deg); }
+  100% { opacity: 0; transform: translateY(105vh) rotate(720deg); }
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────────────── */
+
+::-webkit-scrollbar       { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(220, 20, 60, 0.25);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-crimson); }
+
+/* ── Prefers-reduced-motion ────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Component classes ─────────────────────────────────────────────── */
+
+@layer components {
+  /* Layout */
+  .container-px {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+
+  /* ── Cards ────────────────────────────────────────────────────── */
+  .card {
+    @apply rounded-card border border-black/5 bg-white shadow-card dark:border-white/10 dark:bg-white/5;
+  }
+  /* Flat card — border only, no shadow */
+  .card-flat {
+    @apply rounded-card border border-black/5 bg-white dark:border-white/10 dark:bg-white/5;
+  }
+  /* Inset card — slightly recessed background for nested content */
+  .card-inset {
+    @apply rounded-lg border border-black/5 bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.03];
+  }
+
+  /* ── Buttons ──────────────────────────────────────────────────── */
+  .btn,
+  .btn-primary,
+  .btn-secondary,
+  .btn-ghost,
+  .btn-danger,
+  .btn-success {
+    @apply inline-flex items-center justify-center gap-2 rounded-pill px-6 py-3 text-sm font-semibold
+           transition-all duration-200
+           disabled:cursor-not-allowed disabled:opacity-50
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson/60 focus-visible:ring-offset-2;
+  }
+  .btn-primary {
+    @apply bg-crimson text-white hover:bg-crimson-deep hover:brightness-105
+           shadow-glow active:scale-[0.98];
+  }
+  .btn-secondary {
+    @apply bg-ink text-white hover:bg-black
+           dark:bg-white dark:text-ink dark:hover:bg-white/85;
+  }
+  .btn-ghost {
+    @apply border border-black/10 bg-transparent
+           hover:border-crimson hover:text-crimson
+           dark:border-white/15 dark:hover:border-crimson dark:hover:text-crimson-light;
+  }
+  .btn-danger {
+    @apply bg-danger text-white hover:bg-danger-dark active:scale-[0.98];
+  }
+  .btn-success {
+    @apply bg-success text-white hover:bg-success-dark active:scale-[0.98];
+  }
+
+  /* Button size modifiers */
+  .btn-sm {
+    @apply !px-4 !py-2 !text-xs;
+  }
+  .btn-lg {
+    @apply !px-8 !py-4 !text-base;
+  }
+
+  /* ── Chips / tags ─────────────────────────────────────────────── */
+  .chip,
+  .chip-success,
+  .chip-warning,
+  .chip-danger,
+  .chip-info,
+  .chip-crimson {
+    @apply inline-flex items-center gap-1.5 rounded-pill border border-black/10 px-3.5 py-1.5 text-xs font-semibold transition-colors dark:border-white/15;
+  }
+  .chip-success {
+    @apply border-success/30 bg-success-soft text-success dark:bg-success/15 dark:text-green-400;
+  }
+  .chip-warning {
+    @apply border-warning/30 bg-warning-soft text-warning-dark dark:bg-warning/15 dark:text-amber-400;
+  }
+  .chip-danger {
+    @apply border-danger/30 bg-danger-soft text-danger dark:bg-danger/15 dark:text-red-400;
+  }
+  .chip-info {
+    @apply border-info/30 bg-info-soft text-info-dark dark:bg-info/15 dark:text-sky-400;
+  }
+  .chip-crimson {
+    @apply border-crimson/30 bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light;
+  }
+
+  /* ── Inputs ───────────────────────────────────────────────────── */
+  .input,
+  .input-sm {
+    @apply w-full rounded-lgx border border-black/10 bg-white px-4 py-3 text-sm text-ink outline-none
+           transition-all placeholder:text-black/35
+           focus-visible:border-crimson focus-visible:ring-2 focus-visible:ring-crimson/25
+           dark:border-white/15 dark:bg-ink/60 dark:text-white dark:placeholder:text-white/35;
+  }
+  .input-sm {
+    @apply !px-3 !py-2 !text-xs;
+  }
+
+  /* ── Progress ─────────────────────────────────────────────────── */
+  .progress {
+    @apply h-2 w-full overflow-hidden rounded-pill bg-black/[0.06] dark:bg-white/10;
+  }
+  .progress-bar {
+    @apply h-full rounded-pill bg-crimson transition-all duration-700;
+  }
+  .progress-sm {
+    @apply h-1.5;
+  }
+  .progress-lg {
+    @apply h-3;
+  }
+  .progress-success > .progress-bar  { @apply bg-success; }
+  .progress-warning > .progress-bar  { @apply bg-warning; }
+  .progress-danger  > .progress-bar  { @apply bg-danger; }
+
+  /* ── Skeleton shimmer ─────────────────────────────────────────── */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.06) 25%,
+      rgba(0, 0, 0, 0.1)  50%,
+      rgba(0, 0, 0, 0.06) 75%
+    );
+    background-size: 800px 100%;
+    animation: skeleton-shimmer 1.6s ease-in-out infinite;
+    border-radius: var(--radius-md);
+  }
+  .dark .skeleton {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.04) 25%,
+      rgba(255, 255, 255, 0.08) 50%,
+      rgba(255, 255, 255, 0.04) 75%
+    );
+    background-size: 800px 100%;
+  }
+
+  /* ── Typography helpers ───────────────────────────────────────── */
+  .heading {
+    @apply font-heading font-bold tracking-tight;
+  }
+  .label {
+    @apply text-[11px] font-semibold uppercase tracking-[0.14em] text-black/45 dark:text-white/45;
+  }
+}

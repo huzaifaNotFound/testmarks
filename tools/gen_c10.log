@@ -1,0 +1,123 @@
+WAIT text not ready yet: physics-p1|physics-p2
+WAIT text not ready yet: physics-p1
+WAIT text not ready yet: physics-p2
+WAIT text not ready yet: physics-p1
+WAIT text not ready yet: physics-p2
+WAIT text not ready yet: chemistry-p1|chemistry-p2
+WAIT text not ready yet: chemistry-p1
+WAIT text not ready yet: chemistry-p2
+WAIT text not ready yet: chemistry-p1
+WAIT text not ready yet: chemistry-p2
+WAIT text not ready yet: maths
+WAIT text not ready yet: maths
+WAIT text not ready yet: maths
+WAIT text not ready yet: biology
+WAIT text not ready yet: biology
+WAIT text not ready yet: biology
+WAIT text not ready yet: physics-p1|physics-p2
+WAIT text not ready yet: physics-p1
+WAIT text not ready yet: physics-p2
+WAIT text not ready yet: physics-p1
+WAIT text not ready yet: physics-p2
+WAIT text not ready yet: chemistry-p1|chemistry-p2
+WAIT text not ready yet: chemistry-p1
+WAIT text not ready yet: chemistry-p2
+WAIT text not ready yet: chemistry-p1
+WAIT text not ready yet: chemistry-p2
+WAIT text not ready yet: maths
+WAIT text not ready yet: maths
+WAIT text not ready yet: maths
+WAIT text not ready yet: biology
+WAIT text not ready yet: biology
+WAIT text not ready yet: biology
+WAIT text not ready yet: c10/jemh101.txt
+WAIT text not ready yet: c10/jemh102.txt
+WAIT text not ready yet: c10/jemh103.txt
+WAIT text not ready yet: c10/jemh104.txt
+WAIT text not ready yet: c10/jemh105.txt
+WAIT text not ready yet: c10/jemh106.txt
+WAIT text not ready yet: c10/jemh107.txt
+WAIT text not ready yet: c10/jemh108.txt
+WAIT text not ready yet: c10/jemh109.txt
+WAIT text not ready yet: c10/jemh110.txt
+WAIT text not ready yet: c10/jemh111.txt
+WAIT text not ready yet: c10/jemh112.txt
+WAIT text not ready yet: c10/jemh113.txt
+WAIT text not ready yet: c10/jemh114.txt
+WAIT text not ready yet: c10/jesc101.txt
+WAIT text not ready yet: c10/jesc102.txt
+WAIT text not ready yet: c10/jesc103.txt
+WAIT text not ready yet: c10/jesc104.txt
+WAIT text not ready yet: c10/jesc105.txt
+WAIT text not ready yet: c10/jesc106.txt
+WAIT text not ready yet: c10/jesc107.txt
+WAIT text not ready yet: c10/jesc108.txt
+WAIT text not ready yet: c10/jesc109.txt
+WAIT text not ready yet: c10/jesc110.txt
+WAIT text not ready yet: c10/jesc111.txt
+WAIT text not ready yet: c10/jesc112.txt
+WAIT text not ready yet: c10/jesc113.txt
+WAIT text not ready yet: c11/physics-p1.txt
+WAIT text not ready yet: c11/physics-p2.txt
+WAIT text not ready yet: c12/physics-p1.txt
+WAIT text not ready yet: c12/physics-p2.txt
+WAIT text not ready yet: c11/chemistry-p1.txt
+WAIT text not ready yet: c11/chemistry-p2.txt
+WAIT text not ready yet: c12/chemistry-p1.txt
+WAIT text not ready yet: c12/chemistry-p2.txt
+WAIT text not ready yet: c11/maths.txt
+WAIT text not ready yet: c12/maths.txt
+WAIT text not ready yet: c11/physics-p1.txt
+WAIT text not ready yet: c11/physics-p2.txt
+WAIT text not ready yet: c12/physics-p1.txt
+WAIT text not ready yet: c12/physics-p2.txt
+WAIT text not ready yet: c11/chemistry-p1.txt
+WAIT text not ready yet: c11/chemistry-p2.txt
+WAIT text not ready yet: c12/chemistry-p1.txt
+WAIT text not ready yet: c12/chemistry-p2.txt
+WAIT text not ready yet: c11/maths.txt
+WAIT text not ready yet: c12/maths.txt
+WAIT text not ready yet: c11/physics-p1.txt
+WAIT text not ready yet: c11/physics-p2.txt
+WAIT text not ready yet: c12/physics-p1.txt
+WAIT text not ready yet: c12/physics-p2.txt
+WAIT text not ready yet: c11/chemistry-p1.txt
+WAIT text not ready yet: c11/chemistry-p2.txt
+WAIT text not ready yet: c12/chemistry-p1.txt
+WAIT text not ready yet: c12/chemistry-p2.txt
+WAIT text not ready yet: c11/biology.txt
+WAIT text not ready yet: c12/biology.txt
+
+=== STREAM cbse-10 ===
+RETRY cbse-10/math-101 (1/2): Expected ',' or '}' after property value in JSON at position 124 (line 1 column 125)
+DONE cbse-10/math-101 -> 1 questions
+DONE cbse-10/math-102 -> 1 questions
+RETRY cbse-10/math-103 (1/2): Expected ',' or '}' after property value in JSON at position 124 (line 1 column 125)
+DONE cbse-10/math-103 -> 6 questions
+RETRY cbse-10/math-104 (1/2): no JSON object found
+RETRY cbse-10/math-104 (2/2): no JSON object found
+RETRY cbse-10/math-105 (1/2): Expected ',' or '}' after property value in JSON at position 110 (line 1 column 111)
+RETRY cbse-10/math-105 (2/2): Expected ',' or ']' after array element in JSON at position 2352 (line 34 column 6)
+DONE cbse-10/math-106 -> 1 questions
+RETRY cbse-10/math-107 (1/2): no JSON object found
+DONE cbse-10/math-107 -> 6 questions
+DONE cbse-10/math-108 -> 1 questions
+DONE cbse-10/math-109 -> 1 questions
+RETRY cbse-10/math-110 (1/2): Expected ',' or ']' after array element in JSON at position 2288 (line 42 column 6)
+RETRY cbse-10/math-110 (2/2): no JSON object found
+RETRY cbse-10/math-111 (1/2): no JSON object found
+RETRY cbse-10/math-111 (2/2): Expected property name or '}' in JSON at position 1 (line 1 column 2)
+DONE cbse-10/math-112 -> 1 questions
+RETRY cbse-10/math-113 (1/2): no JSON object found
+DONE cbse-10/math-113 -> 6 questions
+DONE cbse-10/math-114 -> 1 questions
+RETRY cbse-10/sci-101 (1/2): Expected ',' or ']' after array element in JSON at position 1007 (line 18 column 6)
+DONE cbse-10/sci-101 -> 6 questions
+RETRY cbse-10/sci-102 (1/2): no JSON object found
+DONE cbse-10/sci-102 -> 6 questions
+RETRY cbse-10/sci-103 (1/2): no JSON object found
+DONE cbse-10/sci-103 -> 1 questions
+RETRY cbse-10/sci-104 (1/2): Expected ',' or ']' after array element in JSON at position 546 (line 1 column 547)
+DONE cbse-10/sci-104 -> 6 questions
+RETRY cbse-10/sci-105 (1/2): Expected ',' or ']' after array element in JSON at position 1135 (line 18 column 6)
+RETRY cbse-10/sci-105 (2/2): no JSON object found

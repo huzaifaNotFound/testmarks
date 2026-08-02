@@ -1,0 +1,902 @@
+{
+ "c10m-01+c10m-02": {
+  "c10m-01": [
+   {
+    "question": "According to the Fundamental Theorem of Arithmetic, every composite number can be expressed as a product of primes in a ______ way.",
+    "options": [
+     "unique",
+     "multiple",
+     "infinite",
+     "none"
+    ],
+    "correct": 0,
+    "difficulty": "easy",
+    "explanation": "The Fundamental Theorem of Arithmetic states that the prime factorization of a composite number is unique, except for the order of factors."
+   },
+   {
+    "question": "The prime factorization of 140 is:",
+    "options": [
+     "2^2 x 5 x 7",
+     "2 x 7^2 x 5",
+     "2^3 x 3 x 5",
+     "2 x 5 x 7"
+    ],
+    "correct": 0,
+    "difficulty": "easy",
+    "explanation": "Prime factorization involves breaking down a number into its prime factors, and 140 = 2 x 2 x 5 x 7 = 2^2 x 5 x 7."
+   },
+   {
+    "question": "Why does 4^n never end with the digit 0 for any natural number n?",
+    "options": [
+     "Because 4^n is always odd",
+     "Because 4^n has only 2 as its prime factor",
+     "Because 4^n is not divisible by 5",
+     "Because 4^n is a prime number"
+    ],
+    "correct": 1,
+    "difficulty": "easy",
+    "explanation": "For a number to end with 0, it must be divisible by 5, but 4^n = 2^(2n) has only 2 as its prime factor, so it cannot be divisible by 5."
+   },
+   {
+    "question": "If the HCF of two numbers is 12 and their product is 1800, what is their LCM?",
+    "options": [
+     "150",
+     "120",
+     "180",
+     "100"
+    ],
+    "correct": 0,
+    "difficulty": "easy",
+    "explanation": "For any two positive integers a and b, HCF(a,b) x LCM(a,b) = a x b. Therefore, LCM = product/HCF = 1800/12 = 150."
+   },
+   {
+    "question": "Find the HCF and LCM of 6, 72, and 120 using the prime factorization method.",
+    "options": [
+     "HCF = 6, LCM = 360",
+     "HCF = 12, LCM = 720",
+     "HCF = 3, LCM = 360",
+     "HCF = 6, LCM = 180"
+    ],
+    "correct": 0,
+    "difficulty": "medium",
+    "explanation": "From prime factorizations: 6 = 2 x 3, 72 = 2^3 x 3^2, 120 = 2^3 x 3 x 5. HCF is product of smallest powers: 2^1 x 3^1 = 6. LCM is product of greatest powers: 2^3 x 3^2 x 5^1 = 360."
+   },
+   {
+    "question": "Sonia takes 18 minutes and Ravi takes 12 minutes to drive one round of a circular field. If they start together from the same point, after how many minutes will they meet again at the starting point?",
+    "options": [
+     "36 minutes",
+     "24 minutes",
+     "18 minutes",
+     "12 minutes"
+    ],
+    "correct": 0,
+    "difficulty": "medium",
+    "explanation": "They will meet again at the starting point after a time that is the least common multiple of their individual times. LCM(18, 12) = 36."
+   }
+  ],
+  "c10m-02": [
+   {
+    "question": "A polynomial of degree 2 is called a ______ polynomial.",
+    "options": [
+     "linear",
+     "quadratic",
+     "cubic",
+     "constant"
+    ],
+    "correct": 1,
+    "difficulty": "easy",
+    "explanation": "In mathematics, a polynomial of degree 2 is known as a quadratic polynomial, derived from 'quadrate' meaning square."
+   },
+   {
+    "question": "The zero of the linear polynomial ax + b is given by:",
+    "options": [
+     "a/b",
+     "-b/a",
+     "b/a",
+     "-a/b"
+    ],
+    "correct": 1,
+    "difficulty": "easy",
+    "explanation": "For a linear polynomial ax + b, setting it to zero gives ax + b = 0, so x = -b/a."
+   },
+   {
+    "question": "Geometrically, the zeroes of a polynomial p(x) are the ______ where the graph of y = p(x) intersects the x-axis.",
+    "options": [
+     "y-coordinates",
+     "x-coordinates",
+     "slopes",
+     "y-intercepts"
+    ],
+    "correct": 1,
+    "difficulty": "easy",
+    "explanation": "The zeroes of a polynomial are the x-values for which p(x) = 0, which correspond to the x-coordinates of the points where the graph crosses the x-axis."
+   },
+   {
+    "question": "A quadratic polynomial can have at most ______ zeroes.",
+    "options": [
+     "1",
+     "2",
+     "3",
+     "infinitely many"
+    ],
+    "correct": 1,
+    "difficulty": "easy",
+    "explanation": "The graph of a quadratic polynomial is a parabola, which can intersect the x-axis at most at two points, hence at most two zeroes."
+   },
+   {
+    "question": "For the quadratic polynomial p(x) = x^2 - 3x - 4, the zeroes are:",
+    "options": [
+     "1 and -4",
+     "-1 and 4",
+     "2 and -2",
+     "3 and -3"
+    ],
+    "correct": 1,
+    "difficulty": "medium",
+    "explanation": "From the text, p(-1) = 0 and p(4) = 0, so -1 and 4 are the zeroes of the polynomial."
+   },
+   {
+    "question": "If a polynomial of degree n has n zeroes, what can be said about its graph?",
+    "options": [
+     "It intersects the x-axis at exactly n points",
+     "It is always above the x-axis",
+     "It has n turning points",
+     "It is a straight line"
+    ],
+    "correct": 0,
+    "difficulty": "medium",
+    "explanation": "A polynomial of degree n has at most n zeroes, and if it has exactly n zeroes, its graph intersects the x-axis at n distinct points."
+   }
+  ]
+ },
+ "c10m-03+c10m-04": {
+  "c10m-03": [
+   {
+    "question": "What is a pair of linear equations in two variables called if it has at least one solution?",
+    "options": [
+     "Inconsistent",
+     "Dependent",
+     "Consistent",
+     "Independent"
+    ],
+    "correct": 2,
+    "difficulty": "easy",
+    "explanation": "A pair of linear equations that has a solution is called a consistent pair, as defined in the graphical method section."
+   },
+   {
+    "question": "For the lines represented by a1x + b1y + c1 = 0 and a2x + b2y + c2 = 0 to be parallel, which condition must hold?",
+    "options": [
+     "a1/a2 = b1/b2 = c1/c2",
+     "a1/a2 != b1/b2",
+     "a1/a2 = b1/b2 != c1/c2",
+     "a1/a2 = b1/b2 and c1 = c2"
+    ],
+    "correct": 2,
+    "difficulty": "easy",
+    "explanation": "When the ratios of coefficients of x and y are equal but not equal to the ratio of constants, the lines are parallel and have no solution."
+   },
+   {
+    "question": "In Example 1, the pair of equations x + 3y = 6 and 2x - 3y = 12 has which solution?",
+    "options": [
+     "x=3, y=1",
+     "x=6, y=0",
+     "x=0, y=2",
+     "x=4, y=2/3"
+    ],
+    "correct": 1,
+    "difficulty": "easy",
+    "explanation": "By solving graphically, the lines intersect at the point (6,0), so x=6 and y=0 is the unique solution."
+   },
+   {
+    "question": "In the substitution method of solving a pair of linear equations, what is the first step?",
+    "options": [
+     "Eliminate one variable by adding or subtracting equations",
+     "Draw the graphs of both equations",
+     "Express one variable in terms of the other from one equation",
+     "Check the ratios of coefficients"
+    ],
+    "correct": 2,
+    "difficulty": "medium",
+    "explanation": "The substitution method begins by finding the value of one variable in terms of the other from one of the equations."
+   },
+   {
+    "question": "In the problem about pants and skirts from Example 3, if x is the number of pants and y is the number of skirts, which pair of equations is formed?",
+    "options": [
+     "y = 2x - 2 and y = 4x - 4",
+     "x = 2y - 2 and x = 4y - 4",
+     "y = 2x + 2 and y = 4x + 4",
+     "x + y = 2 and x + y = 4"
+    ],
+    "correct": 0,
+    "difficulty": "easy",
+    "explanation": "As per the problem statement, the number of skirts is two less than twice the number of pants, and four less than four times the number of pants."
+   },
+   {
+    "question": "Half the perimeter of a rectangular garden is 36 m, and the length is 4 m more than the width. If the width is x meters, which equation represents this situation?",
+    "options": [
+     "x + (x+4) = 36",
+     "2(x + x+4) = 36",
+     "x + (x+4) = 18",
+     "2(x + x+4) = 18"
+    ],
+    "correct": 0,
+    "difficulty": "medium",
+    "explanation": "Half the perimeter is given as length plus width, so x + (x+4) = 36, since length is x+4 and width is x."
+   }
+  ],
+  "c10m-04": [
+   {
+    "question": "What is the standard form of a quadratic equation in the variable x?",
+    "options": [
+     "ax^2 + bx = 0",
+     "ax^2 + b = 0",
+     "ax^2 + bx + c = 0",
+     "ax + bx + c = 0"
+    ],
+    "correct": 2,
+    "difficulty": "easy",
+    "explanation": "A quadratic equation in standard form is ax^2 + bx + c = 0, where a, b, c are real numbers and a != 0."
+   },
+   {
+    "question": "A real number α is called a root of the quadratic equation ax^2 + bx + c = 0 if:",
+    "options": [
+     "aα + b = c",
+     "aα^2 + bα + c = 0",
+     "α^2 + bα + c = 0",
+     "aα^2 + b = cα"
+    ],
+    "correct": 1,
+    "difficulty": "easy",
+    "explanation": "By definition, α is a root if it satisfies the equation, meaning aα^2 + bα + c = 0."
+   },
+   {
+    "question": "Which of the following equations is NOT a quadratic equation, as shown in Example 2?",
+    "options": [
+     "(x - 2)^2 + 1 = 2x - 3",
+     "x(x + 1) + 8 = (x + 2)(x - 2)",
+     "x(2x + 3) = x^2 + 1",
+     "(x + 2)^3 = x^3 - 4"
+    ],
+    "correct": 1,
+    "difficulty": "easy",
+    "explanation": "After simplifying, option b becomes x + 12 = 0, which is a linear equation, not quadratic, while others simplify to quadratic equations."
+   },
+   {
+    "question": "Find the roots of the quadratic equation 2x^2 - 5x + 3 = 0 by factorisation.",
+    "options": [
+     "x=1, x=3/2",
+     "x=1, x=2/3",
+     "x=2, x=3/2",
+     "x=1/2, x=3"
+    ],
+    "correct": 0,
+    "difficulty": "medium",
+    "explanation": "Factorising 2x^2 - 5x + 3 gives (2x - 3)(x - 1) = 0, so the roots are x=1 and x=3/2."
+   },
+   {
+    "question": "In Example 1(ii), if x is the number of toys produced in a day, which quadratic equation is derived?",
+    "options": [
+     "x^2 - 55x + 750 = 0",
+     "x^2 + 55x + 750 = 0",
+     "x^2 - 55x - 750 = 0",
+     "x^2 + 55x - 750 = 0"
+    ],
+    "correct": 0,
+    "difficulty": "medium",
+    "explanation": "From the solution, the total cost x(55 - x) = 750 simplifies to x^2 - 55x + 750 = 0."
+   },
+   {
+    "question": "A quadratic polynomial is typically of the form:",
+    "options": [
+     "ax + b",
+     "ax^2 + bx + c",
+     "ax^3 + bx^2 + cx + d",
+     "ax^2 + c"
+    ],
+    "correct": 1,
+    "difficulty": "easy",
+    "explanation": "A quadratic polynomial is a polynomial of degree 2, which is of the form ax^2 + bx + c, where a != 0."
+   }
+  ]
+ },
+ "c10m-05+c10m-06": {
+  "c10m-05": [
+   {
+    "question": "Which of the following is the defining property of an arithmetic progression?",
+    "options": [
+     "Each term is obtained by multiplying the previous term by a fixed number.",
+     "Each term is obtained by adding a fixed number to the previous term.",
+     "Each term is obtained by squaring the previous term.",
+     "Each term is obtained by subtracting the previous term from a fixed number."
+    ],
+    "correct": 1,
+    "difficulty": "easy",
+    "explanation": "An arithmetic progression is defined as a list of numbers where each succeeding term is obtained by adding a fixed number to the preceding term."
+   },
+   {
+    "question": "In the arithmetic progression 1, 3, 5, 7, ..., what is the common difference?",
+    "options": [
+     "1",
+     "2",
+     "3",
+     "4"
+    ],
+    "correct": 1,
+    "difficulty": "easy",
+    "explanation": "The common difference is found by subtracting any term from its succeeding term; here, 3 - 1 = 2."
+   },
+   {
+    "question": "Which of the following lists of numbers forms an arithmetic progression?",
+    "options": [
+     "1, 2, 4, 8, ...",
+     "1, -1, -3, -5, ...",
+     "-2, 2, -2, 2, ...",
+     "1, 1, 2, 2, 3, 3, ..."
+    ],
+    "correct": 1,
+    "difficulty": "easy",
+    "explanation": "For an AP, the difference between consecutive terms must be constant; in option 2, each term decreases by 2, forming an AP with d = -2."
+   },
+   {
+    "question": "Reena has a starting monthly salary of ₹8000 with an annual increment of ₹500. What will be her salary in the 3rd year?",
+    "options": [
+     "₹8500",
+     "₹9000",
+     "₹9500",
+     "₹10000"
+    ],
+    "correct": 1,
+    "difficulty": "medium",
+    "explanation": "From the example, salaries are ₹8000, ₹8500, ₹9000,... so the 3rd year salary is ₹9000."
+   },
+   {
+    "question": "What are the first term and common difference of the AP: 6, 9, 12, 15, ...?",
+    "options": [
+     "a=6, d=3",
+     "a=6, d=4",
+     "a=9, d=3",
+     "a=6, d=2"
+    ],
+    "correct": 0,
+    "difficulty": "easy",
+    "explanation": "The first term a is 6, and the common difference d = 9 - 6 = 3."
+   },
+   {
+    "question": "In an AP, if the first term is 5 and the common difference is -3, what is the third term?",
+    "options": [
+     "-1",
+     "2",
+     "-4",
+     "1"
+    ],
+    "correct": 0,
+    "difficulty": "medium",
+    "explanation": "The third term is given by a + 2d = 5 + 2(-3) = 5 - 6 = -1."
+   }
+  ],
+  "c10m-06": [
+   {
+    "question": "What does it mean for two figures to be similar?",
+    "options": [
+     "They have the same shape and the same size.",
+     "They have the same shape but not necessarily the same size.",
+     "They have the same size but not necessarily the same shape.",
+     "They are congruent."
+    ],
+    "correct": 1,
+    "difficulty": "easy",
+    "explanation": "Similar figures have the same shape but not necessarily the same size, as stated in the definition of similarity."
+   },
+   {
+    "question": "Which of the following statements is true about all circles?",
+    "options": [
+     "They are congruent.",
+     "They are similar.",
+     "They are similar only if they have the same radius.",
+     "They are similar only if they are congruent."
+    ],
+    "correct": 1,
+    "difficulty": "easy",
+    "explanation": "All circles are similar because they have the same shape, as mentioned in the text on similar figures."
+   },
+   {
+    "question": "Two polygons of the same number of sides are similar if:",
+    "options": [
+     "Their corresponding angles are equal and corresponding sides are proportional.",
+     "Their corresponding angles are proportional and corresponding sides are equal.",
+     "Only their corresponding angles are equal.",
+     "Only their corresponding sides are proportional."
+    ],
+    "correct": 0,
+    "difficulty": "easy",
+    "explanation": "For similarity of polygons, both conditions must hold: corresponding angles are equal and corresponding sides are in the same ratio."
+   },
+   {
+    "question": "What is the Basic Proportionality Theorem (Thales Theorem)?",
+    "options": [
+     "If a line is drawn parallel to one side of a triangle, it divides the other two sides in the same ratio.",
+     "If two triangles are similar, their areas are proportional to the squares of their sides.",
+     "The sum of angles in a triangle is 180 degrees.",
+     "In a right triangle, the square of the hypotenuse equals the sum of squares of the other two sides."
+    ],
+    "correct": 0,
+    "difficulty": "medium",
+    "explanation": "The Basic Proportionality Theorem states that if a line is drawn parallel to one side of a triangle to intersect the other two sides, it divides them proportionally."
+   },
+   {
+    "question": "In similar triangles, which of the following is true?",
+    "options": [
+     "Corresponding angles are equal and corresponding sides are proportional.",
+     "Corresponding angles are proportional and corresponding sides are equal.",
+     "Corresponding angles are equal and corresponding sides are equal.",
+     "Corresponding angles are proportional and corresponding sides are proportional."
+    ],
+    "correct": 0,
+    "difficulty": "easy",
+    "explanation": "For similarity of triangles, corresponding angles must be equal and corresponding sides must be in the same ratio, as defined for similar polygons."
+   },
+   {
+    "question": "If two triangles are similar, what can be said about the ratio of their corresponding sides?",
+    "options": [
+     "It is always 1:1.",
+     "It is the same for all pairs of corresponding sides.",
+     "It varies from side to side.",
+     "It is equal to the ratio of their angles."
+    ],
+    "correct": 1,
+    "difficulty": "medium",
+    "explanation": "In similar triangles, the ratio of any two corresponding sides is constant, known as the scale factor or proportionality constant."
+   }
+  ]
+ },
+ "c10m-07+c10m-08": {
+  "c10m-07": [
+   {
+    "question": "Find the distance between the points (2, 3) and (4, 1).",
+    "options": [
+     "2",
+     "sqrt(5)",
+     "2*sqrt(2)",
+     "5"
+    ],
+    "correct": 2,
+    "difficulty": "medium",
+    "explanation": "Using the distance formula, distance = sqrt((4-2)^2 + (1-3)^2) = sqrt(4+4) = sqrt(8) = 2*sqrt(2)."
+   },
+   {
+    "question": "What is the distance between the points (4, 0) and (6, 0) on the x-axis?",
+    "options": [
+     "2",
+     "3",
+     "10",
+     "0"
+    ],
+    "correct": 0,
+    "difficulty": "easy",
+    "explanation": "Points on the x-axis have y-coordinate 0, so distance is the absolute difference of x-coordinates: |6-4| = 2 units."
+   },
+   {
+    "question": "Are the points (1, 5), (2, 3), and (-2, -11) collinear?",
+    "options": [
+     "Yes",
+     "No",
+     "Only if on a line",
+     "Cannot be determined"
+    ],
+    "correct": 1,
+    "difficulty": "easy",
+    "explanation": "Calculate distances: AB = sqrt(5), BC = sqrt(212), AC = sqrt(265). Since AB + BC != AC, the points are not collinear."
+   },
+   {
+    "question": "The points (3, 2), (-2, -3), and (2, 3) form which type of triangle?",
+    "options": [
+     "Right triangle",
+     "Isosceles triangle",
+     "Equilateral triangle",
+     "Scalene triangle"
+    ],
+    "correct": 0,
+    "difficulty": "easy",
+    "explanation": "As per the distance formula, PQ^2 + PR^2 = QR^2, so by the converse of Pythagoras theorem, it is a right triangle."
+   },
+   {
+    "question": "Find the point on the y-axis which is equidistant from the points (6, 5) and (-4, 3).",
+    "options": [
+     "(0, 5)",
+     "(0, 9)",
+     "(0, 3)",
+     "(0, 7)"
+    ],
+    "correct": 1,
+    "difficulty": "easy",
+    "explanation": "Let the point be (0, y). Then (6-0)^2 + (5-y)^2 = (-4-0)^2 + (3-y)^2, solving gives y=9."
+   },
+   {
+    "question": "Find the relation between x and y such that the point (x, y) is equidistant from the points (7, 1) and (3, 5).",
+    "options": [
+     "x - y = 2",
+     "x + y = 10",
+     "2x - y = 5",
+     "x - 2y = 3"
+    ],
+    "correct": 0,
+    "difficulty": "easy",
+    "explanation": "Set distances equal: (x-7)^2 + (y-1)^2 = (x-3)^2 + (y-5)^2, simplifying gives x - y = 2."
+   }
+  ],
+  "c10m-08": [
+   {
+    "question": "In a right-angled triangle, the sine of an angle is defined as:",
+    "options": [
+     "Adjacent side / Hypotenuse",
+     "Opposite side / Hypotenuse",
+     "Opposite side / Adjacent side",
+     "Hypotenuse / Opposite side"
+    ],
+    "correct": 1,
+    "difficulty": "medium",
+    "explanation": "By definition, sin A = opposite side to angle A / hypotenuse in a right triangle."
+   },
+   {
+    "question": "Which trigonometric ratio is the reciprocal of cosine?",
+    "options": [
+     "Sine",
+     "Tangent",
+     "Secant",
+     "Cotangent"
+    ],
+    "correct": 2,
+    "difficulty": "easy",
+    "explanation": "Secant is defined as 1/cosine, i.e., hypotenuse / adjacent side."
+   },
+   {
+    "question": "In right triangle ABC, right-angled at C, if AB = 5 units and BC = 3 units, then sin A = ?",
+    "options": [
+     "3/5",
+     "4/5",
+     "5/3",
+     "3/4"
+    ],
+    "correct": 0,
+    "difficulty": "easy",
+    "explanation": "Since sin A = BC/AB = 3/5, as BC is opposite to angle A and AB is hypotenuse."
+   },
+   {
+    "question": "Given tan A = 4/3, find the value of sin A.",
+    "options": [
+     "4/5",
+     "3/5",
+     "4/3",
+     "5/4"
+    ],
+    "correct": 0,
+    "difficulty": "easy",
+    "explanation": "From the example in the text, if tan A = 4/3, then sides are in ratio 3:4:5, so sin A = 4/5."
+   },
+   {
+    "question": "The trigonometric ratio tan A can be expressed as:",
+    "options": [
+     "sin A / cos A",
+     "cos A / sin A",
+     "sin A * cos A",
+     "1 / (sin A * cos A)"
+    ],
+    "correct": 0,
+    "difficulty": "easy",
+    "explanation": "tan A = opposite/adjacent = (opposite/hypotenuse) / (adjacent/hypotenuse) = sin A / cos A."
+   },
+   {
+    "question": "If sin A = 1/3, then what is the value of cos A?",
+    "options": [
+     "(2sqrt(2))/3",
+     "1/2",
+     "3/5",
+     "4/5"
+    ],
+    "correct": 0,
+    "difficulty": "easy",
+    "explanation": "Using Pythagoras theorem, cos A = sqrt (1 - sin^2 A) = sqrt (1 - 1/9) = sqrt (8/9) = (2sqrt(2))/3."
+   }
+  ]
+ },
+ "c10m-09+c10m-10": {
+  "c10m-09": [
+   {
+    "question": "What is the angle formed by the line of sight with the horizontal when the point being viewed is above the horizontal level?",
+    "options": [
+     "Angle of depression",
+     "Angle of elevation",
+     "Angle of incidence",
+     "Angle of reflection"
+    ],
+    "correct": 1,
+    "difficulty": "easy",
+    "explanation": "The angle of elevation is defined as the angle formed by the line of sight with the horizontal when looking upwards."
+   },
+   {
+    "question": "In a right-angled triangle, if the opposite side and the adjacent side are known, which trigonometric ratio can be used to find the angle?",
+    "options": [
+     "sin",
+     "cos",
+     "tan",
+     "cosec"
+    ],
+    "correct": 2,
+    "difficulty": "easy",
+    "explanation": "The tangent ratio is defined as opposite side divided by adjacent side, so it involves both."
+   },
+   {
+    "question": "A tower stands vertically on the ground. From a point on the ground 15 m away from the foot of the tower, the angle of elevation of the top is 60 degrees. Find the height of the tower.",
+    "options": [
+     "15 m",
+     "15 sqrt(3) m",
+     "30 m",
+     "15/ sqrt(3) m"
+    ],
+    "correct": 1,
+    "difficulty": "easy",
+    "explanation": "Using tan 60 degrees = height / 15, and tan 60 degrees = sqrt(3), so height = 15 sqrt(3) m."
+   },
+   {
+    "question": "From a point on the ground, the angle of elevation of the top of a 10 m tall building is 30 degrees. A flag is hoisted at the top, and the angle of elevation of the top of the flagstaff is 45 degrees. Find the length of the flagstaff.",
+    "options": [
+     "10 m",
+     "10 sqrt(3) m",
+     "10 (sqrt(3) - 1) m",
+     "10 (1 - sqrt(3)) m"
+    ],
+    "correct": 2,
+    "difficulty": "medium",
+    "explanation": "Let building height AB = 10 m, flagstaff BD = x. tan 30 = AB/AP => AP = 10 sqrt(3). tan 45 = AD/AP => (10 + x)/ (10 sqrt(3)) = 1, so x = 10 sqrt(3) - 10 = 10 (sqrt(3) - 1) m."
+   },
+   {
+    "question": "The angle formed by the line of sight with the horizontal when the point is below the horizontal level is called:",
+    "options": [
+     "Angle of elevation",
+     "Angle of depression",
+     "Angle of inclination",
+     "Angle of declination"
+    ],
+    "correct": 1,
+    "difficulty": "easy",
+    "explanation": "Angle of depression is defined when looking downwards from the horizontal."
+   },
+   {
+    "question": "The shadow of a tower on level ground is 40 m longer when the Sun's altitude is 30 degrees than when it is 60 degrees. Find the height of the tower.",
+    "options": [
+     "20 m",
+     "20 sqrt(3) m",
+     "40 m",
+     "40 sqrt(3) m"
+    ],
+    "correct": 1,
+    "difficulty": "medium",
+    "explanation": "Let height be h, shadow at 60 degrees be x, so tan 60 = h/x. At 30 degrees, shadow is x + 40, tan 30 = h/(x+40). Solving gives h = 20 sqrt(3) m."
+   }
+  ],
+  "c10m-10": [
+   {
+    "question": "A line that intersects a circle at exactly one point is called:",
+    "options": [
+     "Secant",
+     "Tangent",
+     "Chord",
+     "Diameter"
+    ],
+    "correct": 1,
+    "difficulty": "easy",
+    "explanation": "A tangent is defined as a line that touches the circle at exactly one point."
+   },
+   {
+    "question": "The tangent at any point of a circle is perpendicular to:",
+    "options": [
+     "The chord through the point",
+     "The diameter through the point",
+     "The radius through the point of contact",
+     "The secant through the point"
+    ],
+    "correct": 2,
+    "difficulty": "easy",
+    "explanation": "Theorem 10.1 states that the tangent is perpendicular to the radius at the point of contact."
+   },
+   {
+    "question": "How many tangents can be drawn from a point lying on a circle?",
+    "options": [
+     "None",
+     "One",
+     "Two",
+     "Infinite"
+    ],
+    "correct": 1,
+    "difficulty": "easy",
+    "explanation": "For a point on the circle, there is exactly one tangent."
+   },
+   {
+    "question": "A tangent PQ at a point P of a circle of radius 5 cm meets a line through the centre O at a point Q so that OQ = 12 cm. Find the length PQ.",
+    "options": [
+     "12 cm",
+     "13 cm",
+     "8.5 cm",
+     "sqrt(119) cm"
+    ],
+    "correct": 3,
+    "difficulty": "medium",
+    "explanation": "By Theorem 10.1, OP is perpendicular to PQ, so in right triangle OPQ, OP = 5 cm, OQ = 12 cm, so PQ = sqrt(OQ^2 - OP^2) = sqrt(144 - 25) = sqrt(119) cm."
+   },
+   {
+    "question": "A line that intersects a circle at two points is called:",
+    "options": [
+     "Tangent",
+     "Secant",
+     "Chord",
+     "Arc"
+    ],
+    "correct": 1,
+    "difficulty": "easy",
+    "explanation": "A secant is a line that cuts the circle at two distinct points."
+   },
+   {
+    "question": "If two tangents are drawn from an external point to a circle, which of the following is true?",
+    "options": [
+     "They are equal in length",
+     "They are parallel",
+     "They are perpendicular to each other",
+     "They are equal in length and bisect the angle between them"
+    ],
+    "correct": 3,
+    "difficulty": "medium",
+    "explanation": "Theorem 10.2 states that lengths of tangents from an external point are equal, and moreover, the line from the center bisects the angle between the tangents."
+   }
+  ]
+ },
+ "c10m-11+c10m-12": {
+  "c10m-11": [
+   {
+    "question": "The portion of a circular region enclosed by two radii and the corresponding arc is called a ______.",
+    "options": [
+     "sector",
+     "segment",
+     "chord",
+     "diameter"
+    ],
+    "correct": 0,
+    "difficulty": "easy",
+    "explanation": "By definition, a sector is the region bounded by two radii and the arc between them, as stated in the text."
+   },
+   {
+    "question": "If the angle of a sector is 90 degrees, what fraction of the circle's area does it represent?",
+    "options": [
+     "1/2",
+     "1/3",
+     "1/4",
+     "1/6"
+    ],
+    "correct": 2,
+    "difficulty": "easy",
+    "explanation": "The fraction is angle/360 = 90/360 = 1/4, since the area of a sector is proportional to its angle."
+   },
+   {
+    "question": "What is the formula for the area of a sector with radius r and angle θ in degrees?",
+    "options": [
+     "(θ/360)*pi*r^2",
+     "(θ/180)*pi*r^2",
+     "(θ/360)*2*pi*r",
+     "theta*pi*r^2"
+    ],
+    "correct": 0,
+    "difficulty": "easy",
+    "explanation": "The text derives that the area of a sector is (θ/360) * pir^2, using the unitary method."
+   },
+   {
+    "question": "Find the length of an arc subtending an angle of 60 degrees at the center of a circle with radius 10 cm.",
+    "options": [
+     "10*pi/3 cm",
+     "20*pi/3 cm",
+     "5*pi cm",
+     "10*pi cm"
+    ],
+    "correct": 0,
+    "difficulty": "medium",
+    "explanation": "Length of arc = (θ/360)*2pir = (60/360)*2pi*10 = (1/6)*20pi = 10pi/3 cm, as per the arc length formula."
+   },
+   {
+    "question": "To find the area of a segment of a circle, we subtract the area of which triangle from the area of the sector?",
+    "options": [
+     "Right-angled triangle",
+     "Isosceles triangle",
+     "Equilateral triangle",
+     "The triangle formed by the chord and the radii"
+    ],
+    "correct": 3,
+    "difficulty": "easy",
+    "explanation": "The segment is bounded by the chord and the arc, so we subtract the area of the triangle formed by the chord and the two radii from the sector area."
+   },
+   {
+    "question": "In Example 1 of the text, the area of the minor sector with radius 4 cm and angle 30 degrees is approximately 4.19 cm^2. What is the area of the corresponding major sector?",
+    "options": [
+     "Approximately 46.1 cm^2",
+     "4.19 cm^2",
+     "50 cm^2",
+     "3.14 cm^2"
+    ],
+    "correct": 0,
+    "difficulty": "easy",
+    "explanation": "The major sector area is pir^2 minus the minor sector area, calculated as 3.14*16 - 4.19 ≈ 46.05 cm^2, rounded to 46.1 cm^2."
+   }
+  ],
+  "c10m-12": [
+   {
+    "question": "When calculating the total surface area of a solid formed by combining two basic solids, we typically sum the ______ of the individual parts.",
+    "options": [
+     "total surface areas",
+     "curved surface areas",
+     "volumes",
+     "base areas"
+    ],
+    "correct": 1,
+    "difficulty": "easy",
+    "explanation": "For combined solids, only the outer surfaces are visible, so we sum the curved surface areas of the components."
+   },
+   {
+    "question": "A toy is made of a cone surmounted by a hemisphere. The total surface area of this toy is equal to:",
+    "options": [
+     "CSA of cone + CSA of hemisphere",
+     "TSA of cone + TSA of hemisphere",
+     "CSA of cone + TSA of hemisphere",
+     "TSA of cone + CSA of hemisphere"
+    ],
+    "correct": 0,
+    "difficulty": "easy",
+    "explanation": "As per Example 1 in the text, the toy's surface area consists of the curved surfaces of both the cone and the hemisphere."
+   },
+   {
+    "question": "A cubical block of edge 5 cm has a hemisphere of diameter 4.2 cm fixed on top. What is the total surface area of the block?",
+    "options": [
+     "150 cm^2",
+     "163.86 cm^2",
+     "170 cm^2",
+     "150 + 2*pi*r^2 cm^2"
+    ],
+    "correct": 1,
+    "difficulty": "medium",
+    "explanation": "From Example 2, TSA of cube is 6*5^2 = 150 cm^2, and after adjusting for the hemisphere, surface area = 150 + pir^2 ≈ 150 + 13.86 = 163.86 cm^2."
+   },
+   {
+    "question": "The volume of a solid formed by joining two basic solids is:",
+    "options": [
+     "Sum of the volumes of individual solids",
+     "Sum of the surface areas",
+     "Product of the volumes",
+     "Difference of the volumes"
+    ],
+    "correct": 0,
+    "difficulty": "easy",
+    "explanation": "Volume is additive, so the total volume is the sum of the volumes of the constituent solids, as explained in the text."
+   },
+   {
+    "question": "In Example 3, the area to be painted orange on the toy rocket includes:",
+    "options": [
+     "Only the CSA of the cone",
+     "CSA of cone + base area of cone - base area of cylinder",
+     "Only the CSA of the cylinder",
+     "TSA of the cone"
+    ],
+    "correct": 1,
+    "difficulty": "easy",
+    "explanation": "As per the solution, the orange area includes the curved surface of the cone plus the exposed base of the cone after subtracting the cylinder's base."
+   },
+   {
+    "question": "A bird-bath consists of a cylinder with a hemispherical depression at one end. If the cylinder height is h and radius is r, the total surface area is:",
+    "options": [
+     "2*pi*r*h + 2*pi*r^2",
+     "2*pi*r*h + pi*r^2",
+     "pi*r*h + 2*pi*r^2",
+     "2*pi*r*(h + r)"
+    ],
+    "correct": 3,
+    "difficulty": "easy",
+    "explanation": "From Example 4, TSA = CSA of cylinder + CSA of hemisphere = 2pirh + 2pir^2 = 2pir(h + r)."
+   }
+  ]
+ }
+}

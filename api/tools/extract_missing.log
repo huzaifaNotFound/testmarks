@@ -1,0 +1,22 @@
+Extracting 3 files in parallel (4 workers)...
+  [c12/maths.txt] page 40/291 (13%) 20s
+  [c12/maths.txt] page 80/291 (27%) 52s
+  [c10/jesc108.txt] page 6/6 (100%) 76s
+OK   c10/jesc108.txt chars=13155
+  [c12/maths.txt] page 120/291 (41%) 81s
+  [c12/maths.txt] page 160/291 (54%) 93s
+  [c12/maths.txt] page 200/291 (68%) 110s
+  [c12/biology.txt] page 40/311 (12%) 123s
+  [c12/maths.txt] page 240/291 (82%) 133s
+  [c12/maths.txt] page 280/291 (96%) 150s
+  [c12/maths.txt] page 291/291 (100%) 157s
+OK   c12/maths.txt chars=387499
+  [c12/biology.txt] page 80/311 (25%) 198s
+  [c12/biology.txt] page 120/311 (38%) 281s
+  [c12/biology.txt] page 160/311 (51%) 341s
+  [c12/biology.txt] page 200/311 (64%) 417s
+  [c12/biology.txt] page 240/311 (77%) 482s
+  [c12/biology.txt] page 280/311 (90%) 551s
+  [c12/biology.txt] page 311/311 (100%) 614s
+OK   c12/biology.txt chars=685612
+DONE
