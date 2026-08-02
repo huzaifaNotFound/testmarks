@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-﻿<div align="center">
+<div align="center">
 
 <h1>🎓 Test Marks AI</h1>
 
