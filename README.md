@@ -26,7 +26,7 @@
 
 ---
 
-## ✨ Overview
+##  Overview
 
 **Test Marks AI** is a full-stack educational SaaS that helps students preparing for India's most competitive exams — NEET, JEE Mains, JEE Advanced, and CBSE boards — through adaptive mock tests, AI-powered coaching, deep skill analytics, and personalised study plans.
 
@@ -34,22 +34,22 @@
 
 ---
 
-## 🚀 Features
+##  Features
 
 | Feature | Description |
 |---|---|
-| 🧪 **Adaptive Mock Tests** | Stream-specific tests with configurable question count, subject focus, and difficulty |
-| 🤖 **AI Study Coach** | Real-time coach messages powered by Gemini / OpenAI / Anthropic |
-| 📊 **Brain-Map Analytics** | Radar chart showing per-subject mastery across 12 topics |
-| 🔥 **Skill Heatmap** | Topic-level accuracy heatmap across all your attempts |
-| 🎯 **Rank Predictor** | Estimates expected score vs stream maximum based on your recent accuracy |
-| 📈 **Score Trend** | Line chart tracking your last 20 test attempts |
-| 🏅 **XP & Badges** | Streak rewards, accuracy badges, and a level system |
-| 🗺️ **Study Plan** | AI-generated focused practice tests for your weakest topics |
-| 👤 **Auth & Profiles** | Firebase Auth with student / admin roles and Firestore profile storage |
-| 💎 **Premium Tier** | Usage limits on the free tier with upgrade flow |
-| 🌙 **Dark Mode** | System-aware dark/light theme with manual toggle |
-| 📴 **Offline Fallback** | Full local analytics engine when the backend is unreachable |
+| **Adaptive Mock Tests** | Stream-specific tests with configurable question count, subject focus, and difficulty |
+| **AI Study Coach** | Real-time coach messages powered by Gemini / OpenAI / Anthropic |
+| **Brain-Map Analytics** | Radar chart showing per-subject mastery across 12 topics |
+| **Skill Heatmap** | Topic-level accuracy heatmap across all your attempts |
+| **Rank Predictor** | Estimates expected score vs stream maximum based on your recent accuracy |
+| **Score Trend** | Line chart tracking your last 20 test attempts |
+| **XP & Badges** | Streak rewards, accuracy badges, and a level system |
+| **Study Plan** | AI-generated focused practice tests for your weakest topics |
+| **Auth & Profiles** | Firebase Auth with student / admin roles and Firestore profile storage |
+| **Premium Tier** | Usage limits on the free tier with upgrade flow |
+| **Dark Mode** | System-aware dark/light theme with manual toggle |
+| **Offline Fallback** | Full local analytics engine when the backend is unreachable |
 
 ---
 
@@ -199,33 +199,6 @@ Frontend will be live at `http://localhost:3000`
 
 ---
 
-## 🔐 Environment Variables
-
-Create `web/.env.local` with the following:
-
-```env
-# Backend API base URL (leave as-is for local development)
-NEXT_PUBLIC_API_URL=http://localhost:8000
-
-# Firebase — get these from your Firebase project settings
-NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
-```
-
-For the **AI coach** feature, set in `api/`:
-
-```env
-# Pick one provider
-GEMINI_API_KEY=your_gemini_key
-OPENAI_API_KEY=your_openai_key
-ANTHROPIC_API_KEY=your_anthropic_key
-```
-
----
 
 ## 📡 API Reference
 
@@ -243,24 +216,8 @@ Full interactive API docs available at `http://localhost:8000/docs` when the bac
 
 ---
 
-## 🎨 Design System
 
-The app uses a custom warm-academic design identity:
-
-| Token | Value | Use |
-|---|---|---|
-| Primary (Indigo) | `#3D3580` | Buttons, links, charts |
-| Gold | `#C8952A` | Accents, streaks, highlights |
-| Forest | `#2D6A4F` | Success, high mastery |
-| Danger | `#B94040` | Errors, low mastery |
-| Surface | `#FDFAF4` | Page background |
-| Ink | `#1C1C1E` | Body text |
-
-All tokens are defined in `web/src/lib/tokens.ts` and `web/src/app/globals.css`.
-
----
-
-## 🧩 Key Design Decisions
+## Key Design Decisions
 
 - **Offline-first analytics** — When the backend is unreachable, `result-store.ts` maintains a local attempt history in `localStorage` and computes full analytics (heatmaps, brain maps, XP, badges) client-side.
 - **Example data for new users** — Brand-new accounts see fully populated demo data so the app never feels empty. It resets automatically after the first real test is submitted.
