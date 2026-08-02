@@ -23,23 +23,23 @@ export default function StatCard({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-30px" }}
-      transition={{ duration: 0.45, delay }}
+      transition={{ duration: 0.4, delay }}
       className="card p-5 sm:p-6"
     >
       <div
-        className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lgx text-white"
-        style={{ background: accent }}
+        className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-lg border border-black/[0.06] bg-black/[0.02] dark:border-white/[0.06] dark:bg-white/[0.02]"
+        style={{ color: accent }}
       >
-        <Icon size={20} />
+        <Icon size={16} />
       </div>
-      <div className="heading text-3xl sm:text-4xl">
+      <div className="heading text-2xl sm:text-3xl font-extrabold text-ink dark:text-white">
         <CountUp value={value} decimals={decimals} suffix={suffix} />
       </div>
       <div className="label mt-1">{label}</div>
-      {sub && <div className="mt-2 text-xs text-black/50 dark:text-white/50">{sub}</div>}
+      {sub && <div className="mt-1.5 text-[11px] text-black/45 dark:text-white/45">{sub}</div>}
     </motion.div>
   );
 }

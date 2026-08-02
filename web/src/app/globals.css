@@ -3,16 +3,23 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* ── Brand palette (unchanged) ─────────────────────────────────── */
+  /* ── Brand palette ───────────────────────────────────────────── */
   --color-crimson: #dc143c;
   --color-crimson-deep: #a30d2e;
   --color-crimson-dark: #7a0a22;
   --color-crimson-light: #ff4d6d;
-  --color-crimson-soft: #ffe3e9;
-  --color-surface: #f6f6f8;
-  --color-ink: #0b0b0f;
+  --color-crimson-soft: #fff0f3;
 
-  /* ── Semantic colors ────────────────────────────────────────────── */
+  /* ── Surface & ink ───────────────────────────────────────────── */
+  --color-surface: #FAFAF8;         /* warm paper */
+  --color-surface-2: #F4F3F0;       /* slightly deeper warm */
+  --color-ink: #111112;             /* refined near-black */
+  --color-ink-2: #1E1E20;           /* dark sidebar */
+  --color-muted: #6B7280;           /* neutral gray text */
+  --color-border: rgba(0,0,0,0.07); /* whisper border */
+  --color-border-dark: rgba(255,255,255,0.08);
+
+  /* ── Semantic colors ────────────────────────────────────────── */
   --color-success: #16a34a;
   --color-success-soft: #f0fdf4;
   --color-success-dark: #15803d;
@@ -33,47 +40,45 @@
   --color-neutral-soft: #f8fafc;
   --color-neutral-dark: #475569;
 
-  /* ── Mastery color scale (heatmap / topic accuracy) ────────────── */
-  --color-mastery-high: #16a34a;     /* ≥ 80% */
-  --color-mastery-good: #65a30d;     /* ≥ 60% */
-  --color-mastery-moderate: #f59e0b; /* ≥ 40% */
-  --color-mastery-weak: #f97316;     /* ≥ 20% */
-  --color-mastery-low: #ef4444;      /* < 20% */
+  /* ── Mastery color scale ─────────────────────────────────────── */
+  --color-mastery-high: #16a34a;
+  --color-mastery-good: #65a30d;
+  --color-mastery-moderate: #f59e0b;
+  --color-mastery-weak: #f97316;
+  --color-mastery-low: #ef4444;
 
-  /* ── Fonts (unchanged) ──────────────────────────────────────────── */
+  /* ── Fonts ───────────────────────────────────────────────────── */
   --font-heading: var(--font-space-grotesk), "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-inter), "Inter", ui-sans-serif, system-ui, sans-serif;
 
-  /* ── Border radius scale ────────────────────────────────────────── */
-  --radius-sm: 0.25rem;   /* 4px  */
-  --radius-md: 0.5rem;    /* 8px  */
-  --radius-lg: 0.75rem;   /* 12px */
-  --radius-card: 1.25rem; /* 20px — unchanged */
-  --radius-lgx: 1rem;     /* 16px — unchanged */
-  --radius-pill: 999px;   /* unchanged */
+  /* ── Border radius scale ─────────────────────────────────────── */
+  --radius-sm: 0.25rem;    /* 4px  */
+  --radius-md: 0.5rem;     /* 8px  */
+  --radius-lg: 0.625rem;   /* 10px */
+  --radius-card: 0.75rem;  /* 12px — tighter, more editorial */
+  --radius-lgx: 0.75rem;   /* 12px — alias */
+  --radius-pill: 999px;
 
-  /* ── Shadow / elevation scale ───────────────────────────────────── */
-  --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.06);
-  --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.07);
-  --shadow-3: 0 12px 32px rgba(0, 0, 0, 0.09);
-  --shadow-4: 0 24px 64px rgba(0, 0, 0, 0.12);
+  /* ── Shadow / elevation scale ────────────────────────────────── */
+  --shadow-1: 0 1px 2px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.04);
+  --shadow-2: 0 2px 8px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04);
+  --shadow-3: 0 4px 16px rgba(0,0,0,0.07), 0 0 0 1px rgba(0,0,0,0.05);
+  --shadow-4: 0 8px 32px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.06);
 
-  /* Legacy names preserved for backward compat — mapped to new scale */
-  --shadow-card: var(--shadow-2);
-  --shadow-soft: var(--shadow-3);
+  /* Legacy aliases preserved */
+  --shadow-card: var(--shadow-1);
+  --shadow-soft: var(--shadow-2);
+  --shadow-glow: 0 0 0 1px rgba(220,20,60,0.15);
+  --shadow-glow-lg: 0 2px 12px rgba(220,20,60,0.12);
 
-  /* Glow shadows — kept but opacity reduced (0.18 / 0.22) */
-  --shadow-glow: 0 0 28px rgba(220, 20, 60, 0.18);
-  --shadow-glow-lg: 0 0 56px rgba(220, 20, 60, 0.22);
-
-  /* ── Motion tokens ──────────────────────────────────────────────── */
+  /* ── Motion tokens ───────────────────────────────────────────── */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
-  --duration-fast: 150ms;
-  --duration-base: 200ms;
-  --duration-slow: 400ms;
+  --duration-fast: 120ms;
+  --duration-base: 180ms;
+  --duration-slow: 350ms;
 
-  /* ── Animations ─────────────────────────────────────────────────── */
+  /* ── Animations ──────────────────────────────────────────────── */
   --animate-marquee: marquee 32s linear infinite;
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-glow: pulse-glow 2.4s ease-in-out infinite;
@@ -87,10 +92,10 @@
   }
   @keyframes float {
     0%, 100% { transform: translateY(0); }
-    50%       { transform: translateY(-12px); }
+    50%       { transform: translateY(-8px); }
   }
   @keyframes pulse-glow {
-    0%, 100% { opacity: 0.55; }
+    0%, 100% { opacity: 0.5; }
     50%       { opacity: 1; }
   }
   @keyframes fade-in {
@@ -98,7 +103,7 @@
     to   { opacity: 1; }
   }
   @keyframes slide-up {
-    from { opacity: 0; transform: translateY(12px); }
+    from { opacity: 0; transform: translateY(10px); }
     to   { opacity: 1; transform: translateY(0); }
   }
   @keyframes skeleton-shimmer {
@@ -107,7 +112,7 @@
   }
 }
 
-/* ── Base ───────────────────────────────────────────────────────────── */
+/* ── Base ────────────────────────────────────────────────────────── */
 
 html {
   scroll-behavior: smooth;
@@ -118,11 +123,13 @@ body {
   color: var(--color-ink);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
 }
 
 .dark body {
-  background-color: #0b0b0f;
-  color: #f4f4f6;
+  background-color: #0D0D10;
+  color: #EDEDEF;
 }
 
 ::selection {
@@ -130,40 +137,40 @@ body {
   color: #fff;
 }
 
-/* ── Global focus-visible ring ─────────────────────────────────────── */
+/* ── Global focus-visible ring ─────────────────────────────────── */
 
 :focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 4px rgba(220, 20, 60, 0.55);
+  box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 4px rgba(220,20,60,0.5);
 }
 
 .dark :focus-visible {
-  box-shadow: 0 0 0 2px #0b0b0f, 0 0 0 4px rgba(220, 20, 60, 0.65);
+  box-shadow: 0 0 0 2px #0D0D10, 0 0 0 4px rgba(220,20,60,0.6);
 }
 
-/* ── Confetti animation (page-level, unchanged) ─────────────────────── */
+/* ── Confetti ────────────────────────────────────────────────────── */
 
 @keyframes confetti-fall {
   0%   { opacity: 1; transform: translateY(0) rotate(0deg); }
   100% { opacity: 0; transform: translateY(105vh) rotate(720deg); }
 }
 
-/* ── Scrollbar ─────────────────────────────────────────────────────── */
+/* ── Scrollbar ───────────────────────────────────────────────────── */
 
-::-webkit-scrollbar       { width: 10px; height: 10px; }
+::-webkit-scrollbar       { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: rgba(220, 20, 60, 0.25);
+  background: rgba(0,0,0,0.12);
   border-radius: 999px;
 }
-::-webkit-scrollbar-thumb:hover { background: var(--color-crimson); }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.22); }
+.dark ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.10); }
+.dark ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.20); }
 
-/* ── Prefers-reduced-motion ────────────────────────────────────────── */
+/* ── Reduced motion ─────────────────────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -171,7 +178,7 @@ body {
   }
 }
 
-/* ── Component classes ─────────────────────────────────────────────── */
+/* ── Component classes ───────────────────────────────────────────── */
 
 @layer components {
   /* Layout */
@@ -179,120 +186,90 @@ body {
     @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
   }
 
-  /* ── Cards ────────────────────────────────────────────────────── */
+  /* ── Cards ──────────────────────────────────────────────────── */
   .card {
-    @apply rounded-card border border-black/5 bg-white shadow-card dark:border-white/10 dark:bg-white/5;
+    @apply rounded-card border border-black/[0.07] bg-white shadow-card dark:border-white/[0.08] dark:bg-white/[0.04];
   }
-  /* Flat card — border only, no shadow */
   .card-flat {
-    @apply rounded-card border border-black/5 bg-white dark:border-white/10 dark:bg-white/5;
+    @apply rounded-card border border-black/[0.07] bg-white dark:border-white/[0.08] dark:bg-white/[0.04];
   }
-  /* Inset card — slightly recessed background for nested content */
   .card-inset {
-    @apply rounded-lg border border-black/5 bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.03];
+    @apply rounded-lg border border-black/[0.06] bg-black/[0.015] dark:border-white/[0.08] dark:bg-white/[0.02];
   }
 
-  /* ── Buttons ──────────────────────────────────────────────────── */
+  /* ── Buttons ────────────────────────────────────────────────── */
   .btn,
   .btn-primary,
   .btn-secondary,
   .btn-ghost,
   .btn-danger,
   .btn-success {
-    @apply inline-flex items-center justify-center gap-2 rounded-pill px-6 py-3 text-sm font-semibold
-           transition-all duration-200
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold
+           transition-all duration-150
            disabled:cursor-not-allowed disabled:opacity-50
-           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson/60 focus-visible:ring-offset-2;
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson/50 focus-visible:ring-offset-2;
   }
   .btn-primary {
-    @apply bg-crimson text-white hover:bg-crimson-deep hover:brightness-105
-           shadow-glow active:scale-[0.98];
+    @apply bg-crimson text-white hover:bg-crimson-deep active:scale-[0.98];
   }
   .btn-secondary {
-    @apply bg-ink text-white hover:bg-black
-           dark:bg-white dark:text-ink dark:hover:bg-white/85;
+    @apply bg-ink text-white hover:bg-black active:scale-[0.98]
+           dark:bg-white dark:text-ink dark:hover:bg-white/90;
   }
   .btn-ghost {
-    @apply border border-black/10 bg-transparent
-           hover:border-crimson hover:text-crimson
-           dark:border-white/15 dark:hover:border-crimson dark:hover:text-crimson-light;
+    @apply border border-black/10 bg-transparent text-ink/80
+           hover:border-black/20 hover:bg-black/[0.03] hover:text-ink
+           dark:border-white/12 dark:text-white/70 dark:hover:border-white/20 dark:hover:bg-white/[0.05];
   }
-  .btn-danger {
-    @apply bg-danger text-white hover:bg-danger-dark active:scale-[0.98];
-  }
-  .btn-success {
-    @apply bg-success text-white hover:bg-success-dark active:scale-[0.98];
-  }
+  .btn-danger  { @apply bg-danger text-white hover:bg-danger-dark active:scale-[0.98]; }
+  .btn-success { @apply bg-success text-white hover:bg-success-dark active:scale-[0.98]; }
 
   /* Button size modifiers */
-  .btn-sm {
-    @apply !px-4 !py-2 !text-xs;
-  }
-  .btn-lg {
-    @apply !px-8 !py-4 !text-base;
-  }
+  .btn-sm { @apply !px-3.5 !py-1.5 !text-xs; }
+  .btn-lg { @apply !px-7 !py-3.5 !text-base; }
 
-  /* ── Chips / tags ─────────────────────────────────────────────── */
+  /* ── Chips / tags ────────────────────────────────────────────── */
   .chip,
   .chip-success,
   .chip-warning,
   .chip-danger,
   .chip-info,
   .chip-crimson {
-    @apply inline-flex items-center gap-1.5 rounded-pill border border-black/10 px-3.5 py-1.5 text-xs font-semibold transition-colors dark:border-white/15;
+    @apply inline-flex items-center gap-1.5 rounded-md border border-black/[0.08] px-2.5 py-1 text-xs font-medium transition-colors dark:border-white/10;
   }
-  .chip-success {
-    @apply border-success/30 bg-success-soft text-success dark:bg-success/15 dark:text-green-400;
-  }
-  .chip-warning {
-    @apply border-warning/30 bg-warning-soft text-warning-dark dark:bg-warning/15 dark:text-amber-400;
-  }
-  .chip-danger {
-    @apply border-danger/30 bg-danger-soft text-danger dark:bg-danger/15 dark:text-red-400;
-  }
-  .chip-info {
-    @apply border-info/30 bg-info-soft text-info-dark dark:bg-info/15 dark:text-sky-400;
-  }
-  .chip-crimson {
-    @apply border-crimson/30 bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light;
-  }
+  .chip-success { @apply border-success/25 bg-success-soft text-success dark:bg-success/10 dark:text-green-400; }
+  .chip-warning { @apply border-warning/25 bg-warning-soft text-warning-dark dark:bg-warning/10 dark:text-amber-400; }
+  .chip-danger  { @apply border-danger/25 bg-danger-soft text-danger dark:bg-danger/10 dark:text-red-400; }
+  .chip-info    { @apply border-info/25 bg-info-soft text-info-dark dark:bg-info/10 dark:text-sky-400; }
+  .chip-crimson { @apply border-crimson/20 bg-crimson-soft text-crimson dark:bg-crimson/10 dark:text-crimson-light; }
 
-  /* ── Inputs ───────────────────────────────────────────────────── */
+  /* ── Inputs ──────────────────────────────────────────────────── */
   .input,
   .input-sm {
-    @apply w-full rounded-lgx border border-black/10 bg-white px-4 py-3 text-sm text-ink outline-none
-           transition-all placeholder:text-black/35
-           focus-visible:border-crimson focus-visible:ring-2 focus-visible:ring-crimson/25
-           dark:border-white/15 dark:bg-ink/60 dark:text-white dark:placeholder:text-white/35;
+    @apply w-full rounded-lg border border-black/[0.09] bg-white px-3.5 py-2.5 text-sm text-ink outline-none
+           transition-all placeholder:text-black/30
+           focus-visible:border-crimson/60 focus-visible:ring-2 focus-visible:ring-crimson/15
+           dark:border-white/10 dark:bg-white/[0.04] dark:text-white dark:placeholder:text-white/30
+           dark:focus-visible:border-crimson/50 dark:focus-visible:ring-crimson/10;
   }
-  .input-sm {
-    @apply !px-3 !py-2 !text-xs;
-  }
+  .input-sm { @apply !px-3 !py-1.5 !text-xs; }
 
-  /* ── Progress ─────────────────────────────────────────────────── */
-  .progress {
-    @apply h-2 w-full overflow-hidden rounded-pill bg-black/[0.06] dark:bg-white/10;
-  }
-  .progress-bar {
-    @apply h-full rounded-pill bg-crimson transition-all duration-700;
-  }
-  .progress-sm {
-    @apply h-1.5;
-  }
-  .progress-lg {
-    @apply h-3;
-  }
-  .progress-success > .progress-bar  { @apply bg-success; }
-  .progress-warning > .progress-bar  { @apply bg-warning; }
-  .progress-danger  > .progress-bar  { @apply bg-danger; }
+  /* ── Progress ────────────────────────────────────────────────── */
+  .progress     { @apply h-1.5 w-full overflow-hidden rounded-full bg-black/[0.06] dark:bg-white/10; }
+  .progress-bar { @apply h-full rounded-full bg-crimson transition-all duration-700; }
+  .progress-sm  { @apply h-1; }
+  .progress-lg  { @apply h-2; }
+  .progress-success > .progress-bar { @apply bg-success; }
+  .progress-warning > .progress-bar { @apply bg-warning; }
+  .progress-danger  > .progress-bar { @apply bg-danger; }
 
-  /* ── Skeleton shimmer ─────────────────────────────────────────── */
+  /* ── Skeleton shimmer ────────────────────────────────────────── */
   .skeleton {
     background: linear-gradient(
       90deg,
-      rgba(0, 0, 0, 0.06) 25%,
-      rgba(0, 0, 0, 0.1)  50%,
-      rgba(0, 0, 0, 0.06) 75%
+      rgba(0,0,0,0.05) 25%,
+      rgba(0,0,0,0.09) 50%,
+      rgba(0,0,0,0.05) 75%
     );
     background-size: 800px 100%;
     animation: skeleton-shimmer 1.6s ease-in-out infinite;
@@ -301,18 +278,23 @@ body {
   .dark .skeleton {
     background: linear-gradient(
       90deg,
-      rgba(255, 255, 255, 0.04) 25%,
-      rgba(255, 255, 255, 0.08) 50%,
-      rgba(255, 255, 255, 0.04) 75%
+      rgba(255,255,255,0.03) 25%,
+      rgba(255,255,255,0.07) 50%,
+      rgba(255,255,255,0.03) 75%
     );
     background-size: 800px 100%;
   }
 
-  /* ── Typography helpers ───────────────────────────────────────── */
+  /* ── Typography helpers ──────────────────────────────────────── */
   .heading {
     @apply font-heading font-bold tracking-tight;
   }
   .label {
-    @apply text-[11px] font-semibold uppercase tracking-[0.14em] text-black/45 dark:text-white/45;
+    @apply text-[10.5px] font-semibold uppercase tracking-[0.12em] text-black/40 dark:text-white/40;
+  }
+
+  /* ── Divider ─────────────────────────────────────────────────── */
+  .divider {
+    @apply h-px w-full bg-black/[0.06] dark:bg-white/[0.06];
   }
 }

@@ -157,24 +157,24 @@ export default function QuestionPlayer({
 
   const diffBadge =
     currentQuestion.difficulty === "hard"
-      ? "bg-rose-500/10 text-rose-600 dark:text-rose-400"
+      ? "chip-danger"
       : currentQuestion.difficulty === "medium"
-        ? "bg-amber-500/10 text-amber-600 dark:text-amber-400"
-        : "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400";
+        ? "chip-warning"
+        : "chip-success";
 
   return (
-    <div className="flex min-h-screen flex-col bg-surface dark:bg-ink">
-      <header className="sticky top-0 z-40 border-b border-black/5 bg-white/80 backdrop-blur-md dark:border-white/10 dark:bg-ink/80">
-        <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-3 px-4 sm:px-6">
+    <div className="flex min-h-screen flex-col bg-surface dark:bg-[#0D0D10]">
+      <header className="sticky top-0 z-40 border-b border-black/[0.07] bg-white/90 backdrop-blur-md dark:border-white/[0.07] dark:bg-[#0D0D10]/90">
+        <div className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between gap-3 px-4 sm:px-6">
           <button
             onClick={() => setConfirmOpen(true)}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-black/50 transition-colors hover:text-crimson dark:text-white/50"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-black/45 transition-colors hover:text-crimson dark:text-white/45"
           >
             <ArrowLeft size={14} /> Exit Test
           </button>
           <div className="min-w-0 flex-1 text-center">
-            <div className="truncate text-sm font-bold sm:text-base">{test.title}</div>
-            <div className="text-[11px] text-black/45 dark:text-white/45 font-medium">
+            <div className="truncate text-sm font-bold text-ink dark:text-white">{test.title}</div>
+            <div className="text-[11px] text-black/45 dark:text-white/45 font-semibold">
               Question {current + 1} of {questions.length} · {answeredCount} answered
             </div>
           </div>
@@ -185,10 +185,10 @@ export default function QuestionPlayer({
             </button>
             <button
               onClick={() => setPaletteOpen((v) => !v)}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-pill border border-black/10 lg:hidden dark:border-white/15 focus-visible:ring-2"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-black/[0.09] lg:hidden dark:border-white/10 focus-visible:ring-2"
               aria-label="Toggle palette"
             >
-              <Grid size={16} />
+              <Grid size={15} />
             </button>
           </div>
         </div>
@@ -213,20 +213,20 @@ export default function QuestionPlayer({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.15 }}
-              className="card p-5 sm:p-8 space-y-6 bg-white dark:bg-white/[0.02]"
+              className="card p-5 sm:p-8 space-y-5"
             >
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="chip border-crimson/20 bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light">
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span className="chip-crimson">
                   {currentQuestion.subject}
                 </span>
-                <span className="chip text-black/50 dark:text-white/40">{currentQuestion.topic}</span>
-                <span className={cn("chip font-medium", diffBadge)}>{currentQuestion.difficulty}</span>
-                <span className="chip text-black/40 dark:text-white/40 font-mono">Q{current + 1}</span>
+                <span className="chip">{currentQuestion.topic}</span>
+                <span className={cn("chip font-semibold", diffBadge)}>{currentQuestion.difficulty}</span>
+                <span className="chip font-mono">Q{current + 1}</span>
               </div>
-              <h2 className="heading text-lg leading-relaxed sm:text-xl font-medium">
+              <h2 className="heading text-base leading-relaxed sm:text-lg font-medium text-ink dark:text-white">
                 {currentQuestion.question}
               </h2>
-              <div className="grid gap-3">
+              <div className="grid gap-2.5">
                 {currentQuestion.options.map((opt, i) => {
                   const chosen = answers[order[current]] === i;
                   return (
@@ -234,44 +234,44 @@ export default function QuestionPlayer({
                       key={i}
                       onClick={() => selectOption(i)}
                       className={cn(
-                        "group flex items-center gap-3.5 rounded-xl border px-4 py-3.5 text-left text-sm transition-all sm:text-[15px] focus-visible:ring-2",
+                        "group flex items-center gap-3 rounded-lg border px-4 py-3.5 text-left text-[13.5px] transition-all sm:text-[14.5px] focus-visible:ring-2",
                         chosen
                           ? "border-crimson bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light font-semibold"
-                          : "border-black/5 bg-white/50 hover:border-black/10 dark:border-white/10 dark:bg-white/[0.01] dark:hover:border-white/20",
+                          : "border-black/[0.06] bg-white/50 hover:border-black/15 dark:border-white/10 dark:bg-[#141416]/50 dark:hover:border-white/20",
                       )}
                     >
                       <span
                         className={cn(
-                          "inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-xs font-bold shadow-sm transition-colors",
+                          "inline-flex h-6.5 w-6.5 shrink-0 items-center justify-center rounded-md text-xs font-bold transition-colors",
                           chosen
                             ? "bg-crimson text-white"
-                            : "bg-black/5 text-black/60 group-hover:bg-crimson/10 group-hover:text-crimson dark:bg-white/10 dark:text-white/60",
+                            : "bg-black/[0.04] text-black/55 group-hover:bg-crimson/10 group-hover:text-crimson dark:bg-white/[0.08] dark:text-white/50",
                         )}
                       >
                         {OPTION_LETTERS[i]}
                       </span>
-                      <span className="flex-1">{opt}</span>
-                      {chosen && <Check size={16} className="ml-auto shrink-0 text-crimson" />}
+                      <span className="flex-1 text-ink dark:text-white">{opt}</span>
+                      {chosen && <Check size={14} className="ml-auto shrink-0 text-crimson" />}
                     </button>
                   );
                 })}
               </div>
 
               <div className="flex flex-wrap items-center gap-3 pt-2">
-                <button onClick={toggleFlag} className="btn-ghost btn-sm !py-2.5">
-                  {flagged[order[current]] ? <FlagOff size={15} /> : <Flag size={15} />}
-                  {flagged[order[current]] ? "Unflag Question" : "Flag Question"}
+                <button onClick={toggleFlag} className="btn-ghost btn-sm !py-2">
+                  {flagged[order[current]] ? <FlagOff size={14} /> : <Flag size={14} />}
+                  {flagged[order[current]] ? "Unflag" : "Flag"}
                 </button>
                 <button
                   onClick={() => toggleSaved(order[current])}
                   className={cn(
-                    "btn btn-sm !py-2.5",
+                    "btn btn-sm !py-2",
                     saved[order[current]]
                       ? "border border-crimson bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light"
                       : "btn-ghost",
                   )}
                 >
-                  {saved[order[current]] ? <BookmarkCheck size={15} /> : <Bookmark size={15} />}
+                  {saved[order[current]] ? <BookmarkCheck size={14} /> : <Bookmark size={14} />}
                   {saved[order[current]] ? "Saved" : "Save for later"}
                 </button>
                 <span className="ml-auto hidden text-[10px] font-medium text-black/35 sm:block dark:text-white/35">
@@ -282,23 +282,23 @@ export default function QuestionPlayer({
           </AnimatePresence>
 
           <div className="mt-6 flex items-center justify-between gap-3">
-            <button onClick={() => goTo(current - 1)} disabled={current === 0} className="btn-ghost btn-sm !py-2.5">
-              <ArrowLeft size={15} /> Prev
+            <button onClick={() => goTo(current - 1)} disabled={current === 0} className="btn-ghost btn-sm !py-2">
+              <ArrowLeft size={14} /> Prev
             </button>
             {current === questions.length - 1 ? (
-              <button onClick={() => setConfirmOpen(true)} className="btn-primary btn-sm !py-2.5">
-                Finish test <Send size={14} />
+              <button onClick={() => setConfirmOpen(true)} className="btn-primary btn-sm !py-2">
+                Finish test <Send size={13} />
               </button>
             ) : (
-              <button onClick={() => goTo(current + 1)} className="btn-primary btn-sm !py-2.5">
-                Next <ArrowRight size={15} />
+              <button onClick={() => goTo(current + 1)} className="btn-primary btn-sm !py-2">
+                Next <ArrowRight size={14} />
               </button>
             )}
           </div>
         </div>
 
         <aside className="hidden lg:block">
-          <div className="card sticky top-24 p-5 bg-white dark:bg-white/[0.02] border border-black/5 dark:border-white/10">
+          <div className="card sticky top-20 p-5 bg-white dark:bg-[#141416]">
             <QuestionPalette
               order={order}
               currentIdx={current}
@@ -319,18 +319,18 @@ export default function QuestionPlayer({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-ink/40 backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 z-50 bg-ink/30 backdrop-blur-sm lg:hidden"
             onClick={() => setPaletteOpen(false)}
           >
             <motion.div
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               exit={{ y: "100%" }}
-              transition={{ type: "spring", stiffness: 320, damping: 34 }}
+              transition={{ type: "spring", stiffness: 340, damping: 34 }}
               onClick={(e) => e.stopPropagation()}
-              className="absolute inset-x-0 bottom-0 max-h-[85vh] overflow-y-auto rounded-t-3xl bg-white p-5 dark:bg-ink border-t border-black/5 dark:border-white/10"
+              className="absolute inset-x-0 bottom-0 max-h-[85vh] overflow-y-auto rounded-t-2xl bg-white p-5 dark:bg-[#141416] border-t border-black/[0.07] dark:border-white/[0.07]"
             >
-              <div className="mx-auto mb-4 h-1.5 w-12 rounded-pill bg-black/15 dark:bg-white/20" />
+              <div className="mx-auto mb-4 h-1.5 w-12 rounded-full bg-black/10 dark:bg-white/10" />
               <QuestionPalette
                 order={order}
                 currentIdx={current}
@@ -355,22 +355,22 @@ export default function QuestionPlayer({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] flex items-center justify-center bg-ink/50 p-4 backdrop-blur-sm"
+            className="fixed inset-0 z-[60] flex items-center justify-center bg-ink/30 p-4 backdrop-blur-sm"
           >
             <motion.div
               initial={{ scale: 0.96, y: 8 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.96, y: 8 }}
-              className="card w-full max-w-md p-6 sm:p-8 bg-white dark:bg-ink border border-black/5 dark:border-white/10"
+              className="card w-full max-w-md p-6 text-center bg-white dark:bg-[#1A1A1E]"
             >
-              <h3 className="heading text-xl font-bold">Submit test?</h3>
-              <p className="mt-2 text-sm text-black/55 dark:text-white/55">
+              <h3 className="heading text-lg font-bold text-ink dark:text-white">Submit test?</h3>
+              <p className="mt-2 text-xs sm:text-sm text-black/55 dark:text-white/55">
                 You answered <span className="font-bold text-crimson">{answeredCount}</span> of{" "}
                 {questions.length} questions and flagged{" "}
-                <span className="font-bold">{flagged.filter(Boolean).length}</span>.
+                <span className="font-bold text-ink dark:text-white">{flagged.filter(Boolean).length}</span>.
               </p>
               {answeredCount < questions.length && (
-                <p className="mt-2 text-xs text-amber-600 dark:text-amber-400 font-semibold bg-amber-500/10 p-2.5 rounded-lg">
+                <p className="mt-2.5 text-xs text-amber-600 dark:text-amber-400 font-semibold bg-amber-500/10 p-2.5 rounded-lg">
                   {questions.length - answeredCount} unanswered — unanswered questions score zero.
                 </p>
               )}
@@ -379,7 +379,7 @@ export default function QuestionPlayer({
                   Keep working
                 </button>
                 <button onClick={() => void submit()} className="btn-primary">
-                  <Send size={14} /> Submit now
+                  <Send size={13} /> Submit now
                 </button>
               </div>
             </motion.div>
@@ -388,9 +388,9 @@ export default function QuestionPlayer({
       </AnimatePresence>
 
       {submitting && (
-        <div className="fixed inset-0 z-[70] flex flex-col items-center justify-center gap-4 bg-white/90 backdrop-blur-sm dark:bg-ink/95">
-          <Loader2 size={32} className="animate-spin text-crimson" />
-          <p className="text-sm font-semibold text-black/70 dark:text-white/70">
+        <div className="fixed inset-0 z-[70] flex flex-col items-center justify-center gap-4 bg-white/95 backdrop-blur-sm dark:bg-[#0D0D10]/95">
+          <Loader2 size={24} className="animate-spin text-crimson" />
+          <p className="text-sm font-semibold text-ink dark:text-white">
             Grading your test with the AI coach…
           </p>
         </div>

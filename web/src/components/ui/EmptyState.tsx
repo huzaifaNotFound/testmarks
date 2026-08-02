@@ -3,24 +3,11 @@
  *
  * Structured empty / zero-data state component.
  * Replaces ad-hoc inline <p>No attempts yet...</p> patterns.
- *
- * Usage:
- *   <EmptyState
- *     icon={ClipboardList}
- *     title="No attempts yet"
- *     description="Take your first mock test to see results here."
- *     action={{ label: "Start a test", href: "/mock-test" }}
- *   />
- *
- *   // With button action instead of link:
- *   <EmptyState
- *     title="No data available"
- *     action={{ label: "Refresh", onClick: () => refetch() }}
- *   />
  */
 
 import type { LucideIcon } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface EmptyStateAction {
@@ -47,15 +34,19 @@ export default function EmptyState({
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center gap-3 py-12 text-center",
+        "flex flex-col items-center justify-center gap-3 py-10 text-center",
         className,
       )}
     >
-      {Icon && (
-        <span className="inline-flex h-12 w-12 items-center justify-center rounded-card bg-black/[0.04] text-black/30 dark:bg-white/[0.06] dark:text-white/30">
-          <Icon size={22} aria-hidden="true" />
-        </span>
-      )}
+      {/* Voxel illustration for empty state */}
+      <div className="relative mb-2 h-20 w-20 overflow-hidden rounded-lg border border-black/[0.05] bg-white dark:border-white/10 dark:bg-white/[0.02]">
+        <Image
+          src="/illustrations/empty.png"
+          alt="No data"
+          fill
+          className="object-cover opacity-85 dark:opacity-75"
+        />
+      </div>
 
       <div>
         <p className="text-sm font-semibold text-black/60 dark:text-white/60">
