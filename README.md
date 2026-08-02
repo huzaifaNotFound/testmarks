@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<div align="center">
 
 <h1>🎓 Test Marks AI</h1>
@@ -298,3 +299,6 @@ This project is licensed under the **MIT License** — see [LICENSE](LICENSE) fo
   <p>Built with ❤️ for India's exam warriors</p>
   <p><strong>NEET · JEE Mains · JEE Advanced · CBSE</strong></p>
 </div>
+=======
+AI-powered mock test & analytics platform for NEET, JEE and CBSE students. Adaptive diagnostics, brain-map skill tracking, AI study coach, and personalised exam predictions. Built with Next.js 16, FastAPI, Firebase and Recharts.
+>>>>>>> 2e2b2cb435074c94bfe35afc9740b9cebae0d1ba
