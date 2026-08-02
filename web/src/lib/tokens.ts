@@ -8,6 +8,8 @@
  * Do NOT use raw hex strings in component files — import from here instead.
  */
 
+import { normalizeMastery } from "./utils";
+
 // ── Mastery color scale ────────────────────────────────────────────────────
 // Single source of truth for topic accuracy thresholds.
 // Used by: HeatmapGrid (dashboard), mastery heatmap (analytics), ScoreRing.
@@ -25,16 +27,17 @@ export const MASTERY_LEVELS = {
   low:      { bg: "#ef4444", label: "Needs work"  },   //  < 20 %
 } as const satisfies Record<string, MasteryLevel>;
 
-/** Returns the mastery level object for a given accuracy value (0–1). */
+/** Returns the mastery level object for a given accuracy value (0–1 or 0–100). */
 export function getMasteryLevel(accuracy: number): MasteryLevel {
-  if (accuracy >= 0.8) return MASTERY_LEVELS.high;
-  if (accuracy >= 0.6) return MASTERY_LEVELS.good;
-  if (accuracy >= 0.4) return MASTERY_LEVELS.moderate;
-  if (accuracy >= 0.2) return MASTERY_LEVELS.weak;
+  const norm = normalizeMastery(accuracy);
+  if (norm >= 0.8) return MASTERY_LEVELS.high;
+  if (norm >= 0.6) return MASTERY_LEVELS.good;
+  if (norm >= 0.4) return MASTERY_LEVELS.moderate;
+  if (norm >= 0.2) return MASTERY_LEVELS.weak;
   return MASTERY_LEVELS.low;
 }
 
-/** Returns just the hex background colour for a given accuracy value (0–1). */
+/** Returns just the hex background colour for a given accuracy value. */
 export function getMasteryColor(accuracy: number): string {
   return getMasteryLevel(accuracy).bg;
 }

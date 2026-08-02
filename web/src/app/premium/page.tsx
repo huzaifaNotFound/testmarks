@@ -11,6 +11,7 @@ import {
   Loader2,
 } from "lucide-react";
 import AppShell from "@/components/AppShell";
+import { PageHeader } from "@/components/ui";
 import { RequireAuth, useAuth } from "@/lib/auth";
 import { cn } from "@/lib/utils";
 
@@ -65,171 +66,175 @@ export default function PremiumPage() {
   return (
     <RequireAuth>
       <AppShell>
-      <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
-        <div className="text-center">
-          <span className="chip mx-auto border-crimson/30 bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light">
-            <Sparkles size={13} /> Premium
-          </span>
-          <h1 className="heading mx-auto mt-4 max-w-xl text-3xl sm:text-5xl">
-            Train without limits
-          </h1>
-          <p className="mx-auto mt-3 max-w-md text-sm text-black/55 dark:text-white/55">
-            {isPremium
-              ? "You are a Premium member. Thanks for believing in the grind."
-              : "Free is for trying. Premium is for topping the rank list."}
-          </p>
-        </div>
-
-        <div className="mx-auto mt-10 grid max-w-4xl gap-5 lg:grid-cols-2">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.05 }}
-            className="card p-7"
-          >
-            <h3 className="heading text-lg">Free</h3>
-            <div className="heading mt-2 text-4xl">
-              ₹0 <span className="text-sm font-medium text-black/45 dark:text-white/45">/ forever</span>
-            </div>
-            <ul className="mt-5 space-y-2.5">
-              {FREE_FEATURES.map((f) => (
-                <li key={f} className="flex items-start gap-2.5 text-sm text-black/65 dark:text-white/65">
-                  <Check size={15} className="mt-0.5 shrink-0 text-emerald-500" /> {f}
-                </li>
-              ))}
-            </ul>
-            {!isPremium && (
-              <div className="mt-6 rounded-lgx bg-black/[0.04] px-4 py-3 text-xs font-semibold text-black/55 dark:bg-white/5 dark:text-white/55">
-                Current plan — {2 - 1} of 2 tests left today
-              </div>
-            )}
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.12 }}
-            className="relative overflow-hidden rounded-card bg-gradient-to-br from-crimson to-crimson-deep p-7 text-white shadow-glow-lg"
-          >
-            <div className="pointer-events-none absolute -right-14 -top-16 h-48 w-48 rounded-full bg-white/15 blur-2xl" />
-            <span className="inline-flex items-center gap-1 rounded-pill bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider">
-              <Sparkles size={11} /> Recommended
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className="space-y-8"
+        >
+          <div className="text-center space-y-3">
+            <span className="chip mx-auto border-crimson/25 bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light">
+              <Sparkles size={12} /> Pricing plans
             </span>
-            <h3 className="heading mt-3 text-lg">Premium</h3>
-            <div className="heading mt-2 text-4xl">
-              ₹499 <span className="text-sm font-medium text-white/60">/ month</span>
-            </div>
-            <ul className="mt-5 space-y-2.5">
-              {PREMIUM_FEATURES.map((f) => (
-                <li key={f} className="flex items-start gap-2.5 text-sm text-white/85">
-                  <Check size={15} className="mt-0.5 shrink-0 text-white" /> {f}
-                </li>
-              ))}
-            </ul>
-            <button
-              onClick={handleUpgrade}
-              disabled={isPremium}
-              className="btn mt-6 w-full bg-white text-crimson-deep hover:bg-white/90 disabled:opacity-70"
-            >
-              {isPremium ? (
-                <>
-                  <Check size={16} /> Active
-                </>
-              ) : (
-                <>
-                  <CreditCard size={16} /> Upgrade to Premium
-                </>
-              )}
-            </button>
-          </motion.div>
-        </div>
-
-        <div className="mx-auto mt-10 max-w-4xl">
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="card overflow-hidden p-0">
-            <div className="border-b border-black/5 p-6 dark:border-white/10">
-              <h3 className="heading text-lg">Feature comparison</h3>
-            </div>
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[480px] text-sm">
-                <thead>
-                  <tr className="text-left text-xs uppercase tracking-wider text-black/45 dark:text-white/45">
-                    <th className="px-6 py-3 font-semibold">Feature</th>
-                    <th className="px-6 py-3 text-center font-semibold">Free</th>
-                    <th className="bg-crimson/5 px-6 py-3 text-center font-semibold text-crimson dark:bg-crimson/10">Premium</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {COMPARISON.map((row, i) => (
-                    <tr key={row.feature} className={cn("border-t border-black/5 dark:border-white/10", i % 2 === 1 && "bg-black/[0.02] dark:bg-white/[0.02]")}>
-                      <td className="px-6 py-3.5 font-medium">{row.feature}</td>
-                      <td className="px-6 py-3.5 text-center text-black/50 dark:text-white/50">{row.free}</td>
-                      <td className="bg-crimson/5 px-6 py-3.5 text-center font-bold text-crimson dark:bg-crimson/10 dark:text-crimson-light">{row.premium}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </motion.div>
-        </div>
-
-        <div className="mx-auto mt-6 max-w-4xl rounded-lgx border border-dashed border-black/15 p-4 text-center text-xs text-black/45 dark:border-white/15 dark:text-white/45">
-          <div className="mb-1 flex items-center justify-center gap-1.5 font-bold text-black/60 dark:text-white/60">
-            <Bot size={13} /> PaymentConnector
+            <h1 className="heading text-3xl sm:text-5xl font-extrabold tracking-tight">
+              Train without limits
+            </h1>
+            <p className="mx-auto max-w-md text-sm text-black/55 dark:text-white/55">
+              {isPremium
+                ? "You have active Premium access. Good luck on the prep."
+                : "Unlock full diagnostics, personalized focus tests, and continuous AI tutoring."}
+            </p>
           </div>
-          {PAYMENT_API_KEY ? (
-            <>Payment connector configured with NEXT_PUBLIC_PAYMENT_API_KEY (env).</>
-          ) : (
-            <>
-              Set <code className="rounded bg-black/5 px-1.5 py-0.5 font-mono text-[11px] dark:bg-white/10">NEXT_PUBLIC_PAYMENT_API_KEY</code>{" "}
-              in <code className="rounded bg-black/5 px-1.5 py-0.5 font-mono text-[11px] dark:bg-white/10">.env.local</code> to wire the real gateway.
-            </>
-          )}
-        </div>
-      </motion.div>
 
-      <AnimatePresence>
-        {modalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[70] flex items-center justify-center bg-ink/60 p-4 backdrop-blur-sm"
-          >
-            <motion.div
-              initial={{ scale: 0.94, y: 14 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.94, y: 14 }}
-              className="card w-full max-w-md p-7 text-center"
-            >
-              <button
-                onClick={() => setModalOpen(false)}
-                className="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-lgx text-black/45 hover:text-crimson dark:text-white/45"
-                aria-label="Close"
-              >
-                <X size={16} />
-              </button>
-              <span className="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-card bg-crimson text-white shadow-glow">
-                <CreditCard size={24} />
-              </span>
-              <h3 className="heading mt-4 text-xl">Payment gateway coming soon</h3>
-              <p className="mt-2 text-sm leading-relaxed text-black/55 dark:text-white/55">
-                Payments are not wired up yet. Premium will be activated right here in the app
-                once a payment gateway is connected via{" "}
-                <code className="rounded bg-black/5 px-1 py-0.5 font-mono text-xs dark:bg-white/10">NEXT_PUBLIC_PAYMENT_API_KEY</code>.
-              </p>
-              <div className="mt-6 grid gap-2 sm:grid-cols-2">
-                <button onClick={() => setModalOpen(false)} className="btn-ghost">
-                  Maybe later
-                </button>
-                <button onClick={simulateUpgrade} disabled={processing} className="btn-primary">
-                  {processing ? <Loader2 size={16} className="animate-spin" /> : <Sparkles size={16} />}
-                  Activate premium (stub)
-                </button>
+          <div className="mx-auto grid max-w-4xl gap-5 md:grid-cols-2">
+            <div className="card p-7 bg-white dark:bg-white/[0.01] border-black/5 dark:border-white/10 flex flex-col justify-between">
+              <div className="space-y-5">
+                <div>
+                  <h3 className="heading text-lg font-bold">Free Plan</h3>
+                  <div className="heading mt-2 text-4xl font-extrabold">
+                    ₹0 <span className="text-sm font-medium text-black/45 dark:text-white/45">/ forever</span>
+                  </div>
+                </div>
+                <ul className="space-y-3 text-sm text-black/60 dark:text-white/60">
+                  {FREE_FEATURES.map((f) => (
+                    <li key={f} className="flex items-center gap-2.5">
+                      <Check size={14} className="shrink-0 text-success" />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
+              {!isPremium && (
+                <div className="mt-6 rounded-lg bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 px-4 py-3 text-xs text-black/50 dark:text-white/40 font-medium">
+                  Current plan active. Daily limit reset in 12h.
+                </div>
+              )}
+            </div>
+
+            <div className="card p-7 bg-white dark:bg-white/[0.01] border-crimson/20 dark:border-crimson/30 flex flex-col justify-between shadow-sm relative ring-1 ring-crimson/10">
+              <div className="space-y-5">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h3 className="heading text-lg font-bold text-crimson">Premium access</h3>
+                    <div className="heading mt-2 text-4xl font-extrabold">
+                      ₹499 <span className="text-sm font-medium text-black/45 dark:text-white/45">/ month</span>
+                    </div>
+                  </div>
+                  <span className="inline-flex items-center gap-1 rounded-full bg-crimson/10 px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-wide text-crimson">
+                    <Sparkles size={10} /> RECOMMENDED
+                  </span>
+                </div>
+                <ul className="space-y-3 text-sm text-black/70 dark:text-white/70">
+                  {PREMIUM_FEATURES.map((f) => (
+                    <li key={f} className="flex items-center gap-2.5">
+                      <Check size={14} className="shrink-0 text-crimson" />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <button
+                onClick={handleUpgrade}
+                disabled={isPremium}
+                className={cn(
+                  "w-full mt-6 py-3 px-4 rounded-full text-sm font-bold transition-all focus-visible:ring-2",
+                  isPremium
+                    ? "bg-black/[0.02] text-black/40 border border-black/5 dark:bg-white/5 dark:text-white/30 cursor-not-allowed"
+                    : "bg-crimson text-white hover:bg-crimson-deep"
+                )}
+              >
+                {isPremium ? (
+                  <span className="flex items-center justify-center gap-1.5"><Check size={14} /> Active membership</span>
+                ) : (
+                  <span className="flex items-center justify-center gap-1.5"><CreditCard size={14} /> Upgrade Now</span>
+                )}
+              </button>
+            </div>
+          </div>
+
+          <div className="mx-auto max-w-4xl">
+            <div className="card overflow-hidden p-0 border border-black/5 dark:border-white/10">
+              <div className="border-b border-black/5 p-5 dark:border-white/5 bg-black/[0.01] dark:bg-white/[0.01]">
+                <h3 className="heading text-base font-bold">Feature comparison</h3>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[480px] text-sm">
+                  <thead>
+                    <tr className="text-left text-xs uppercase tracking-wider text-black/45 dark:text-white/40">
+                      <th className="px-6 py-3 font-semibold">Feature</th>
+                      <th className="px-6 py-3 text-center font-semibold">Free</th>
+                      <th className="px-6 py-3 text-center font-semibold text-crimson">Premium</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {COMPARISON.map((row, i) => (
+                      <tr key={row.feature} className={cn("border-t border-black/5 dark:border-white/5", i % 2 === 1 && "bg-black/[0.01] dark:bg-white/[0.01]")}>
+                        <td className="px-6 py-3.5 font-medium">{row.feature}</td>
+                        <td className="px-6 py-3.5 text-center text-black/50 dark:text-white/50">{row.free}</td>
+                        <td className="px-6 py-3.5 text-center font-bold text-crimson dark:text-crimson-light">{row.premium}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div className="mx-auto max-w-4xl rounded-lg border border-dashed border-black/10 p-4 text-center text-xs text-black/45 dark:border-white/10 dark:text-white/40">
+            <div className="mb-1 flex items-center justify-center gap-1.5 font-bold text-black/60 dark:text-white/50">
+              <Bot size={13} /> Payment Connector stub
+            </div>
+            {PAYMENT_API_KEY ? (
+              <span>Configured client key. Real gateway active in production.</span>
+            ) : (
+              <span>
+                Simulated Sandbox Mode. Real payment methods are decoupled.
+              </span>
+            )}
+          </div>
+        </motion.div>
+
+        <AnimatePresence>
+          {modalOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[70] flex items-center justify-center bg-ink/50 p-4 backdrop-blur-sm"
+            >
+              <motion.div
+                initial={{ scale: 0.96, y: 8 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.96, y: 8 }}
+                className="card w-full max-w-md p-6 text-center bg-white dark:bg-ink border border-black/5 dark:border-white/10"
+              >
+                <button
+                  onClick={() => setModalOpen(false)}
+                  className="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-lg text-black/45 hover:text-crimson dark:text-white/45 focus-visible:ring-2"
+                  aria-label="Close"
+                >
+                  <X size={15} />
+                </button>
+                <span className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-full bg-crimson/10 text-crimson">
+                  <CreditCard size={20} />
+                </span>
+                <h3 className="heading mt-4 text-lg font-bold">Simulate membership</h3>
+                <p className="mt-2 text-sm leading-relaxed text-black/55 dark:text-white/55">
+                  Confirm your diagnostic subscription logic bypass. This activates premium status for this account storage context.
+                </p>
+                <div className="mt-6 flex flex-col sm:flex-row gap-2.5">
+                  <button onClick={() => setModalOpen(false)} className="btn-ghost flex-1">
+                    Cancel
+                  </button>
+                  <button onClick={simulateUpgrade} disabled={processing} className="btn-primary flex-1">
+                    {processing ? <Loader2 size={15} className="animate-spin" /> : <Sparkles size={15} />}
+                    Activate Premium
+                  </button>
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>
       </AppShell>
     </RequireAuth>
   );

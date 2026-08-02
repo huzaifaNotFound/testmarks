@@ -31,16 +31,16 @@ export default function QuestionPalette({
 
   const tileClass = (qIdx: number, dIdx: number) =>
     cn(
-      "relative flex h-9 w-9 shrink-0 items-center justify-center rounded-lgx text-xs font-bold transition-all select-none",
+      "relative flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-xs font-bold transition-all select-none focus-visible:ring-2",
       dIdx === currentIdx
-        ? "bg-crimson text-white shadow-glow ring-2 ring-crimson/40"
+        ? "bg-crimson text-white font-extrabold shadow-sm ring-2 ring-crimson/30"
         : answered[qIdx]
-          ? "bg-emerald-500 text-white"
+          ? "bg-success text-white"
           : flagged[qIdx]
-            ? "bg-amber-400 text-ink"
-            : "bg-black/[0.06] text-black/70 hover:bg-black/10 dark:bg-white/10 dark:text-white/80 dark:hover:bg-white/15",
+            ? "bg-warning text-white"
+            : "bg-black/[0.05] text-black/60 hover:bg-black/10 dark:bg-white/5 dark:text-white/70 dark:hover:bg-white/10",
       dragging === dIdx && "opacity-40",
-      over === dIdx && dragging !== null && dragging !== dIdx && "scale-110 ring-2 ring-crimson/50",
+      over === dIdx && dragging !== null && dragging !== dIdx && "scale-105 ring-2 ring-crimson/40",
     );
 
   const dragStart = (e: DragEvent, dIdx: number) => {
@@ -68,7 +68,7 @@ export default function QuestionPalette({
   return (
     <div className="flex flex-col gap-4">
       <div>
-        <div className="label mb-2.5">Question palette · {order.length}</div>
+        <div className="label mb-3 text-black/50 dark:text-white/40">Question palette · {order.length}</div>
         <div
           className="grid grid-cols-6 gap-1.5 sm:grid-cols-8 lg:grid-cols-6"
           onDragOver={(e) => e.preventDefault()}
@@ -97,18 +97,18 @@ export default function QuestionPalette({
         onDragOver={(e) => e.preventDefault()}
         onDrop={dropOnBucket}
         className={cn(
-          "rounded-card border-2 border-dashed p-4 transition-colors",
+          "rounded-lg border-2 border-dashed p-4 transition-colors",
           dragging !== null
-            ? "border-crimson bg-crimson-soft/60 dark:bg-crimson/10"
-            : "border-black/10 dark:border-white/15",
+            ? "border-crimson bg-crimson-soft/30 dark:bg-crimson/10"
+            : "border-black/5 dark:border-white/5",
         )}
       >
-        <div className="label mb-2 flex items-center gap-1.5">
-          <Bookmark size={12} /> Save for later · drop questions here
+        <div className="label mb-2 flex items-center gap-1.5 text-black/50 dark:text-white/40">
+          <Bookmark size={12} /> Save for later · drop here
         </div>
         {savedItems.length === 0 ? (
-          <p className="text-xs text-black/40 dark:text-white/40">
-            Drag any question tile here to park it and come back before submitting.
+          <p className="text-xs text-black/40 dark:text-white/40 leading-relaxed">
+            Drag any question tile here to park it and solve it later.
           </p>
         ) : (
           <div className="grid grid-cols-6 gap-1.5 sm:grid-cols-8">
@@ -130,25 +130,25 @@ export default function QuestionPalette({
         )}
       </div>
 
-      <div className="grid grid-cols-2 gap-2 text-[11px] font-medium text-black/55 dark:text-white/55">
+      <div className="grid grid-cols-2 gap-2 text-[10px] font-semibold text-black/50 dark:text-white/45 border-t border-black/5 dark:border-white/5 pt-3">
         <span className="flex items-center gap-1.5">
-          <span className="h-3 w-3 rounded bg-emerald-500" /> Answered
+          <span className="h-2 w-2 rounded-full bg-success" /> Answered
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="h-3 w-3 rounded bg-amber-400" /> Flagged
+          <span className="h-2 w-2 rounded-full bg-warning" /> Flagged
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="h-3 w-3 rounded bg-black/10 dark:bg-white/15" /> Unanswered
+          <span className="h-2 w-2 rounded-full bg-black/10 dark:bg-white/20" /> Unanswered
         </span>
         <button
           onClick={() => {
             const q = order[currentIdx];
             onToggleSaved(q);
           }}
-          className="flex items-center gap-1.5 font-bold text-crimson hover:underline"
+          className="flex items-center gap-1 font-bold text-crimson hover:underline"
         >
-          <BookmarkCheck size={13} />
-          Current {saved[order[currentIdx]] ? "saved" : "unsaved"}
+          <BookmarkCheck size={12} />
+          {saved[order[currentIdx]] ? "Remove Saved" : "Save Current"}
         </button>
       </div>
     </div>

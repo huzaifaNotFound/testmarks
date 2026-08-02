@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { Sparkles, Loader2, ArrowLeft, Target } from "lucide-react";
 import QuestionPlayer, { type PlayerAnswer } from "@/components/QuestionPlayer";
+import { PageHeader } from "@/components/ui";
 import { generateTest, submitAttempt } from "@/lib/api";
 import { RequireAuth, useAuth } from "@/lib/auth";
 import { MOCK_STREAMS, MOCK_TIME_LIMIT_SEC, STREAM_SUBJECT_TOPICS } from "@/lib/mock-data";
@@ -71,150 +72,179 @@ export default function MockTestPage() {
     return <QuestionPlayer test={test} timeLimitSec={MOCK_TIME_LIMIT_SEC} onSubmit={handleSubmit} />;
   }
 
+  const selectedStreamObj = MOCK_STREAMS.find(s => s.id === stream);
+
   return (
     <RequireAuth>
-      <div className="relative flex min-h-screen flex-col overflow-hidden">
-      <div className="pointer-events-none absolute -top-32 left-1/2 h-[380px] w-[640px] -translate-x-1/2 rounded-full bg-crimson opacity-[0.12] blur-[110px]" />
-      <div className="container-px mx-auto flex w-full max-w-2xl flex-1 flex-col justify-center py-12">
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}>
-          <button onClick={() => router.push("/dashboard")} className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-black/50 hover:text-crimson dark:text-white/50">
-            <ArrowLeft size={15} /> Dashboard
-          </button>
-          <span className="chip border-crimson/30 bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light">
-            <Sparkles size={13} /> AI-generated
-          </span>
-          <h1 className="heading mt-4 text-3xl sm:text-4xl">Build your mock test</h1>
-          <p className="mt-2 text-sm text-black/55 dark:text-white/55">
-            The AI composes a fresh paper from the syllabus of your stream in seconds.
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="card mt-8 space-y-7 p-6 sm:p-8"
-        >
-          <div>
-            <div className="label mb-3">Stream</div>
-            <div className="flex flex-wrap gap-2">
-              {MOCK_STREAMS.map((s) => (
-                <button
-                  key={s.id}
-                  onClick={() => {
-                    setStream(s.id);
-                    setSubject(null);
-                  }}
-                  className={cn(
-                    "chip !px-4 !py-2 text-sm",
-                    stream === s.id
-                      ? "border-transparent text-white shadow-glow"
-                      : "border-black/10 hover:border-crimson dark:border-white/15",
-                  )}
-                  style={stream === s.id ? { background: s.accent } : undefined}
-                >
-                  {s.name}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <div className="label mb-3">Focus subject (optional)</div>
-            <div className="flex flex-wrap gap-2">
-              <button
-                onClick={() => setSubject(null)}
-                className={cn(
-                  "chip !px-4 !py-2 text-sm",
-                  subject === null ? "border-crimson bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light" : "hover:border-crimson",
-                )}
-              >
-                Mixed
-              </button>
-              {subjects.map((s) => (
-                <button
-                  key={s}
-                  onClick={() => setSubject(s)}
-                  className={cn(
-                    "chip !px-4 !py-2 text-sm",
-                    subject === s ? "border-crimson bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light" : "hover:border-crimson",
-                  )}
-                >
-                  {s}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <div className="label mb-3">Difficulty (optional)</div>
-            <div className="flex flex-wrap gap-2">
-              <button
-                onClick={() => setDifficulty(null)}
-                className={cn(
-                  "chip !px-4 !py-2 text-sm",
-                  difficulty === null ? "border-crimson bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light" : "hover:border-crimson",
-                )}
-              >
-                Mixed
-              </button>
-              {DIFFICULTIES.map((d) => (
-                <button
-                  key={d.id}
-                  onClick={() => setDifficulty(d.id)}
-                  className={cn(
-                    "chip !px-4 !py-2 text-sm",
-                    difficulty === d.id ? "border-crimson bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light" : "hover:border-crimson",
-                  )}
-                >
-                  {d.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <div className="label mb-3">Question count</div>
-            <div className="flex flex-wrap gap-2">
-              {[10, 20, 30, 50].map((c) => (
-                <button
-                  key={c}
-                  onClick={() => setCount(c)}
-                  className={cn(
-                    "chip !px-4 !py-2 text-sm",
-                    count === c ? "border-crimson bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light" : "hover:border-crimson",
-                  )}
-                >
-                  {c} questions
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <AnimatePresence mode="wait">
-            {generating ? (
-              <motion.div key="gen" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex items-center justify-center gap-3 py-4">
-                <Loader2 size={22} className="animate-spin text-crimson" />
-                <span className="text-sm font-semibold text-black/55 dark:text-white/55">
-                  AI is composing {count} questions…
+      <div className="relative min-h-screen bg-surface dark:bg-ink py-10 sm:py-16">
+        <div className="container-px mx-auto flex w-full max-w-2xl flex-col">
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="space-y-4"
+          >
+            <button
+              onClick={() => router.push("/dashboard")}
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-black/50 hover:text-crimson dark:text-white/50 transition-colors"
+            >
+              <ArrowLeft size={13} /> Back to dashboard
+            </button>
+            <PageHeader
+              title="Build your mock test"
+              subtitle="The AI agent composes a fresh exam paper matching your syllabus in seconds."
+              actions={
+                <span className="chip border-crimson/25 bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light">
+                  <Sparkles size={12} /> AI Engine v1.0
                 </span>
-              </motion.div>
-            ) : (
-              <motion.button
-                key="btn"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={handleGenerate}
-                className="btn-primary w-full py-4 text-base"
-              >
-                <Target size={18} /> Generate & start test
-              </motion.button>
-            )}
-          </AnimatePresence>
-        </motion.div>
+              }
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.05, duration: 0.3 }}
+            className="card mt-6 space-y-8 p-6 sm:p-8"
+          >
+            <div>
+              <div className="label mb-3 text-black/50 dark:text-white/40">Stream</div>
+              <div className="flex flex-wrap gap-2.5">
+                {MOCK_STREAMS.map((s) => (
+                  <button
+                    key={s.id}
+                    onClick={() => {
+                      setStream(s.id);
+                      setSubject(null);
+                    }}
+                    className={cn(
+                      "chip !px-4 !py-2 text-sm transition-all focus-visible:ring-2",
+                      stream === s.id
+                        ? "border-transparent text-white shadow-sm font-bold"
+                        : "border-black/10 hover:border-crimson/60 dark:border-white/15",
+                    )}
+                    style={stream === s.id ? { background: s.accent } : undefined}
+                  >
+                    {s.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <div className="label mb-3 text-black/50 dark:text-white/40">Focus subject (optional)</div>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={() => setSubject(null)}
+                  className={cn(
+                    "chip !px-4 !py-2 text-sm focus-visible:ring-2",
+                    subject === null
+                      ? "border-crimson bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light font-bold"
+                      : "border-black/5 bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.02] hover:border-crimson/50",
+                  )}
+                >
+                  Mixed Syllabus
+                </button>
+                {subjects.map((s) => (
+                  <button
+                    key={s}
+                    onClick={() => setSubject(s)}
+                    className={cn(
+                      "chip !px-4 !py-2 text-sm focus-visible:ring-2",
+                      subject === s
+                        ? "border-crimson bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light font-bold"
+                        : "border-black/5 bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.02] hover:border-crimson/50",
+                    )}
+                  >
+                    {s}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <div className="label mb-3 text-black/50 dark:text-white/40">Difficulty (optional)</div>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={() => setDifficulty(null)}
+                  className={cn(
+                    "chip !px-4 !py-2 text-sm focus-visible:ring-2",
+                    difficulty === null
+                      ? "border-crimson bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light font-bold"
+                      : "border-black/5 bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.02] hover:border-crimson/50",
+                  )}
+                >
+                  Mixed Difficulty
+                </button>
+                {DIFFICULTIES.map((d) => (
+                  <button
+                    key={d.id}
+                    onClick={() => setDifficulty(d.id)}
+                    className={cn(
+                      "chip !px-4 !py-2 text-sm focus-visible:ring-2",
+                      difficulty === d.id
+                        ? "border-crimson bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light font-bold"
+                        : "border-black/5 bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.02] hover:border-crimson/50",
+                    )}
+                  >
+                    {d.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <div className="label mb-3 text-black/50 dark:text-white/40">Question count</div>
+              <div className="flex flex-wrap gap-2">
+                {[10, 20, 30, 50].map((c) => (
+                  <button
+                    key={c}
+                    onClick={() => setCount(c)}
+                    className={cn(
+                      "chip !px-4 !py-2 text-sm focus-visible:ring-2",
+                      count === c
+                        ? "border-crimson bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light font-bold"
+                        : "border-black/5 bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.02] hover:border-crimson/50",
+                    )}
+                  >
+                    {c} questions
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="pt-2">
+              <AnimatePresence mode="wait">
+                {generating ? (
+                  <motion.div
+                    key="gen"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="flex flex-col items-center justify-center gap-3 py-6 rounded-lg border border-black/5 bg-black/[0.01] dark:border-white/5 dark:bg-white/[0.01]"
+                  >
+                    <Loader2 size={24} className="animate-spin text-crimson" />
+                    <span className="text-sm font-medium text-black/55 dark:text-white/55">
+                      AI is generating {count} questions for your {selectedStreamObj?.name ?? " नीट / जेईई "} stream...
+                    </span>
+                  </motion.div>
+                ) : (
+                  <motion.button
+                    key="btn"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    onClick={handleGenerate}
+                    className="btn-primary w-full py-4 text-base"
+                  >
+                    <Target size={18} /> Generate & Start Test
+                  </motion.button>
+                )}
+              </AnimatePresence>
+            </div>
+          </motion.div>
+        </div>
       </div>
-      </div>
-      </RequireAuth>
+    </RequireAuth>
   );
 }

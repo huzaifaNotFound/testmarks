@@ -16,27 +16,39 @@ export default function Timer({
   compact?: boolean;
 }) {
   const [left, setLeft] = useState(totalSeconds);
-  const expired = useRef(false);
+  const expiredRef = useRef(false);
+  const onTickRef = useRef(onTick);
+  const onExpireRef = useRef(onExpire);
 
+  // Keep refs updated with latest callbacks
   useEffect(() => {
-    expired.current = false;
+    onTickRef.current = onTick;
+    onExpireRef.current = onExpire;
+  });
+
+  // Reset timer when totalSeconds prop changes
+  useEffect(() => {
+    setLeft(totalSeconds);
+    expiredRef.current = false;
+  }, [totalSeconds]);
+
+  // Interval countdown effect
+  useEffect(() => {
+    if (left <= 0) return;
     const interval = setInterval(() => {
-      setLeft((s) => {
-        if (s <= 1) {
-          clearInterval(interval);
-          if (!expired.current) {
-            expired.current = true;
-            setTimeout(() => onExpire(), 50);
-          }
-          return 0;
-        }
-        const next = s - 1;
-        onTick?.(next);
-        return next;
-      });
+      setLeft((prev) => (prev <= 1 ? 0 : prev - 1));
     }, 1000);
     return () => clearInterval(interval);
-  }, [totalSeconds, onExpire, onTick]);
+  }, [left > 0]);
+
+  // Notify parent component AFTER render when remaining time changes
+  useEffect(() => {
+    onTickRef.current?.(left);
+    if (left <= 0 && !expiredRef.current) {
+      expiredRef.current = true;
+      onExpireRef.current?.();
+    }
+  }, [left]);
 
   const danger = left < 300;
   const warn = !danger && left < 900;

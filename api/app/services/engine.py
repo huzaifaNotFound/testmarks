@@ -125,12 +125,12 @@ def score_attempt(test: Dict[str, Any], answers: List[Dict[str, str]]) -> Dict[s
             "topic": t,
             "correct": d["correct"],
             "total": d["total"],
-            "accuracy": round(d["correct"] / d["total"] * 100),
+            "accuracy": round(d["correct"] / d["total"], 4),
         }
         for (s, t), d in sorted(raw.items())
     ]
-    weak_areas = sorted([t for t in per_topic if t["accuracy"] < WEAK_THRESHOLD], key=lambda t: t["accuracy"])[:3]
-    strong_areas = sorted([t for t in per_topic if t["accuracy"] >= STRONG_THRESHOLD], key=lambda t: -t["accuracy"])[:3]
+    weak_areas = sorted([t for t in per_topic if t["accuracy"] < 0.6], key=lambda t: t["accuracy"])[:3]
+    strong_areas = sorted([t for t in per_topic if t["accuracy"] >= 0.6], key=lambda t: -t["accuracy"])[:3]
     accuracy = round(correct / total * 100)
 
     return {
@@ -206,13 +206,14 @@ def compute_analytics(user_id: str) -> Dict[str, Any]:
     avg_score = round(sum(accs) / len(accs))
     trend = [{"date": a["date"], "score": a["accuracy"]} for a in attempts[-10:]]
 
-    heat_raw: Dict[str, Dict[str, List[int]]] = {}
+    heat_raw: Dict[str, Dict[str, List[float]]] = {}
     for a in attempts:
         for t in a["per_topic"]:
-            heat_raw.setdefault(t["subject"], {}).setdefault(t["topic"], []).append(t["accuracy"])
-    heatmap = {s: {t: round(sum(v) / len(v)) for t, v in topics.items()} for s, topics in heat_raw.items()}
+            acc = t["accuracy"] / 100.0 if t["accuracy"] > 1.0 else t["accuracy"]
+            heat_raw.setdefault(t["subject"], {}).setdefault(t["topic"], []).append(acc)
+    heatmap = {s: {t: round(sum(v) / len(v), 4) for t, v in topics.items()} for s, topics in heat_raw.items()}
     brain_map = sorted(
-        [{"subject": s, "value": round(sum(t.values()) / len(t.values()))} for s, t in heatmap.items()],
+        [{"subject": s, "value": round(sum(t.values()) / len(t.values()), 4)} for s, t in heatmap.items()],
         key=lambda b: -b["value"],
     )
 

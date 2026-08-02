@@ -2,7 +2,6 @@
 
 import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
 import QuestionPlayer, { type PlayerAnswer } from "@/components/QuestionPlayer";
 import { getDiagnostic, submitAttempt } from "@/lib/api";
@@ -52,19 +51,16 @@ function DiagnosticInner() {
 
   if (!test) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-4">
-        <Loader2 size={36} className="animate-spin text-crimson" />
-        <p className="text-sm font-semibold text-black/55 dark:text-white/55">
-          Building your diagnostic test…
-        </p>
-        <motion.span
-          className="heading text-xs uppercase tracking-widest text-crimson"
-          initial={{ opacity: 0.4 }}
-          animate={{ opacity: 1 }}
-          transition={{ repeat: Infinity, duration: 1.2 }}
-        >
-          {stream.toUpperCase()}
-        </motion.span>
+      <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-surface dark:bg-ink">
+        <Loader2 size={32} className="animate-spin text-crimson" />
+        <div className="text-center space-y-1.5">
+          <p className="text-sm font-semibold text-black/75 dark:text-white/80">
+            Composing diagnostic paper
+          </p>
+          <p className="text-xs text-black/40 dark:text-white/40 font-semibold tracking-wider uppercase font-mono">
+            {stream} stream
+          </p>
+        </div>
       </div>
     );
   }

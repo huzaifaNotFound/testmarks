@@ -107,8 +107,8 @@ export default function AppShell({ children }: { children: ReactNode }) {
   );
 
   return (
-    <div className="flex min-h-screen">
-      <aside className="sticky top-0 hidden h-screen w-64 shrink-0 border-r border-black/5 bg-white lg:block dark:border-white/10 dark:bg-white/[0.03]">
+    <div className="flex min-h-screen bg-surface dark:bg-ink">
+      <aside className="sticky top-0 hidden h-screen w-64 shrink-0 border-r border-black/5 bg-white lg:block dark:border-white/10 dark:bg-white/[0.02]">
         {sidebarInner}
       </aside>
 
@@ -118,7 +118,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-ink/50 backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 z-50 bg-ink/40 backdrop-blur-sm lg:hidden"
             onClick={() => setMobileOpen(false)}
           >
             <motion.aside
@@ -127,11 +127,11 @@ export default function AppShell({ children }: { children: ReactNode }) {
               exit={{ x: "-100%" }}
               transition={{ type: "spring", stiffness: 320, damping: 32 }}
               onClick={(e) => e.stopPropagation()}
-              className="h-full w-72 bg-white dark:bg-[#121216]"
+              className="h-full w-72 bg-white dark:bg-ink border-r border-black/5 dark:border-white/10"
             >
               <button
                 onClick={() => setMobileOpen(false)}
-                className="absolute right-3 top-4 inline-flex h-9 w-9 items-center justify-center rounded-lgx text-black/60 dark:text-white/60"
+                className="absolute right-3 top-4 inline-flex h-9 w-9 items-center justify-center rounded-lgx text-black/60 dark:text-white/60 focus-visible:ring-2"
                 aria-label="Close menu"
               >
                 <X size={18} />
@@ -143,11 +143,11 @@ export default function AppShell({ children }: { children: ReactNode }) {
       </AnimatePresence>
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="sticky top-0 z-40 flex h-16 items-center justify-between gap-3 border-b border-black/5 bg-white/85 px-4 backdrop-blur-xl sm:px-6 dark:border-white/10 dark:bg-ink/85">
+        <header className="sticky top-0 z-40 flex h-16 items-center justify-between gap-3 border-b border-black/5 bg-white/80 px-4 backdrop-blur-md sm:px-6 dark:border-white/10 dark:bg-ink/80">
           <div className="flex items-center gap-3">
             <button
               onClick={() => setMobileOpen(true)}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-lgx border border-black/10 lg:hidden dark:border-white/15"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-lgx border border-black/10 lg:hidden dark:border-white/15 focus-visible:ring-2"
               aria-label="Open menu"
             >
               <Menu size={17} />
@@ -160,7 +160,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
           <div className="flex items-center gap-2.5">
             <button
               onClick={toggle}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-lgx border border-black/10 transition-colors hover:border-crimson hover:text-crimson dark:border-white/15"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-lgx border border-black/10 transition-colors hover:border-crimson hover:text-crimson dark:border-white/15 focus-visible:ring-2"
               aria-label="Toggle theme"
             >
               {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
@@ -168,9 +168,9 @@ export default function AppShell({ children }: { children: ReactNode }) {
             <div className="relative">
               <button
                 onClick={() => setMenuOpen((v) => !v)}
-                className="flex items-center gap-2 rounded-pill border border-black/10 py-1 pl-1 pr-3 transition-colors hover:border-crimson dark:border-white/15"
+                className="flex items-center gap-2 rounded-pill border border-black/10 py-1 pl-1 pr-3 transition-colors hover:border-crimson dark:border-white/15 focus-visible:ring-2"
               >
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-crimson to-crimson-deep text-xs font-bold text-white">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-crimson text-xs font-bold text-white shadow-1">
                   {(user?.name ?? "S").slice(0, 1).toUpperCase()}
                 </span>
                 <ChevronDown size={14} className={cn("transition-transform", menuOpen && "rotate-180")} />
@@ -183,7 +183,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
                       initial={{ opacity: 0, y: 8, scale: 0.96 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 8, scale: 0.96 }}
-                      className="absolute right-0 top-12 z-50 w-56 rounded-card border border-black/10 bg-white p-2 shadow-soft dark:border-white/10 dark:bg-[#16161b]"
+                      className="absolute right-0 top-12 z-50 w-56 rounded-card border border-black/5 bg-white p-2 shadow-2 dark:border-white/10 dark:bg-ink"
                     >
                       <div className="border-b border-black/5 px-3 pb-2 pt-1.5 dark:border-white/10">
                         <div className="text-sm font-bold">{user?.name}</div>

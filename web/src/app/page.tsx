@@ -14,6 +14,7 @@ import {
   Infinity as InfinityIcon,
   Star,
   Play,
+  Check,
 } from "lucide-react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -22,11 +23,11 @@ import CountUp from "@/components/CountUp";
 import { MOCK_STREAMS } from "@/lib/mock-data";
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 16 },
   show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay: 0.08 * i, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.45, delay: 0.05 * i, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
   }),
 };
 
@@ -34,53 +35,53 @@ const STEPS = [
   {
     icon: ClipboardCheck,
     step: "01",
-    title: "Take a 50-question diagnostic",
-    body: "A timed mock test tuned to your stream — NEET, JEE or CBSE. Answer naturally; the AI maps your exact strengths and gaps.",
+    title: "Take a Diagnostic Paper",
+    body: "A calibrated 50-question mock test configured to your exam stream. No configuration needed — just start answering.",
   },
   {
     icon: BrainCircuit,
     step: "02",
-    title: "Get an AI coach readout",
-    body: "Topic-level accuracy, weak and strong areas, percentile estimate and a personal coaching message written by the AI.",
+    title: "Get an AI Evaluation",
+    body: "Topic-level accuracy breakdowns, projected score charts, weak areas, and structured guidance from your AI coach.",
   },
   {
     icon: Gauge,
     step: "03",
-    title: "Practice with a personal study plan",
-    body: "Auto-generated focus tests target your weak topics. Retake mocks, watch your mastery heatmap turn crimson-to-green.",
+    title: "Practice with Target Papers",
+    body: "Auto-generate focus tests built around your exact mistakes. Track your topic mastery heatmaps as they progress.",
   },
 ];
 
 const FEATURES = [
   {
     icon: Bot,
-    title: "AI coach after every test",
-    body: "A human-style coaching message explains exactly what to fix — and why — after every submission.",
+    title: "AI Coach Readouts",
+    body: "A structured, text-based tutoring message explaining exact conceptual gaps after every test submission.",
   },
   {
     icon: Gauge,
-    title: "Predictor & percentile",
-    body: "Projected exam score and estimated percentile keep your goal honest and trackable.",
+    title: "Score Projection",
+    body: "An advanced score predictor showing expected exam performance based on recent topic mastery.",
   },
   {
     icon: BrainCircuit,
-    title: "Mastery heatmap",
-    body: "Every topic colour-coded from crimson (weak) to green (mastered). See progress at a glance.",
+    title: "Mastery Heatmaps",
+    body: "Every topic mapped out from red (needs focus) to green (mastered). Track sub-topic scores dynamically.",
   },
   {
     icon: Target,
-    title: "Weak-topic focus tests",
-    body: "One tap generates a mock test built entirely around the topics where you bleed marks.",
+    title: "Weak-Topic Focus Tests",
+    body: "One click composes custom practice tests compiled exclusively from your weak areas.",
   },
   {
     icon: Zap,
-    title: "Streaks & XP",
-    body: "Gamified daily streaks, XP levels and badges keep you coming back every single day.",
+    title: "Streaks & achievements",
+    body: "Simple badges and daily consistency streaks built directly into your profile dashboard.",
   },
   {
     icon: Trophy,
-    title: "All the right exams",
-    body: "NEET, JEE Mains, JEE Advanced and CBSE classes 10–12 — question style and difficulty matched per stream.",
+    title: "Exact Exam Standards",
+    body: "Configured carefully for NEET, JEE Mains, JEE Advanced, and CBSE board specifications.",
   },
 ];
 
@@ -105,17 +106,21 @@ const MARQUEE_SUBJECTS = [
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-surface dark:bg-ink">
       <Navbar />
 
+      {/* Hero Section */}
       <section className="relative overflow-hidden pb-16 pt-32 sm:pb-24 sm:pt-44">
-        <div className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-crimson opacity-[0.14] blur-[120px]" />
-        <div className="pointer-events-none absolute right-[-160px] top-40 h-[380px] w-[380px] rounded-full bg-crimson-light opacity-[0.12] blur-[100px]" />
+        {/* Subtle grid background texture */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.01)_1px,transparent_1px)]" />
+        
+        {/* Calm background ambient gradient */}
+        <div className="pointer-events-none absolute -top-40 left-1/2 h-[480px] w-[720px] -translate-x-1/2 rounded-full bg-crimson opacity-[0.06] blur-[100px]" />
 
-        <div className="container-px relative text-center">
+        <div className="container-px relative text-center space-y-6">
           <motion.div variants={fadeUp} initial="hidden" animate="show" custom={0}>
-            <span className="chip mx-auto border-crimson/30 bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light">
-              <Sparkles size={13} /> AI-tutored mock tests · Hackathon build
+            <span className="chip mx-auto border-crimson/25 bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light">
+              <Sparkles size={12} /> AI-Tutored Practice Engine
             </span>
           </motion.div>
 
@@ -124,19 +129,11 @@ export default function Home() {
             initial="hidden"
             animate="show"
             custom={1}
-            className="heading mx-auto mt-6 max-w-4xl text-5xl leading-[0.98] sm:text-7xl lg:text-[88px]"
+            className="heading mx-auto max-w-4xl text-4xl leading-[1.05] sm:text-6xl lg:text-[76px] font-extrabold tracking-tight"
           >
-            Practice like the exam{" "}
-            <span className="relative inline-block">
-              <span className="bg-gradient-to-r from-crimson to-crimson-light bg-clip-text text-transparent">
-                is real.
-              </span>
-              <motion.span
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ delay: 0.8, duration: 0.7, ease: "easeOut" }}
-                className="absolute -bottom-2 left-0 h-2 w-full origin-left rounded-pill bg-crimson/30 blur-sm"
-              />
+            Practice like the exam <br/>
+            <span className="bg-gradient-to-r from-crimson to-crimson-light bg-clip-text text-transparent">
+              is happening now.
             </span>
           </motion.h1>
 
@@ -145,10 +142,10 @@ export default function Home() {
             initial="hidden"
             animate="show"
             custom={2}
-            className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-black/60 sm:text-lg dark:text-white/60"
+            className="mx-auto max-w-2xl text-sm leading-relaxed text-black/60 sm:text-base dark:text-white/60"
           >
-            Mock tests for NEET, JEE Mains, JEE Advanced and CBSE 10–12 — graded by an
-            AI coach that tells you what to fix, topic by topic.
+            Full-length diagnostic papers calibrated for NEET, JEE, and CBSE — graded by an
+            AI tutoring system that writes your personal syllabus.
           </motion.p>
 
           <motion.div
@@ -156,13 +153,13 @@ export default function Home() {
             initial="hidden"
             animate="show"
             custom={3}
-            className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
+            className="mt-4 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
-            <Link href="/signin" className="btn-primary w-full px-8 py-4 text-base sm:w-auto">
-              Start free diagnostic <ArrowRight size={18} />
+            <Link href="/signin" className="btn-primary w-full px-8 py-3.5 text-sm sm:w-auto">
+              Start Free Diagnostic <ArrowRight size={16} />
             </Link>
-            <Link href="#how" className="btn-ghost w-full px-8 py-4 text-base sm:w-auto">
-              <Play size={16} /> See how it works
+            <Link href="#how" className="btn-ghost w-full px-8 py-3.5 text-sm sm:w-auto">
+              <Play size={14} /> See How It Works
             </Link>
           </motion.div>
 
@@ -171,63 +168,65 @@ export default function Home() {
             initial="hidden"
             animate="show"
             custom={4}
-            className="mx-auto mt-16 grid max-w-3xl grid-cols-2 gap-4 sm:grid-cols-4"
+            className="mx-auto mt-12 grid max-w-3xl grid-cols-2 gap-4 sm:grid-cols-4 pt-4"
           >
             {[
-              { value: 50, suffix: "Q", label: "per diagnostic" },
-              { value: 6, suffix: "", label: "exam streams" },
-              { value: 720, suffix: "+", label: "marks predicted" },
-              { value: 12, suffix: "", label: "subjects mapped" },
+              { value: 50, suffix: "Q", label: "Diagnostic paper" },
+              { value: 6, suffix: "", label: "Exam streams" },
+              { value: 720, suffix: "+", label: "Predicted marks" },
+              { value: 12, suffix: "", label: "Subjects mapped" },
             ].map((s) => (
-              <div key={s.label} className="card px-4 py-5">
-                <div className="heading text-3xl text-crimson sm:text-4xl">
+              <div key={s.label} className="card p-5 bg-white dark:bg-white/[0.01] border-black/5 dark:border-white/10 shadow-sm">
+                <div className="heading text-3xl font-extrabold text-crimson">
                   <CountUp value={s.value} suffix={s.suffix} />
                 </div>
-                <div className="label mt-1">{s.label}</div>
+                <div className="label mt-1 text-[10px] text-black/50 dark:text-white/40">{s.label}</div>
               </div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      <section id="how" className="py-20 sm:py-28">
+      {/* How it works */}
+      <section id="how" className="py-20 sm:py-24 border-t border-black/5 dark:border-white/5 bg-white/[0.01] dark:bg-transparent">
         <div className="container-px">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={0} className="text-center">
-            <span className="label text-crimson">How it works</span>
-            <h2 className="heading mt-3 text-3xl sm:text-5xl">Three steps to mastery</h2>
+          <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={0} className="text-center space-y-2">
+            <span className="label text-crimson">Three Steps</span>
+            <h2 className="heading text-2xl sm:text-4xl font-extrabold tracking-tight">Structured Path to Mastery</h2>
           </motion.div>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
             {STEPS.map((s, i) => (
               <motion.div
                 key={s.step}
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: true, margin: "-60px" }}
+                viewport={{ once: true, margin: "-40px" }}
                 custom={i}
-                className="card group relative overflow-hidden p-7 transition-shadow hover:shadow-soft"
+                className="card p-7 bg-white dark:bg-white/[0.01] border-black/5 dark:border-white/10 relative hover:border-black/15 dark:hover:border-white/20 transition-all flex flex-col items-start"
               >
-                <div className="heading absolute right-5 top-4 text-5xl text-black/[0.05] dark:text-white/[0.06]">
+                <div className="heading absolute right-5 top-4 text-5xl font-extrabold text-black/[0.03] dark:text-white/[0.02] select-none">
                   {s.step}
                 </div>
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-lgx bg-crimson text-white shadow-glow transition-transform group-hover:scale-110">
-                  <s.icon size={22} />
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-crimson-soft text-crimson dark:bg-crimson/10 dark:text-crimson-light mb-5">
+                  <s.icon size={20} />
                 </span>
-                <h3 className="heading mt-5 text-lg">{s.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-black/55 dark:text-white/55">{s.body}</p>
+                <h3 className="heading text-base font-bold text-black/80 dark:text-white/80">{s.title}</h3>
+                <p className="mt-2 text-xs leading-relaxed text-black/55 dark:text-white/55">{s.body}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="streams" className="py-20 sm:py-24">
+      {/* Exam Streams */}
+      <section id="streams" className="py-20 sm:py-24 border-t border-black/5 dark:border-white/5">
         <div className="container-px">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={0} className="text-center">
-            <span className="label text-crimson">Exam streams</span>
-            <h2 className="heading mt-3 text-3xl sm:text-5xl">Pick your battlefield</h2>
+          <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={0} className="text-center space-y-2">
+            <span className="label text-crimson">Syllabus streams</span>
+            <h2 className="heading text-2xl sm:text-4xl font-extrabold tracking-tight">Calibrated Exam Matrices</h2>
           </motion.div>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {MOCK_STREAMS.map((s, i) => (
               <motion.div
                 key={s.id}
@@ -236,38 +235,36 @@ export default function Home() {
                 whileInView="show"
                 viewport={{ once: true, margin: "-40px" }}
                 custom={i}
-                className="card group relative overflow-hidden p-6 transition-all hover:-translate-y-1.5 hover:shadow-soft"
+                className="card p-6 bg-white dark:bg-white/[0.01] border-black/5 dark:border-white/10 flex flex-col justify-between hover:border-black/15 dark:hover:border-white/25 transition-all"
               >
-                <div
-                  className="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full opacity-[0.12] blur-2xl transition-opacity group-hover:opacity-25"
-                  style={{ background: s.accent }}
-                />
-                <div className="flex items-center justify-between">
-                  <h3 className="heading text-xl">{s.name}</h3>
-                  <span
-                    className="inline-flex h-10 w-10 items-center justify-center rounded-lgx text-white"
-                    style={{ background: s.accent, boxShadow: `0 10px 28px ${s.accent}55` }}
-                  >
-                    <Target size={18} />
-                  </span>
-                </div>
-                <p className="mt-2 min-h-10 text-sm text-black/55 dark:text-white/55">{s.tagline}</p>
-                <div className="mt-4 flex flex-wrap gap-1.5">
-                  {s.subjects.map((sub) => (
-                    <span key={sub} className="chip text-[11px]">
-                      {sub}
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h3 className="heading text-lg font-bold text-black/80 dark:text-white/80">{s.name}</h3>
+                    <span
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-white"
+                      style={{ background: s.accent }}
+                    >
+                      <Target size={16} />
                     </span>
-                  ))}
+                  </div>
+                  <p className="text-xs text-black/55 dark:text-white/55 leading-relaxed min-h-10">{s.tagline}</p>
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    {s.subjects.map((sub) => (
+                      <span key={sub} className="chip text-[10px] bg-black/[0.01] dark:bg-white/[0.01]">
+                        {sub}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <div className="mt-5 flex items-center gap-2">
-                  <span className="text-[11px] font-semibold text-black/45 dark:text-white/45">
-                    {s.difficultyMix.easy}% easy · {s.difficultyMix.medium}% medium · {s.difficultyMix.hard}% hard
+                <div className="mt-5 flex items-center justify-between border-t border-black/5 dark:border-white/5 pt-4">
+                  <span className="text-[10px] font-semibold text-black/45 dark:text-white/40 font-mono">
+                    {s.difficultyMix.easy}% easy · {s.difficultyMix.medium}% med · {s.difficultyMix.hard}% hard
                   </span>
                   <Link
                     href="/signin"
-                    className="ml-auto inline-flex items-center gap-1 text-sm font-bold text-crimson transition-transform hover:translate-x-0.5"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-crimson hover:underline"
                   >
-                    Practice <ArrowRight size={14} />
+                    Configure <ArrowRight size={13} />
                   </Link>
                 </div>
               </motion.div>
@@ -276,13 +273,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="features" className="bg-ink py-20 text-white sm:py-28">
-        <div className="container-px">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={0} className="text-center">
+      {/* Features Grid */}
+      <section id="features" className="bg-ink py-20 text-white sm:py-24 relative overflow-hidden">
+        {/* Subtle grid background texture */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_80%,transparent_100%)]" />
+        
+        <div className="container-px relative space-y-12">
+          <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={0} className="text-center space-y-2">
             <span className="label !text-crimson-light">Features</span>
-            <h2 className="heading mt-3 text-3xl sm:text-5xl">Everything a serious student needs</h2>
+            <h2 className="heading text-2xl sm:text-4xl font-extrabold tracking-tight">Structured for High Score Climbs</h2>
           </motion.div>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {FEATURES.map((f, i) => (
               <motion.div
                 key={f.title}
@@ -291,39 +292,42 @@ export default function Home() {
                 whileInView="show"
                 viewport={{ once: true, margin: "-40px" }}
                 custom={i}
-                className="group rounded-card border border-white/10 bg-white/[0.04] p-6 backdrop-blur transition-colors hover:border-crimson/60"
+                className="group rounded-2xl border border-white/5 bg-white/[0.01] p-6 hover:border-crimson/40 transition-colors flex flex-col items-start"
               >
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-lgx bg-crimson text-white shadow-glow transition-transform group-hover:rotate-6">
-                  <f.icon size={20} />
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-crimson text-white shadow-sm mb-4">
+                  <f.icon size={18} />
                 </span>
-                <h3 className="heading mt-4 text-lg">{f.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/55">{f.body}</p>
+                <h3 className="heading text-base font-bold text-white/90">{f.title}</h3>
+                <p className="mt-2 text-xs leading-relaxed text-white/60">{f.body}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="premium" className="py-20 sm:py-24">
+      {/* Pricing Options */}
+      <section id="premium" className="py-20 sm:py-24 border-b border-black/5 dark:border-white/5 bg-white/[0.01] dark:bg-transparent">
         <div className="container-px">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={0} className="text-center">
-            <span className="label text-crimson">Premium</span>
-            <h2 className="heading mt-3 text-3xl sm:text-5xl">Start free. Go unlimited.</h2>
+          <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={0} className="text-center space-y-2">
+            <span className="label text-crimson">Pricing</span>
+            <h2 className="heading text-2xl sm:text-4xl font-extrabold tracking-tight">Calm Pricing plans</h2>
           </motion.div>
-          <div className="mx-auto mt-12 grid max-w-3xl gap-5 sm:grid-cols-2">
-            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={1} className="card p-7">
-              <h3 className="heading text-lg">Free</h3>
-              <div className="heading mt-3 text-4xl">
-                ₹0 <span className="text-sm font-medium text-black/45 dark:text-white/45">/ forever</span>
+          <div className="mx-auto mt-12 grid max-w-3xl gap-6 sm:grid-cols-2">
+            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={1} className="card p-7 bg-white dark:bg-white/[0.01] border-black/5 dark:border-white/10 flex flex-col justify-between">
+              <div className="space-y-4">
+                <h3 className="heading text-base font-bold text-black/70 dark:text-white/70">Free Sandbox</h3>
+                <div className="heading text-4xl font-extrabold text-black/80 dark:text-white/80">
+                  ₹0 <span className="text-sm font-medium text-black/45 dark:text-white/45">/ forever</span>
+                </div>
+                <ul className="space-y-2.5 text-xs text-black/60 dark:text-white/60 pt-2">
+                  <li className="flex items-center gap-2"><Check size={12} className="text-success" /> 2 mock tests per day</li>
+                  <li className="flex items-center gap-2"><Check size={12} className="text-success" /> Diagnostic test & report</li>
+                  <li className="flex items-center gap-2"><Check size={12} className="text-success" /> Basic stats dashboard</li>
+                  <li className="flex items-center gap-2"><Check size={12} className="text-success" /> Achievements profile</li>
+                </ul>
               </div>
-              <ul className="mt-5 space-y-2.5 text-sm text-black/60 dark:text-white/60">
-                <li>2 mock tests per day</li>
-                <li>Diagnostic test & report</li>
-                <li>Basic analytics</li>
-                <li>Community leaderboard</li>
-              </ul>
-              <Link href="/signin" className="btn-ghost mt-6 w-full">
-                Start free
+              <Link href="/signin" className="btn-ghost btn-sm mt-6 w-full py-3.5">
+                Start Free
               </Link>
             </motion.div>
             <motion.div
@@ -332,23 +336,26 @@ export default function Home() {
               whileInView="show"
               viewport={{ once: true }}
               custom={2}
-              className="relative overflow-hidden rounded-card bg-gradient-to-br from-crimson to-crimson-deep p-7 text-white shadow-glow-lg"
+              className="card p-7 bg-white dark:bg-white/[0.01] border-crimson/20 dark:border-crimson/30 relative flex flex-col justify-between ring-1 ring-crimson/10 shadow-sm"
             >
-              <div className="pointer-events-none absolute -right-12 -top-14 h-44 w-44 rounded-full bg-white/15 blur-2xl" />
-              <span className="inline-flex items-center gap-1 rounded-pill bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider">
-                <Star size={11} fill="currentColor" /> Popular
-              </span>
-              <h3 className="heading mt-3 text-lg">Premium</h3>
-              <div className="heading mt-3 text-4xl">
-                ₹499 <span className="text-sm font-medium text-white/60">/ month</span>
+              <div className="space-y-4">
+                <div className="flex justify-between items-start">
+                  <h3 className="heading text-base font-bold text-crimson">Premium Access</h3>
+                  <span className="inline-flex items-center gap-1 rounded-full bg-crimson/15 px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-wide text-crimson">
+                    <Star size={9} fill="currentColor" /> POPULAR
+                  </span>
+                </div>
+                <div className="heading text-4xl font-extrabold text-black/80 dark:text-white/80">
+                  ₹499 <span className="text-sm font-medium text-black/45 dark:text-white/45">/ month</span>
+                </div>
+                <ul className="space-y-2.5 text-xs text-black/70 dark:text-white/70 pt-2">
+                  <li className="flex items-center gap-2"><Check size={12} className="text-crimson" /> <InfinityIcon size={12} /> Unlimited mock tests</li>
+                  <li className="flex items-center gap-2"><Check size={12} className="text-crimson" /> Personal AI coach tutor</li>
+                  <li className="flex items-center gap-2"><Check size={12} className="text-crimson" /> Heatmaps & score predictors</li>
+                  <li className="flex items-center gap-2"><Check size={12} className="text-crimson" /> Custom focus tests</li>
+                </ul>
               </div>
-              <ul className="mt-5 space-y-2.5 text-sm text-white/85">
-                <li className="flex gap-2"><InfinityIcon size={15} className="shrink-0" /> Unlimited AI mock tests</li>
-                <li className="flex gap-2"><Bot size={15} className="shrink-0" /> Personal AI coach</li>
-                <li className="flex gap-2"><Gauge size={15} className="shrink-0" /> Full analytics + predictor</li>
-                <li className="flex gap-2"><Target size={15} className="shrink-0" /> Focus tests on weak topics</li>
-              </ul>
-              <Link href="/signin" className="btn mt-6 w-full bg-white text-crimson-deep hover:bg-white/90">
+              <Link href="/signin" className="btn-primary btn-sm mt-6 w-full py-3.5">
                 Go Premium
               </Link>
             </motion.div>
@@ -356,43 +363,42 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="overflow-hidden py-14">
+      {/* Marquee Ticker */}
+      <section className="overflow-hidden py-10 border-b border-black/5 dark:border-white/5">
         <div className="relative">
-          <div className="flex w-max animate-marquee gap-4">
+          <div className="flex w-max animate-marquee gap-3">
             {[...MARQUEE_SUBJECTS, ...MARQUEE_SUBJECTS].map((s, i) => (
               <span
                 key={i}
-                className="heading rounded-pill border border-black/10 px-5 py-2 text-sm text-black/60 dark:border-white/15 dark:text-white/60"
+                className="heading rounded-full border border-black/10 px-4.5 py-1.5 text-xs text-black/50 dark:border-white/10 dark:text-white/45"
               >
                 {s}
               </span>
             ))}
           </div>
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-surface to-transparent dark:from-[#0b0b0f]" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-surface to-transparent dark:from-[#0b0b0f]" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-surface to-transparent dark:from-ink" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-surface to-transparent dark:from-ink" />
         </div>
       </section>
 
-      <section className="pb-24 pt-10">
+      {/* CTA Section */}
+      <section className="py-16 sm:py-20">
         <div className="container-px">
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="relative overflow-hidden rounded-card bg-ink px-6 py-14 text-center text-white sm:px-12 sm:py-20"
+            className="relative overflow-hidden rounded-2xl border border-black/5 dark:border-white/5 bg-black/[0.01] dark:bg-white/[0.01] px-6 py-12 text-center text-ink dark:text-white sm:px-12 sm:py-16"
           >
-            <div className="pointer-events-none absolute -left-20 -top-24 h-72 w-72 rounded-full bg-crimson opacity-25 blur-[90px]" />
-            <div className="pointer-events-none absolute -bottom-28 -right-16 h-72 w-72 rounded-full bg-crimson-deep opacity-30 blur-[100px]" />
-            <h2 className="heading relative text-3xl sm:text-5xl">
-              50 questions. One coach. <span className="text-crimson-light">Zero excuses.</span>
+            <h2 className="heading text-2xl sm:text-4xl font-extrabold tracking-tight">
+              50 Questions. One Tutor. <span className="text-crimson">Zero Excuses.</span>
             </h2>
-            <p className="relative mx-auto mt-4 max-w-xl text-sm text-white/60 sm:text-base">
-              Your diagnostic is free, takes 60 minutes, and your AI coach starts coaching
-              the moment you hit submit.
+            <p className="mx-auto mt-3 max-w-xl text-xs text-black/50 sm:text-sm dark:text-white/50 leading-relaxed">
+              Your primary diagnostic evaluation starts immediately, takes 60 minutes, and outputs clear guidance the moment you submit.
             </p>
-            <Link href="/signin" className="btn-primary relative mt-8 px-9 py-4 text-base">
-              Take the free diagnostic <ArrowRight size={17} />
+            <Link href="/signin" className="btn-primary relative mt-6 px-8 py-3.5 text-sm">
+              Take Free Diagnostic <ArrowRight size={15} />
             </Link>
           </motion.div>
         </div>

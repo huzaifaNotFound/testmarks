@@ -46,7 +46,7 @@ export default function Footer() {
       </div>
       <div className="border-t border-white/10">
         <div className="container-px flex flex-col items-center justify-between gap-2 py-5 text-xs text-white/45 sm:flex-row">
-          <span>© {new Date().getFullYear()} Test Marks AI. Built for a hackathon with Next.js.</span>
+          <span>© {new Date().getFullYear()} Test Marks AI. All rights reserved.</span>
           <span className="inline-flex items-center gap-1.5">
             Made with <Heart size={12} className="text-crimson" fill="currentColor" /> for students
           </span>

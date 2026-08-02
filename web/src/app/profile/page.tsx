@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import AppShell from "@/components/AppShell";
+import { PageHeader } from "@/components/ui";
 import { RequireAuth, useAuth } from "@/lib/auth";
 import { MOCK_STREAMS } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
@@ -45,147 +46,166 @@ export default function ProfilePage() {
   return (
     <RequireAuth>
       <AppShell>
-      <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="mx-auto max-w-3xl">
-        <h1 className="heading text-2xl sm:text-3xl">Profile</h1>
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className="mx-auto max-w-3xl space-y-6"
+        >
+          <PageHeader title="Profile Settings" subtitle="Manage your educational profile and parameters." />
 
-        <div className="card mt-6 p-6 sm:p-8">
-          <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start">
-            <div className="relative">
-              <span className="inline-flex h-20 w-20 items-center justify-center rounded-card bg-gradient-to-br from-crimson to-crimson-deep text-3xl font-bold text-white shadow-glow">
-                {(user?.name ?? "S").slice(0, 1).toUpperCase()}
-              </span>
-              {user?.premium && (
-                <span className="absolute -bottom-1.5 -right-1.5 inline-flex h-8 w-8 items-center justify-center rounded-lgx border-2 border-white bg-amber-400 text-ink dark:border-ink">
-                  <Crown size={15} />
+          <div className="card p-6 sm:p-8 bg-white dark:bg-white/[0.01] border-black/5 dark:border-white/10">
+            <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-start text-center sm:text-left">
+              <div className="relative shrink-0">
+                <span className="inline-flex h-20 w-20 items-center justify-center rounded-2xl bg-crimson text-3xl font-extrabold text-white shadow-sm">
+                  {(user?.name ?? "S").slice(0, 1).toUpperCase()}
                 </span>
-              )}
-            </div>
-            <div className="text-center sm:text-left">
-              <h2 className="heading text-xl">{user?.name}</h2>
-              <div className="mt-1 flex flex-wrap items-center justify-center gap-2 text-xs text-black/50 sm:justify-start dark:text-white/50">
-                <span className="inline-flex items-center gap-1">
-                  <Mail size={12} /> {user?.email}
-                </span>
-                <span className="inline-flex items-center gap-1">
-                  <GraduationCap size={12} /> {streamName}
-                </span>
-              </div>
-              <div className="mt-3 flex flex-wrap justify-center gap-1.5 sm:justify-start">
-                <span className="chip border-crimson/30 bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light">
-                  {user?.premium ? "Premium member" : "Free plan"}
-                </span>
-                <span className="chip">{user?.role === "admin" ? "Administrator" : "Student"}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="card mt-5 p-6">
-          <div className="label mb-2">Display name</div>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <input className="input" value={name} onChange={(e) => setName(e.target.value)} />
-            <button onClick={save} className="btn-primary shrink-0">
-              <Save size={15} /> {saved ? "Saved!" : "Save"}
-            </button>
-          </div>
-        </div>
-
-        <div className="card mt-5 p-6">
-          <div className="label mb-3">Subject interests</div>
-          <div className="flex flex-wrap gap-2">
-            {SUBJECT_INTERESTS.map((s) => (
-              <button
-                key={s}
-                onClick={() => toggleInterest(s)}
-                className={cn(
-                  "chip !px-4 !py-2 text-sm",
-                  interests.includes(s)
-                    ? "border-crimson bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light"
-                    : "hover:border-crimson",
+                {user?.premium && (
+                  <span className="absolute -bottom-1 -right-1 inline-flex h-7 w-7 items-center justify-center rounded-lg border-2 border-white bg-amber-400 text-ink dark:border-ink shadow-sm">
+                    <Crown size={13} className="text-black" />
+                  </span>
                 )}
-              >
-                {s}
-              </button>
+              </div>
+              <div className="space-y-2">
+                <h2 className="heading text-xl font-bold">{user?.name}</h2>
+                <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-black/50 sm:justify-start dark:text-white/45 font-medium">
+                  <span className="inline-flex items-center gap-1">
+                    <Mail size={13} /> {user?.email}
+                  </span>
+                  <span className="inline-flex items-center gap-1">
+                    <GraduationCap size={13} /> {streamName}
+                  </span>
+                </div>
+                <div className="flex flex-wrap justify-center gap-1.5 sm:justify-start pt-1.5">
+                  <span className="chip border-crimson/20 bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light">
+                    {user?.premium ? "Premium Access" : "Free Plan"}
+                  </span>
+                  <span className="chip text-black/50 dark:text-white/40">{user?.role === "admin" ? "Administrator" : "Student"}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="card p-6 bg-white dark:bg-white/[0.01] border-black/5 dark:border-white/10 space-y-4">
+            <div>
+              <label htmlFor="profile-name-input" className="label text-black/50 dark:text-white/40 mb-1.5 block">Display Name</label>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <input
+                  id="profile-name-input"
+                  className="input flex-1"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Enter name"
+                />
+                <button onClick={save} className="btn-primary shrink-0 px-6">
+                  <Save size={15} /> {saved ? "Saved!" : "Save Changes"}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="card p-6 bg-white dark:bg-white/[0.01] border-black/5 dark:border-white/10 space-y-3">
+            <div>
+              <h3 className="label text-black/50 dark:text-white/40">Subject Interests</h3>
+              <p className="text-xs text-black/40 dark:text-white/40 mb-3 leading-relaxed">
+                Configure your core focus areas to align recommended diagnostic review sessions.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {SUBJECT_INTERESTS.map((s) => (
+                <button
+                  key={s}
+                  onClick={() => toggleInterest(s)}
+                  className={cn(
+                    "chip !px-3.5 !py-2 text-sm focus-visible:ring-2",
+                    interests.includes(s)
+                      ? "border-crimson bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light font-semibold"
+                      : "border-black/5 bg-black/[0.02] dark:border-white/5 hover:border-crimson/50",
+                  )}
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="card bg-white dark:bg-white/[0.01] border-black/5 dark:border-white/10 divide-y divide-black/5 dark:divide-white/5 p-0 overflow-hidden">
+            {[
+              {
+                icon: Volume2,
+                title: "Sound effects",
+                sub: "Trigger auditory completion cues on diagnostic submissions",
+                value: sound,
+                onChange: () => setSound((v) => !v),
+              },
+              {
+                icon: theme === "dark" ? Moon : Sun,
+                title: "App theme",
+                sub: theme === "dark" ? "Dark mode active" : "Light mode active",
+                value: theme === "dark",
+                onChange: () => setTheme(theme === "dark" ? "light" : "dark"),
+              },
+            ].map((s) => (
+              <div key={s.title} className="flex items-center justify-between gap-4 p-5 hover:bg-black/[0.005] dark:hover:bg-white/[0.005] transition-colors">
+                <div className="flex items-start gap-4">
+                  <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-crimson/10 text-crimson dark:bg-crimson/15">
+                    <s.icon size={16} />
+                  </span>
+                  <div className="space-y-0.5">
+                    <div className="text-sm font-semibold">{s.title}</div>
+                    <div className="text-xs text-black/45 dark:text-white/45 leading-relaxed">{s.sub}</div>
+                  </div>
+                </div>
+                <button
+                  onClick={s.onChange}
+                  className={cn(
+                    "relative h-6 w-11 rounded-full transition-colors focus-visible:ring-2 focus-visible:ring-crimson",
+                    s.value ? "bg-crimson" : "bg-black/10 dark:bg-white/15",
+                  )}
+                  aria-label={`Toggle ${s.title}`}
+                  role="switch"
+                  aria-checked={s.value}
+                >
+                  <span
+                    className={cn(
+                      "absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-all",
+                      s.value ? "left-5.5" : "left-0.5",
+                    )}
+                  />
+                </button>
+              </div>
             ))}
           </div>
-          <p className="mt-3 text-[11px] text-black/40 dark:text-white/40">
-            The AI coach weights your focus tests toward these subjects.
-          </p>
-        </div>
 
-        <div className="card mt-5 divide-y divide-black/5 p-0 dark:divide-white/10">
-          {[
-            {
-              icon: Volume2,
-              title: "Sound effects",
-              sub: "Play a chime when a test is submitted",
-              value: sound,
-              onChange: () => setSound((v) => !v),
-            },
-            {
-              icon: theme === "dark" ? Moon : Sun,
-              title: "Theme",
-              sub: theme === "dark" ? "Dark mode is on" : "Light mode is on",
-              value: theme === "dark",
-              onChange: () => setTheme(theme === "dark" ? "light" : "dark"),
-            },
-          ].map((s) => (
-            <div key={s.title} className="flex items-center gap-3.5 p-5">
-              <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lgx bg-crimson-soft text-crimson dark:bg-crimson/15 dark:text-crimson-light">
-                <s.icon size={18} />
-              </span>
-              <div className="min-w-0 flex-1">
-                <div className="text-sm font-semibold">{s.title}</div>
-                <div className="text-xs text-black/45 dark:text-white/45">{s.sub}</div>
+          <div className="card p-5 bg-white dark:bg-white/[0.01] border-black/5 dark:border-white/10 flex items-center gap-4">
+            <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-400/10 text-amber-600">
+              <Sparkles size={18} />
+            </span>
+            <div className="flex-1 min-w-0">
+              <div className="text-sm font-semibold">{user?.premium ? "Premium membership active" : "Upgrade account to premium"}</div>
+              <div className="text-xs text-black/45 dark:text-white/45 truncate">
+                {user?.premium ? "You have access to unlimited papers." : "Unlock custom study guides and analytics."}
               </div>
-              <button
-                onClick={s.onChange}
-                className={cn(
-                  "relative h-7 w-12 rounded-pill transition-colors",
-                  s.value ? "bg-crimson" : "bg-black/15 dark:bg-white/15",
-                )}
-                aria-label={`Toggle ${s.title}`}
-              >
-                <span
-                  className={cn(
-                    "absolute top-1 h-5 w-5 rounded-full bg-white shadow transition-all",
-                    s.value ? "left-6" : "left-1",
-                  )}
-                />
+            </div>
+            {!user?.premium && (
+              <button onClick={() => router.push("/premium")} className="btn-primary btn-sm shrink-0">
+                Upgrade
               </button>
-            </div>
-          ))}
-        </div>
-
-        <div className="card mt-5 flex items-center gap-4 p-6">
-          <span className="inline-flex h-10 w-10 items-center justify-center rounded-lgx bg-gradient-to-br from-amber-400 to-crimson text-white">
-            <Sparkles size={18} />
-          </span>
-          <div className="flex-1">
-            <div className="text-sm font-semibold">{user?.premium ? "Premium is active" : "Unlock the full coach"}</div>
-            <div className="text-xs text-black/45 dark:text-white/45">
-              {user?.premium ? "Thanks for being a member!" : "Unlimited tests + personal AI coach."}
-            </div>
+            )}
           </div>
-          {!user?.premium && (
-            <button onClick={() => router.push("/premium")} className="btn-primary !px-4 !py-2 text-xs">
-              Upgrade
-            </button>
-          )}
-        </div>
 
-        <div className="mt-6 flex justify-center">
-          <button
-            onClick={() => {
-              signOut();
-              router.replace("/");
-            }}
-            className="btn-ghost !border-crimson/30 !text-crimson"
-          >
-            <LogOut size={16} /> Sign out
-          </button>
-        </div>
-      </motion.div>
+          <div className="flex justify-center pt-2">
+            <button
+              onClick={() => {
+                signOut();
+                router.replace("/");
+              }}
+              className="btn-ghost !border-crimson/25 !text-crimson"
+            >
+              <LogOut size={15} /> Sign out of account
+            </button>
+          </div>
+        </motion.div>
       </AppShell>
     </RequireAuth>
   );

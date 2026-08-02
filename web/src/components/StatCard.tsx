@@ -31,7 +31,7 @@ export default function StatCard({
     >
       <div
         className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lgx text-white"
-        style={{ background: accent, boxShadow: `0 4px 12px ${accent}33` }}
+        style={{ background: accent }}
       >
         <Icon size={20} />
       </div>
