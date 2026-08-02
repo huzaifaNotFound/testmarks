@@ -1,0 +1,1 @@
+AI-powered mock test & analytics platform for NEET, JEE and CBSE students. Adaptive diagnostics, brain-map skill tracking, AI study coach, and personalised exam predictions. Built with Next.js 16, FastAPI, Firebase and Recharts.
